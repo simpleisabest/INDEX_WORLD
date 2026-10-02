@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const isPreview = process.env.INDEX_PREVIEW === "true";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://indexworld.app"),
   title: "INDEX WORLD™ | 세상을 숫자로 보다",
@@ -14,6 +16,14 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
+  robots: isPreview
+    ? {
+        index: false,
+        follow: false,
+        nocache: true,
+        googleBot: { index: false, follow: false, noimageindex: true },
+      }
+    : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
