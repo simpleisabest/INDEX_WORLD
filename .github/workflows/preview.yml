@@ -2,7 +2,7 @@ name: Deploy V0.1 Preview
 
 on:
   push:
-    branches: [preview]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
