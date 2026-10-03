@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLocale } from "@/components/locale-provider";
 import { localeNames, locales, type Locale } from "@/lib/i18n/config";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
-import { ShareButton } from "@/components/share-button";
+import { DiscoveryBlock } from "@/components/discovery-block";
 import type { ReactNode } from "react";
 
 const iconBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -29,13 +29,6 @@ const categories = [
   { number: "03", id: "housing", title: "category.housing", note: "category.housingNote", icon: "□" },
 ] as const;
 
-const popularItems = [
-  { label: "TREND", title: "popular.p1", meta: "Population · Korea" },
-  { label: "RANK", title: "popular.p2", meta: "Household · Korea" },
-  { label: "CHANGE", title: "popular.p3", meta: "Population · Time series" },
-  { label: "COMPARE", title: "popular.p4", meta: "City comparison" },
-] as const;
-
 export function HeaderBlock() {
   const { locale, setLocale, isLoading, t } = useLocale();
   return (
@@ -44,7 +37,7 @@ export function HeaderBlock() {
         <BrandLogo />
       </a>
       <nav className="header-nav" aria-label="주요 메뉴">
-        <a className="korea-link" href="#map">{t("nav.korea")}</a>
+        <a className="korea-link" href="#population-kpi">{t("nav.korea")}</a>
         <label className="language">
           <span className="sr-only">Language</span>
           <span aria-hidden="true">○</span>
@@ -92,25 +85,7 @@ export function DataCategoryBlock() {
   );
 }
 
-export function PopularDataBlock() {
-  const { t } = useLocale();
-  return (
-    <section className="section shell" aria-labelledby="popular-heading">
-      <SectionTitle kicker={t("popular.kicker")} title={t("popular.heading")} id="popular-heading" side={t("popular.side")} action={<ShareButton contentId="popular-data" regionId="kr" title={t("popular.heading")} description={t("popular.side")} />} />
-      <div className="popular-list">
-        {popularItems.map((item, index) => (
-          <article className="popular-row" key={item.title}>
-            <span className="popular-number">0{index + 1}</span>
-            <span className="popular-label">{item.label}</span>
-            <div><h3>{t(item.title as TranslationKey)}</h3><p>{item.meta}</p></div>
-            <span className="demo-chip">{t("common.coming")}</span>
-            <span className="row-arrow" aria-hidden="true">↗</span>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
+export function PopularDataBlock() { return <DiscoveryBlock popular />; }
 
 export function ShareBlock() {
   const { t } = useLocale();
@@ -123,12 +98,7 @@ export function ShareBlock() {
         </div>
         <div className="share-copy">
           <p>{t("share.description")}</p>
-          <div className="share-actions" aria-label="공유 기능 미리보기">
-            <button disabled><span>↗</span> SHARE</button>
-            <button disabled><span>⌘</span> REMIX</button>
-            <button disabled><span>+</span> EMBED</button>
-          </div>
-          <small>{t("share.pending")}</small>
+          <a className="export-jump" href="#population-timeseries">{t("export.menu")} ↗</a>
         </div>
       </div>
       <footer className="shell footer">
@@ -137,7 +107,7 @@ export function ShareBlock() {
           <p>{t("footer.statement")}</p>
           <nav aria-label="Footer"><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
         </div>
-        <span>V0.8 · CREATOR / EXPORT</span>
+        <span>V0.9 · DISCOVERY / VIRAL</span>
       </footer>
     </section>
   );

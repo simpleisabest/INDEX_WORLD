@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, KeyboardEvent, useId, useState } from "react";
+import { searchDemandContract, discoveryHref, type DiscoveryTarget } from "@/lib/discovery";
+import {populationObservations} from "@/lib/data/population";
 import { useLocale } from "@/components/locale-provider";
 
 type SearchIntent = "REGION" | "INDICATOR" | "RANKING" | "COMPARE" | "QUESTION";
@@ -8,19 +10,19 @@ type SearchIntent = "REGION" | "INDICATOR" | "RANKING" | "COMPARE" | "QUESTION";
 type SearchSuggestion = {
   label: string;
   intent: SearchIntent;
+  contentId: DiscoveryTarget;
 };
 
 export function SearchBlock() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [submittedQuery, setSubmittedQuery] = useState("");
   const statusId = useId();
   const suggestions: SearchSuggestion[] = [
-    { label: t("search.s1"), intent: "REGION" },
-    { label: t("search.s2"), intent: "INDICATOR" },
-    { label: t("search.s3"), intent: "INDICATOR" },
-    { label: t("search.s4"), intent: "COMPARE" },
+    { label: t("discovery.latest"), intent: "INDICATOR", contentId: "population-kpi" },
+    { label: t("discovery.history"), intent: "INDICATOR", contentId: "population-timeseries" },
+    { label: t("discovery.compare"), intent: "COMPARE", contentId: "population-compare" },
   ];
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
@@ -31,6 +33,8 @@ export function SearchBlock() {
       return;
     }
     setSubmittedQuery(normalizedQuery);
+    const matches = suggestions.filter(item=>item.label.toLocaleLowerCase(locale)===normalizedQuery.toLocaleLowerCase(locale)).map(item=>item.contentId);
+    window.dispatchEvent(new CustomEvent("index-world:search-demand",{detail:searchDemandContract(normalizedQuery,locale,matches)}));
     setIsOpen(false);
   };
 
@@ -44,7 +48,7 @@ export function SearchBlock() {
 
   const chooseSuggestion = (suggestion: SearchSuggestion) => {
     setQuery(suggestion.label);
-    setSubmittedQuery("");
+    setSubmittedQuery(suggestion.label);
     setIsOpen(false);
   };
 
@@ -71,7 +75,7 @@ export function SearchBlock() {
             }}
             onFocus={() => setIsOpen(true)}
             onKeyDown={handleKeyDown}
-            placeholder={t("search.placeholder")}
+            placeholder={t("discovery.searchPlaceholder")}
             aria-label="지역 또는 데이터 검색"
             role="combobox"
             aria-autocomplete="list"
@@ -98,7 +102,7 @@ export function SearchBlock() {
         )}
 
         <div className="search-status" id={statusId} aria-live="polite">
-          {submittedQuery ? (
+          {submittedQuery && suggestions.some(item=>item.label.toLocaleLowerCase(locale)===submittedQuery.toLocaleLowerCase(locale)) ? <p>{suggestions.filter(item=>item.label.toLocaleLowerCase(locale)===submittedQuery.toLocaleLowerCase(locale)).map(item=><a key={item.contentId} href={discoveryHref(item.contentId,populationObservations[0].reference_period,populationObservations.at(-1)!.reference_period,populationObservations.at(-2)!.reference_period)}>{item.label} ↗</a>)}</p> : submittedQuery ? (
             <p><span>{t("search.pending")}</span> {t("search.pendingText", { query: submittedQuery })}</p>
           ) : (
             <p><span>{t("search.contract")}</span> {t("search.contractText")}</p>

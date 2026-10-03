@@ -30,3 +30,7 @@ See [national Population UX](docs/data-sources/population-ux.md) and [V0.6 verif
 ## V0.8 Creator / Export
 
 [Export implementation and validation](docs/creator-export-v0.8.md): PNG, Print, copy, attributed CSV, and share-card Foundation for the verified Population time series and comparisons, grouped with Share in one menu.
+
+## V0.9 Discovery / Viral
+
+[Discovery and sharing contracts](docs/discovery-v0.9.md): source-backed related data/questions, curated entry points, QR-enabled card formats, attributed Embed, and local Search Demand/Zero-result contracts.

@@ -26,11 +26,11 @@ export function ShareButton({ title, description, tone = "light", ...state }: Sh
     const url = buildShareUrl(window.location.href, state);
     try {
       if (navigator.share) {
-        await navigator.share({ title, text: description, url });
+        await navigator.share({ title: `INDEX WORLD · ${title}`, text: description, url });
         createShareEvent(state, "web-share");
         setStatus("idle");
       } else {
-        await copyText(`${title}\n${description}\n${url}`);
+        await copyText(`INDEX WORLD · ${title}\n${description}\n${url}`);
         createShareEvent(state, "clipboard");
         setStatus("copied");
       }

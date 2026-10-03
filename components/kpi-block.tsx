@@ -37,7 +37,7 @@ export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
             <p>{t("kpi.kicker")}</p>
             <h2 id="kpi-heading">{t("kpi.heading")}</h2>
           </div>
-          <div className="block-tools"><div className="kpi-status"><i /> {t("kpi.status")}</div><ShareButton contentId="population-kpi" regionId="kr" referencePeriod={latestPopulationObservation.reference_period} title={t("kpi.heading")} description={t("kpi.disclaimer")} /></div>
+          <div className="block-tools"><div className="kpi-status"><i /> {t("kpi.status")}</div><ShareButton contentId="population-kpi" regionId="kr" referencePeriod={latestPopulationObservation.reference_period} title={t("kpi.heading")} description={`${t("kpi.disclaimer")} · ${latestPopulationObservation.source_org} · ${latestPopulationObservation.source_id}`} /></div>
         </div>
 
         <div className="kpi-grid">

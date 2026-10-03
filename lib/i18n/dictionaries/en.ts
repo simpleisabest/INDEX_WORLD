@@ -61,6 +61,23 @@ const en = {
   "export.done":"Export ready",
   "export.failed":"Export failed. Try again.",
   "export.axis":"Population in people; line chart axis shows the selected value range.",
+  "discovery.kicker":"DISCOVER · VERIFIED DATA",
+  "discovery.explore":"Explore verified data",
+  "discovery.related":"Related data",
+  "discovery.latest":"Latest Korea population",
+  "discovery.history":"Population history",
+  "discovery.compare":"Compare population years",
+  "discovery.questions":"Related questions",
+  "discovery.qLatest":"What is the latest verified population?",
+  "discovery.qChange":"How did population change from the previous year?",
+  "discovery.qHistory":"How has population changed over time?",
+  "discovery.curated":"Selected entry points, not a popularity ranking. Usage counts are not collected.",
+  "discovery.verified":"Answers use verified World Bank national population only.",
+  "discovery.format":"Card format",
+  "discovery.embed":"Copy embed code",
+  "discovery.embedUnavailable":"No verified result matches this embed URL.",
+  "discovery.original":"View original result",
+  "discovery.searchPlaceholder":"Latest Korea population, population history…",
 } as const;
 export default en;
 export type TranslationKey = keyof typeof en;

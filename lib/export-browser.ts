@@ -1,3 +1,4 @@
+import QRCode from "qrcode";
 import { validateExport, type ExportArtifact } from "./export";
 
 export async function copyExportText(text: string) {
@@ -13,9 +14,9 @@ export function saveExport(blob: Blob, filename: string) {
   document.body.append(link); link.click(); link.remove(); window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export async function exportCanvas(artifact: ExportArtifact, url: string, card: boolean, locale: string) {
+export async function exportCanvas(artifact: ExportArtifact, url: string, card: boolean, locale: string, ratio: "1:1" | "4:5" | "9:16" = "1:1") {
   validateExport(artifact); await document.fonts.ready;
-  const canvas = document.createElement("canvas"); canvas.width = 1200; canvas.height = 1200;
+  const canvas = document.createElement("canvas"); canvas.width = 1200; canvas.height = ratio === "4:5" ? 1500 : ratio === "9:16" ? 2133 : 1200;
   const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("Canvas unavailable");
   ctx.fillStyle = "#f4f3ee"; ctx.fillRect(0, 0, canvas.width, canvas.height);
   const text = (value: string, x: number, y: number, size = 24, color = "#152019") => { ctx.font = `${size}px system-ui,sans-serif`; ctx.fillStyle = color; ctx.fillText(value, x, y); };
@@ -49,6 +50,13 @@ export async function exportCanvas(artifact: ExportArtifact, url: string, card: 
   y = wrap(`${artifact.source} · ${artifact.license}`, y, 18);
   y = wrap(artifact.sourceUrl, y, 16);
   y = wrap(artifact.licenseUrl, y, 16);
-  wrap(`INDEX WORLD · ${url}`, y + 10, 16);
+  y = wrap(`INDEX WORLD · ${url}`, y + 10, 16);
+  const qr = document.createElement("canvas");
+  await QRCode.toCanvas(qr, url, { errorCorrectionLevel: "M", margin: 4, width: 208 });
+  ctx.drawImage(qr, canvas.width - 264, Math.max(y + 12, canvas.height - 248));
+  if (ratio === "9:16") {
+    const portrait = document.createElement("canvas"); portrait.width = 1080; portrait.height = 1920;
+    portrait.getContext("2d")!.drawImage(canvas, 0, 0, portrait.width, portrait.height); return portrait;
+  }
   return canvas;
 }

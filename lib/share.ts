@@ -24,6 +24,7 @@ export function buildShareUrl(baseUrl: string, state: ShareState) {
   const url = new URL(baseUrl);
   trackingKeys.forEach((key) => url.searchParams.delete(key));
   url.hash = "";
+  url.pathname = url.pathname.replace(/embed\/?$/, "");
   url.searchParams.set("content", state.contentId);
   if (state.regionId) url.searchParams.set("region", state.regionId);
   else url.searchParams.delete("region");

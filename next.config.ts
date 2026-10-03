@@ -4,6 +4,7 @@ const isPreview = process.env.INDEX_PREVIEW === "true";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  trailingSlash: true,
   env: {
     NEXT_PUBLIC_BASE_PATH: isPreview ? "/INDEX_WORLD" : "",
   },

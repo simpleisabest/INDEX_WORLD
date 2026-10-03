@@ -4,21 +4,24 @@ import { useLocale } from "@/components/locale-provider";
 import { ShareButton } from "@/components/share-button";
 import { buildShareUrl, type ShareState } from "@/lib/share";
 import { validateExport, attributedCsv, exportPrintHtml, exportTable, type ExportArtifact } from "@/lib/export";
+import { embedCode } from "@/lib/embed";
 import { copyExportText, exportCanvas, saveExport } from "@/lib/export-browser";
 
 export function ExportMenu({ artifact, shareState }: { artifact: ExportArtifact; shareState: ShareState }) {
   const { t, locale } = useLocale(); const menu = useRef<HTMLDetailsElement>(null);
+  const [ratio,setRatio] = useState<"1:1"|"4:5"|"9:16">("1:1");
   const [busy, setBusy] = useState(false); const [status, setStatus] = useState<"idle" | "done" | "failed">("idle");
-  const run = async (action: "png" | "card" | "print" | "table" | "citation" | "csv") => {
+  const run = async (action: "png" | "card" | "print" | "table" | "citation" | "csv" | "embed") => {
     setBusy(true); setStatus("idle");
     try {
       validateExport(artifact);
       const url = buildShareUrl(window.location.href, shareState);
-      if (action === "table") await copyExportText(exportTable(artifact, url));
+      if (action === "embed") await copyExportText(embedCode(url, artifact.title, artifact.source, artifact.sourceUrl));
+      else if (action === "table") await copyExportText(exportTable(artifact, url));
       else if (action === "citation") await copyExportText(`${artifact.citation}\n${artifact.metadata}\nINDEX WORLD · ${url}`);
       else if (action === "csv") saveExport(new Blob(["\uFEFF", attributedCsv(artifact.csv, url)], { type: "text/csv;charset=utf-8" }), `${artifact.filename}.csv`);
       else {
-        const canvas = await exportCanvas(artifact, url, action === "card", locale);
+        const canvas = await exportCanvas(artifact, url, action === "card", locale, action === "card" ? ratio : "1:1");
         if (action === "print") {
           const frame = document.createElement("iframe"); frame.className = "export-print-frame"; frame.title = artifact.title;
           frame.srcdoc = exportPrintHtml(artifact, url, canvas.toDataURL("image/png"), locale);
@@ -36,11 +39,11 @@ export function ExportMenu({ artifact, shareState }: { artifact: ExportArtifact;
           });
         } else {
           const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("PNG unavailable")), "image/png"));
-          saveExport(blob, `${artifact.filename}${action === "card" ? "-card" : ""}.png`);
+          saveExport(blob, `${artifact.filename}${action === "card" ? `-card-${ratio.replace(":", "x")}` : ""}.png`);
         }
       }
       setStatus("done");
     } catch { setStatus("failed"); } finally { setBusy(false); }
   };
-  return <div className="export-control"><details ref={menu} onKeyDown={event => { if (event.key === "Escape") { menu.current!.open = false; menu.current?.querySelector("summary")?.focus(); } }}><summary>{t("export.menu")}</summary><div className="export-options">{(["png", "print", "table", "citation", "csv", "card"] as const).map(action => <button type="button" disabled={busy} key={action} onClick={() => void run(action)}>{t(`export.${action}`)}</button>)}<ShareButton {...shareState} title={artifact.title} description={artifact.subtitle} /></div></details><span role="status">{status === "done" ? t("export.done") : status === "failed" ? t("export.failed") : ""}</span></div>;
+  return <div className="export-control"><details ref={menu} onKeyDown={event => { if (event.key === "Escape") { menu.current!.open = false; menu.current?.querySelector("summary")?.focus(); } }}><summary>{t("export.menu")}</summary><div className="export-options"><label>{t("discovery.format")}<select value={ratio} onChange={event=>setRatio(event.target.value as typeof ratio)}><option>1:1</option><option>4:5</option><option>9:16</option></select></label>{(["png", "print", "table", "citation", "csv", "card", "embed"] as const).map(action => <button type="button" disabled={busy} key={action} onClick={() => void run(action)}>{action === "embed" ? t("discovery.embed") : t(`export.${action}`)}</button>)}<ShareButton {...shareState} title={artifact.title} description={`${artifact.subtitle}\n${artifact.source} · ${artifact.license}`} /></div></details><span role="status">{status === "done" ? t("export.done") : status === "failed" ? t("export.failed") : ""}</span></div>;
 }

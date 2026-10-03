@@ -293,3 +293,16 @@ button,input,select { font:inherit; }
 @media(max-width:760px) {
   .export-options { position:fixed; left:16px; right:16px; bottom:16px; top:auto; width:auto; max-height:65vh; overflow-y:auto; }
 }
+.discovery-links { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px; }
+.discovery-links a { padding:24px;border:1px solid var(--line);display:grid;gap:12px;min-width:0;text-decoration:none;overflow-wrap:anywhere; }
+.discovery-links a:hover { border-color:var(--ink);background:#f4f6ee; }
+.discovery-links span,.discovery-attribution,.related-questions { font-size:13px;line-height:1.8; }
+.related-questions { margin-top:28px; }.related-questions summary {cursor:pointer;}
+.related-questions dl div {padding:16px 0;border-bottom:1px solid var(--line);}.related-questions dd {margin:8px 0 0;}
+.discovery-attribution {margin-top:24px;}.discovery-attribution a {text-decoration:underline;}
+.export-options label {display:flex;justify-content:space-between;align-items:center;padding:12px;gap:12px;font-size:13px;}.export-options select {padding:6px;background:white;}
+.embed-root .period-controls,.embed-root .block-tools,.embed-root .year-slider,.embed-root .export-control {display:none;}
+.embed-root header,.embed-root footer {padding-block:20px;font-size:13px;overflow-wrap:anywhere;}
+.embed-root .compare-section,.embed-root .timeseries-section {padding:24px 0;}
+@media(max-width:760px){.discovery-links {grid-template-columns:minmax(0,1fr);}}
+.export-jump {display:inline-block;margin-top:20px;padding:12px 16px;border:1px solid var(--ink);font-size:13px;}

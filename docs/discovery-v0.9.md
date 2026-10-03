@@ -1,0 +1,17 @@
+# V0.9 Discovery & Viral Foundation
+
+Discovery uses only the preserved verified World Bank KOR/SP.POP.TOTL national snapshot. Popular Data becomes selected verified entry points, explicitly described as a selection rather than a measured popularity ranking. No ranks, usage totals, trending claims, or user-question frequency are fabricated. Related Data has two links; three collapsible questions link to latest population, previous-year change, and long-term history. Answers and periods derive from the official observations.
+
+The internal-link contract identifies content, country-level region, indicator, quality, source URL, and version. Links target existing KPI, time-series, and comparison blocks and restore valid selection parameters. Shared Discovery links scroll to the appropriate block. Navigation prioritizes verified Population. Unsupported region/household/housing search suggestions are replaced with answerable national Population entry points. Exact localized title matches resolve to links; other input remains unsupported. Search Demand/Zero-result events are ephemeral browser CustomEvents with schema version, query (bounded), locale, matched content IDs, result count, outcome, time, and `storage: NOT_CONNECTED`. There is no backend, database, persistence, ranking collector, or external query transmission.
+
+## Cards, QR and Embed
+
+Existing Export menus add one format selector and one Embed action. Formats: 1:1 (1200×1200), 4:5 (1200×1500), and 9:16 (1080×1920). Chart PNG remains square. QR encoding uses the maintained qrcode package locally and retains the exact original result URL, including chosen periods. PNG/card/Print keep INDEX WORLD, source, source/license links, original URL, and provenance. Link Share includes INDEX WORLD and official source attribution. Existing CSV/copy/citation formats retain attribution.
+
+Embed copies an attributed iframe snippet plus visible INDEX WORLD/original/source links. The dedicated static `/embed/` route is always noindex. It accepts only verified national time-series ranges or year comparison IDs present in the official snapshot. Invalid, regional, unknown-year, or reversed-range requests show no data. Embed uses the same source-backed blocks with controls hidden; original links point to the main result, and no ad slots are inserted in the embedded view. Future live API embeds and version-pinned snapshot delivery are outside this Foundation. Current iframe values follow the committed snapshot; copyable image exports are fixed at generation time.
+
+All 17 new strings are explicitly translated in the existing 13 dictionaries. The main Preview remains noindex and retains ad slots A/B/C. No DB, Supabase, AdSense, or unverified regional data is added. V0.6's gate and evidence hashes remain unchanged.
+
+## Validation
+
+Twenty-two unit/contract tests pass: comparison, export, evidence preservation, Discovery link targets, Search Demand/Zero-result contract, safe attributed Embed, allowed/rejected selections, and translation coverage. Type checking, lint, static export, and browser checks cover current links and computed answers, truthful Popular copy, local search events, dimensions of all three formats, actual QR decoding to the exact original selection URL in every supported language, Embed source attribution/selection restoration/noindex/regional rejection, 13 locales, Mobile, and existing ad slots. QR decoding uses temporary test dependencies, not shipped application dependencies. Deployment still requires live World Bank verification.
