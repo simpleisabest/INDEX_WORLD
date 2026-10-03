@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useLocale } from "@/components/locale-provider";
 import { localeNames, locales, type Locale } from "@/lib/i18n/config";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
+import { ShareButton } from "@/components/share-button";
+import type { ReactNode } from "react";
 
 const iconBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -94,7 +96,7 @@ export function PopularDataBlock() {
   const { t } = useLocale();
   return (
     <section className="section shell" aria-labelledby="popular-heading">
-      <SectionTitle kicker={t("popular.kicker")} title={t("popular.heading")} id="popular-heading" side={t("popular.side")} />
+      <SectionTitle kicker={t("popular.kicker")} title={t("popular.heading")} id="popular-heading" side={t("popular.side")} action={<ShareButton contentId="popular-data" regionId="kr" title={t("popular.heading")} description={t("popular.side")} />} />
       <div className="popular-list">
         {popularItems.map((item, index) => (
           <article className="popular-row" key={item.title}>
@@ -141,11 +143,11 @@ export function ShareBlock() {
   );
 }
 
-function SectionTitle({ kicker, title, id, side }: { kicker: string; title: string; id: string; side?: string }) {
+function SectionTitle({ kicker, title, id, side, action }: { kicker: string; title: string; id: string; side?: string; action?: ReactNode }) {
   return (
     <div className="section-title">
       <div><p>{kicker}</p><h2 id={id}>{title}</h2></div>
-      {side && <span>{side}</span>}
+      {(side || action) && <div className="section-title-side">{side && <span>{side}</span>}{action}</div>}
     </div>
   );
 }

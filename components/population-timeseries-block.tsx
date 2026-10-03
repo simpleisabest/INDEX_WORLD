@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { populationObservations, populationSource } from "@/lib/data/population";
+import { ShareButton } from "@/components/share-button";
 
 const ranges = [10, 25, 0] as const;
 
@@ -34,8 +35,11 @@ export function PopulationTimeSeriesBlock() {
             <p>{t("timeseries.kicker")}</p>
             <h2 id="timeseries-heading">{t("timeseries.heading")}</h2>
           </div>
-          <div className="timeseries-range" aria-label={t("timeseries.range")}>
-            {ranges.map((years) => <button key={years} type="button" aria-pressed={range === years} onClick={() => setRange(years)}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
+          <div className="block-tools">
+            <div className="timeseries-range" aria-label={t("timeseries.range")}>
+              {ranges.map((years) => <button key={years} type="button" aria-pressed={range === years} onClick={() => setRange(years)}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
+            </div>
+            <ShareButton contentId="population-timeseries" regionId="kr" referencePeriod={selected.reference_period} title={t("timeseries.heading")} description={t("timeseries.description")} />
           </div>
         </div>
 

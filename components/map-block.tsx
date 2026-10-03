@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
+import { ShareButton } from "@/components/share-button";
 
 type RegionFoundation = {
   id: `kr-${string}`;
@@ -42,6 +43,7 @@ export function MapBlock() {
               <div><strong>{t("map.prompt")}</strong><p>{t("map.ready")}</p></div>
             )}
           </div>
+          <ShareButton contentId="korea-map" regionId={selectedRegion?.id ?? "kr"} title={t("map.line1")} description={t("map.description")} tone="dark" />
         </div>
 
         <div className="map-visual" aria-label="대한민국 지도 탐색 Foundation">

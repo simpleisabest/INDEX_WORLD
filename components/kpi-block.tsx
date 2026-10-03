@@ -3,6 +3,7 @@
 import { useLocale } from "@/components/locale-provider";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
 import { latestPopulationObservation } from "@/lib/data/population";
+import { ShareButton } from "@/components/share-button";
 
 export type KpiDatum = {
   labelKey: TranslationKey;
@@ -32,7 +33,7 @@ export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
             <p>{t("kpi.kicker")}</p>
             <h2 id="kpi-heading">{t("kpi.heading")}</h2>
           </div>
-          <div className="kpi-status"><i /> {t("kpi.status")}</div>
+          <div className="block-tools"><div className="kpi-status"><i /> {t("kpi.status")}</div><ShareButton contentId="population-kpi" regionId="kr" referencePeriod={latestPopulationObservation.reference_period} title={t("kpi.heading")} description={t("kpi.disclaimer")} /></div>
         </div>
 
         <div className="kpi-grid">
