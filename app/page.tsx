@@ -7,6 +7,7 @@ import {
   ShareBlock,
 } from "@/components/blocks";
 import { SearchBlock } from "@/components/search-block";
+import { KPIBlock } from "@/components/kpi-block";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroBlock />
       <SearchBlock />
       <DataCategoryBlock />
+      <KPIBlock />
       <MapBlock />
       <PopularDataBlock />
       <ShareBlock />
