@@ -23,9 +23,9 @@ export default function Home() {
       <HeroBlock />
       <SearchBlock />
       <AdSlot id="A" placement="after-search" format="responsive" />
-      <DataCategoryBlock />
       <KPIBlock />
       <PopulationTimeSeriesBlock />
+      <DataCategoryBlock />
       <CompareBlock />
       <MapBlock />
       <AdSlot id="B" placement="after-map" format="responsive" />

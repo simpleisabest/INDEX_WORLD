@@ -107,7 +107,7 @@ export function ShareBlock() {
           <p>{t("footer.statement")}</p>
           <nav aria-label="Footer"><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
         </div>
-        <span>V0.9 · DISCOVERY / VIRAL</span>
+        <span>V1.0 · VERIFIED DATA SPRINT</span>
       </footer>
     </section>
   );

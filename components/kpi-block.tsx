@@ -30,7 +30,7 @@ const populationKpis: KpiDatum[] = [
 export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
   const { t, format } = useLocale();
   return (
-    <section className="kpi-section" aria-labelledby="kpi-heading">
+    <section id="population-kpi" className="kpi-section" aria-labelledby="kpi-heading">
       <div className="shell">
         <div className="kpi-header">
           <div>
