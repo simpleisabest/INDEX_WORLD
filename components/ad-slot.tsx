@@ -25,7 +25,7 @@ export function AdSlot({
   collapseWhenEmpty = true,
 }: AdSlotProps) {
   const { t } = useLocale();
-  const isPreview = process.env.INDEX_PREVIEW === "true";
+  const isPreview = Boolean(process.env.NEXT_PUBLIC_BASE_PATH);
   const showDevelopmentMarker = isPreview && !enabled;
 
   if (!enabled && collapseWhenEmpty && !showDevelopmentMarker) {

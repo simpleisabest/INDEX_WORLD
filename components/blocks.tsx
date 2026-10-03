@@ -125,8 +125,11 @@ export function ShareBlock() {
       </div>
       <footer className="shell footer">
         <span>INDEX WORLD<sup>™</sup></span>
-        <p>{t("footer.statement")}</p>
-        <span>V0.1 · FRONTEND SHELL</span>
+        <div className="footer-center">
+          <p>{t("footer.statement")}</p>
+          <nav aria-label="Footer"><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
+        </div>
+        <span>V0.5 · OFFICIAL POPULATION</span>
       </footer>
     </section>
   );

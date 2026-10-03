@@ -9,6 +9,7 @@ import { SearchBlock } from "@/components/search-block";
 import { KPIBlock } from "@/components/kpi-block";
 import { MapBlock } from "@/components/map-block";
 import { AdSlot } from "@/components/ad-slot";
+import { PopulationTimeSeriesBlock } from "@/components/population-timeseries-block";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <AdSlot id="A" placement="after-search" format="responsive" />
       <DataCategoryBlock />
       <KPIBlock />
+      <PopulationTimeSeriesBlock />
       <MapBlock />
       <AdSlot id="B" placement="after-map" format="responsive" />
       <PopularDataBlock />
