@@ -72,31 +72,6 @@ export function DataCategoryBlock() {
   );
 }
 
-export function MapBlock() {
-  return (
-    <section className="map-section" id="map" aria-labelledby="map-heading">
-      <div className="shell map-grid">
-        <div className="map-copy">
-          <div className="eyebrow light"><span /> INDEX KOREA</div>
-          <h2 id="map-heading">지도로 발견하는<br />대한민국의 오늘</h2>
-          <p>지역을 선택하고, 서로 다른 데이터의 흐름을 한눈에 비교하는 경험을 준비하고 있습니다.</p>
-          <div className="pending-badge"><i /> MAP DATA COMING NEXT</div>
-        </div>
-        <div className="map-visual" aria-label="대한민국 지도 개발용 플레이스홀더">
-          <div className="map-coordinates">37.5665° N<br />126.9780° E</div>
-          <svg viewBox="0 0 320 420" role="img" aria-label="대한민국 지도 실루엣 플레이스홀더">
-            <path d="M165 25c19 18 14 43 30 62 16 19 45 29 46 56 1 25-22 36-18 61 5 28 26 38 16 71-8 27-40 33-51 59-8 19 3 44-17 59-18 13-34-9-49-21-16-13-39-17-44-40-6-25 17-40 23-61 7-25-7-46 0-68 8-25 40-33 53-54 14-22 3-54 20-73 12-14 24-3 37-21Z" />
-            <path className="island" d="M91 373c13-8 36-5 42 7 6 13-9 25-28 24-19-1-28-20-14-31Z" />
-          </svg>
-          <span className="city city-seoul">SEOUL<i /></span>
-          <span className="city city-busan">BUSAN<i /></span>
-          <div className="map-watermark">KOREA</div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function PopularDataBlock() {
   return (
     <section className="section shell" aria-labelledby="popular-heading">

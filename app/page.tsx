@@ -2,12 +2,12 @@ import {
   DataCategoryBlock,
   HeaderBlock,
   HeroBlock,
-  MapBlock,
   PopularDataBlock,
   ShareBlock,
 } from "@/components/blocks";
 import { SearchBlock } from "@/components/search-block";
 import { KPIBlock } from "@/components/kpi-block";
+import { MapBlock } from "@/components/map-block";
 
 export default function Home() {
   return (
