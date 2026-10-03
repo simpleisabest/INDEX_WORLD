@@ -3,8 +3,8 @@
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
-import { ShareButton } from "@/components/share-button";
-import { buildShareUrl } from "@/lib/share";
+import { ExportMenu } from "@/components/export-menu";
+
 import { compareObservations, comparisonCsv, resolveComparisonIds, type CompareModel } from "@/lib/data/compare";
 import { populationCompareModel } from "@/lib/data/population-compare";
 
@@ -16,7 +16,6 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
   const text = (key: CompareCopyKey) => t(labels[key] ?? key);
   const [baselineId, setBaselineId] = useState(model.baselineId);
   const [targetId, setTargetId] = useState(model.targetId);
-  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
   const baseline = model.options.find((option) => option.id === baselineId)!;
   const target = model.options.find((option) => option.id === targetId)!;
   const result = compareObservations(model.dimension, baseline.observation, target.observation);
@@ -36,13 +35,17 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
     return () => window.clearTimeout(id);
   }, [model]);
 
-  const download = () => {
-    const url = URL.createObjectURL(new Blob(["\uFEFF", comparisonCsv(result)], { type: "text/csv;charset=utf-8" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `index-world-population-compare-${baselineId}-${targetId}.csv`;
-    link.click();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const artifact = {
+    title: `${text("compare.heading")}: ${baseline.label} → ${target.label}`,
+    subtitle: `${text("compare.difference")}: ${result.absolute === null ? text("compare.unavailable") : signed(result.absolute)} ${unit(target.observation.unit)} · ${text("compare.rate")}: ${result.percent === null ? text("compare.unavailable") : signed(result.percent, 2) + "%"}`,
+    headers: [text("compare.role"), text("compare.period"), text("compare.value")],
+    rows: [baseline, target].map((option, index) => [text(index ? "compare.target" : "compare.baseline"), option.observation.reference_period, `${number(option.observation.value)} ${unit(option.observation.unit)}`]),
+    points: [baseline, target].map(option => ({ label: option.label, value: option.observation.value, display: `${number(option.observation.value)} ${unit(option.observation.unit)}` })),
+    chart: "bars" as const, citation,
+    source: `${baseline.observation.source_org} · ${baseline.observation.dataset_name} · ${baseline.observation.source_id}`,
+    sourceUrl: baseline.observation.source_url, license: baseline.observation.license, licenseUrl: baseline.observation.license_url,
+    metadata: `${text("compare.formula")} ${text("compare.zeroAxis")} · ${baseline.observation.version} · ${text("compare.ingested")}: ${baseline.observation.ingested_at}`,
+    quality: result.comparable ? "VERIFIED" : "REVIEW_REQUIRED", csv: comparisonCsv(result), filename: `index-world-population-compare-${baselineId}-${targetId}`,
   };
 
   return (
@@ -50,14 +53,13 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
       <div className="shell">
         <div className="timeseries-header">
           <div><p>{text("compare.kicker")}</p><h2 id={`${model.contentId}-heading`}>{text("compare.heading")}</h2></div>
-          <ShareButton {...shareState} title={`${text("compare.heading")}: ${baseline.label} → ${target.label}`} description={text("compare.description")} />
+          <ExportMenu artifact={artifact} shareState={shareState} />
         </div>
         <p className="compare-intro">{text("compare.description")}</p>
         <div className="period-controls">
           <label>{text("compare.baseline")}<select value={baselineId} onChange={(event) => setBaselineId(event.target.value)}>{model.options.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
           <button type="button" onClick={() => { setBaselineId(targetId); setTargetId(baselineId); }}>{text("compare.swap")}</button>
           <label>{text("compare.target")}<select value={targetId} onChange={(event) => setTargetId(event.target.value)}>{model.options.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
-          <button type="button" onClick={download}>{text("compare.download")}</button>
         </div>
         <div className="compare-summary" aria-live="polite" aria-atomic="true">
           <article><h3>{text("compare.difference")}</h3><strong>{result.absolute === null ? text("compare.unavailable") : signed(result.absolute)}</strong><span>{result.absolute === null ? "" : unit(target.observation.unit)}</span><p>{baseline.label} → {target.label}</p></article>
@@ -88,7 +90,7 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
             <div><dt>{text("compare.license")}</dt><dd><a href={option.observation.license_url} target="_blank" rel="noreferrer">{option.observation.license} ↗</a></dd></div>
           </dl></div>)}</div>
           <p className="compare-note">{text("compare.methodology")}</p>
-          <details className="compare-citation"><summary>{text("compare.citation")}</summary><p className="citation-text">{citation}</p><button type="button" onClick={async () => { try { await navigator.clipboard.writeText(`${citation}\n${text("compare.formula")}\nINDEX WORLD: ${buildShareUrl(window.location.href, shareState)}`); setCopyStatus("copied"); } catch { setCopyStatus("failed"); } }}>{text("compare.copy")}</button><span role="status">{copyStatus === "copied" ? t("share.copied") : copyStatus === "failed" ? t("share.failed") : ""}</span></details>
+          <details className="compare-citation"><summary>{text("compare.citation")}</summary><p className="citation-text">{citation}</p></details>
         </details>
       </div>
     </section>

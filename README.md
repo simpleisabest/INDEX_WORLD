@@ -26,3 +26,7 @@ See [national Population UX](docs/data-sources/population-ux.md) and [V0.6 verif
 ## V0.7 Compare Foundation
 
 [Compare contract and UX](docs/compare-v0.7.md): verified national Population year comparisons with change calculations, chart/table, share restoration, CSV, and citations. Compare copy is available in all 13 supported languages; V0.6 regional publication remains blocked.
+
+## V0.8 Creator / Export
+
+[Export implementation and validation](docs/creator-export-v0.8.md): PNG, Print, copy, attributed CSV, and share-card Foundation for the verified Population time series and comparisons, grouped with Share in one menu.

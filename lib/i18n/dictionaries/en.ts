@@ -51,6 +51,16 @@ const en = {
   "compare.zeroAxis":"Bars begin at zero and use the same scale.",
   "compare.incompatible":"Values are not comparable; no difference or percentage is calculated.",
   "compare.methodology":"World Bank WDI national population, not resident-registration population. The ingestion date is not the source publication date.",
+  "export.menu":"Export / Share",
+  "export.png":"Save chart PNG",
+  "export.print":"Print",
+  "export.table":"Copy data / table",
+  "export.citation":"Copy citation",
+  "export.csv":"Download CSV",
+  "export.card":"Save share card PNG",
+  "export.done":"Export ready",
+  "export.failed":"Export failed. Try again.",
+  "export.axis":"Population in people; line chart axis shows the selected value range.",
 } as const;
 export default en;
 export type TranslationKey = keyof typeof en;

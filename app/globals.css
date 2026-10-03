@@ -278,3 +278,18 @@ button,input,select { font:inherit; }
   .compare-summary article + article { border-left:0; border-top:1px solid var(--line); }
   .compare-table { font-size:12px; }
 }
+.export-control { position:relative; min-width:0; }
+.export-control > details > summary { list-style:none; padding:11px 16px; border:1px solid var(--ink); cursor:pointer; font-size:12px; }
+.export-control > details > summary::-webkit-details-marker { display:none; }
+.export-control > details > summary::after { content:' ▾'; }
+.export-options { position:absolute; right:0; top:42px; z-index:20; width:min(290px,calc(100vw - 32px)); padding:10px; background:white; border:1px solid var(--ink); box-shadow:0 8px 20px #0002; display:grid; gap:4px; }
+.export-options > button { background:white; border:0; text-align:left; padding:12px; font-size:13px; cursor:pointer; color:var(--ink); }
+.export-options > button:hover, .export-options > button:focus-visible { background:#edf3df; }
+.export-options > button:disabled { opacity:.5; cursor:wait; }
+.export-control > [role=status] { display:block; max-width:260px; font-size:11px; line-height:1.5; }
+.export-print-frame { position:fixed; width:1px; height:1px; left:-10000px; border:0; }
+@media(max-width:760px) { .export-options { right:auto; left:0; } }
+@media print { .export-control,.ad-slot { display:none!important; } }
+@media(max-width:760px) {
+  .export-options { position:fixed; left:16px; right:16px; bottom:16px; top:auto; width:auto; max-height:65vh; overflow-y:auto; }
+}

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { populationObservations, populationSource } from "@/lib/data/population";
-import { ShareButton } from "@/components/share-button";
+import { ExportMenu } from "@/components/export-menu";
 
 import { clampPopulationPeriod, populationChange, populationCsv, selectPopulationRange } from "@/lib/data/population-tools";
 
@@ -20,24 +20,28 @@ export function PopulationTimeSeriesBlock() {
   const selected = clampPopulationPeriod(observations, selectedPeriod);
   const previous = populationObservations.find((point) => Number(point.reference_period) === Number(selected.reference_period) - 1);
   const change = populationChange(selected, previous);
-  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
   const citation = `${populationSource.source_org}. ${populationSource.dataset_name}, ${populationSource.source_id}, Korea, Rep., ${startYear}–${endYear}. ${populationSource.source_url}. ${populationSource.license}. INDEX WORLD: ${selected.version}; ${selected.ingested_at}.`;
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const period = params.get("period");
     if (params.get("content") === "population-timeseries" && params.get("region") === "kr" && period && populationObservations.some((point) => point.reference_period === period)) {
-      const id = window.setTimeout(() => { setStartYear(Math.min(lastYear - 24, Number(period))); setSelectedPeriod(period); document.getElementById("population-timeseries")?.scrollIntoView(); }, 0);
+      const id = window.setTimeout(() => { const start = Number(params.get("start")), end = Number(params.get("end"));
+        if (params.has("start") && params.has("end") && Number.isInteger(start) && Number.isInteger(end) && start >= firstYear && end <= lastYear && start <= Number(period) && end >= Number(period)) { setStartYear(start); setEndYear(end); }
+        else setStartYear(Math.min(lastYear - 24, Number(period)));
+        setSelectedPeriod(period); document.getElementById("population-timeseries")?.scrollIntoView(); }, 0);
       return () => window.clearTimeout(id);
     }
   }, []);
-  const download = () => {
-    const blob = new Blob(["\uFEFF", populationCsv(observations, populationSource, selected.version, selected.ingested_at)], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `index-world-korea-population-${startYear}-${endYear}.csv`;
-    link.click();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const shareState = { contentId: "population-timeseries", regionId: "kr", referencePeriod: selected.reference_period, timeRange: { start: startYear, end: endYear } };
+  const artifact = {
+    title: t("timeseries.heading"), subtitle: `${startYear}–${endYear} · ${selected.reference_period}: ${format.number(selected.value)} ${t("data.people")}`,
+    headers: [t("timeseries.reference"), t("kpi.total")], rows: observations.map(point => [point.reference_period, `${format.number(point.value)} ${t("data.people")}`]),
+    points: observations.map(point => ({ label: point.reference_period, value: point.value, display: `${format.number(point.value)} ${t("data.people")}` })),
+    chart: "line" as const, citation, source: `${populationSource.source_org} · ${populationSource.dataset_name} · ${populationSource.source_id}`,
+    sourceUrl: populationSource.source_url, license: populationSource.license, licenseUrl: populationSource.license_url,
+    metadata: `${t("export.axis")} · ${selected.version} · ${t("timeseries.updated")}: ${selected.ingested_at}`,
+    quality: observations.every(point => point.quality_status === "VERIFIED") ? "VERIFIED" : "REVIEW_REQUIRED",
+    csv: populationCsv(observations, populationSource, selected.version, selected.ingested_at), filename: `index-world-korea-population-${startYear}-${endYear}`,
   };
   const width = 900;
   const height = 300;
@@ -65,14 +69,13 @@ export function PopulationTimeSeriesBlock() {
             <div className="timeseries-range" aria-label={t("timeseries.range")}>
               {ranges.map((years) => <button key={years} type="button" aria-pressed={endYear === lastYear && startYear === (years ? lastYear - years + 1 : firstYear)} onClick={() => { setStartYear(years ? lastYear - years + 1 : firstYear); setEndYear(lastYear); }}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
             </div>
-            <ShareButton contentId="population-timeseries" regionId="kr" referencePeriod={selected.reference_period} title={t("timeseries.heading")} description={t("timeseries.description")} />
+            <ExportMenu artifact={artifact} shareState={shareState} />
           </div>
         </div>
 
         <div className="period-controls">
           <label>{t("timeseries.start")}<select value={startYear} onChange={(event) => setStartYear(Number(event.target.value))}>{populationObservations.filter((point) => Number(point.reference_period) <= endYear).map((point) => <option key={point.reference_period}>{point.reference_period}</option>)}</select></label>
           <label>{t("timeseries.end")}<select value={endYear} onChange={(event) => setEndYear(Number(event.target.value))}>{populationObservations.filter((point) => Number(point.reference_period) >= startYear).map((point) => <option key={point.reference_period}>{point.reference_period}</option>)}</select></label>
-          <button type="button" onClick={download}>{t("timeseries.download")} · {observations.length}</button>
         </div>
         <div className="timeseries-grid">
           <div className="chart-panel">
@@ -111,7 +114,7 @@ export function PopulationTimeSeriesBlock() {
               <div><dt>{t("timeseries.publication")}</dt><dd>{selected.publication_date ? format.date(selected.publication_date) : t("timeseries.unavailable")}</dd></div>
             </dl>
             <p className="source-note">{t("timeseries.methodology")}</p>
-            <details><summary>{t("timeseries.citation")}</summary><p className="citation-text">{citation}</p><button type="button" onClick={async () => { try { await navigator.clipboard.writeText(citation); setCopyStatus("copied"); } catch { setCopyStatus("failed"); } }}>{t("timeseries.copyCitation")}</button><span role="status">{copyStatus === "copied" ? t("share.copied") : copyStatus === "failed" ? t("share.failed") : ""}</span></details>
+            <details><summary>{t("timeseries.citation")}</summary><p className="citation-text">{citation}</p></details>
             <a href={populationSource.source_url} target="_blank" rel="noreferrer">{t("timeseries.original")} ↗</a>
           </aside>
         </div>
