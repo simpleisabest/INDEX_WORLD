@@ -24,9 +24,16 @@ export function HeaderBlock() {
   const { locale, setLocale, isLoading, t } = useLocale();
   return (
     <header className="site-header shell">
-      <a className="brand" href="#top" aria-label="INDEX WORLD 홈">
-        <Image className="brand-icon" src={`${iconBasePath}/icons/icon-192x192.png`} alt="" width={40} height={40} priority />
-        <span className="brand-wordmark" aria-hidden="true"><b>INDEX</b><span>WORLD</span><sup>™</sup></span>
+      <a className="brand" href={`${iconBasePath}/`} aria-label="INDEX WORLD Home">
+        <Image
+          className="brand-logo"
+          src={`${iconBasePath}/brand/index-world-logo.webp`}
+          alt=""
+          width={2172}
+          height={724}
+          sizes="(max-width: 360px) 140px, (max-width: 760px) 165px, 220px"
+          priority
+        />
       </a>
       <nav className="header-nav" aria-label="주요 메뉴">
         <a className="korea-link" href="#map">{t("nav.korea")}</a>
