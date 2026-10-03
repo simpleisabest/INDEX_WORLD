@@ -14,6 +14,30 @@ export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
+function normalizeLanguageTag(value: string) {
+  return value.trim().replaceAll("_", "-").toLowerCase();
+}
+
+export function matchSupportedLocale(preferredLanguages: readonly string[]): Locale {
+  for (const language of preferredLanguages) {
+    const normalized = normalizeLanguageTag(language);
+
+    const exactLocale = locales.find((locale) => normalizeLanguageTag(locale) === normalized);
+    if (exactLocale) return exactLocale;
+
+    const [baseLanguage, ...subtags] = normalized.split("-");
+    if (baseLanguage === "zh") {
+      const prefersTraditional = subtags.some((tag) => ["hant", "tw", "hk", "mo"].includes(tag));
+      return prefersTraditional ? "zh-TW" : "zh-CN";
+    }
+
+    const baseLocale = locales.find((locale) => locale === baseLanguage);
+    if (baseLocale) return baseLocale;
+  }
+
+  return "en";
+}
+
 export function getFutureLocalePath(locale: Locale, path = "korea/") {
   return `/${locale}/${path.replace(/^\//, "")}`;
 }

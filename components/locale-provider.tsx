@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { defaultLocale, isLocale, localeStorageKey, type Locale } from "@/lib/i18n/config";
+import { defaultLocale, isLocale, localeStorageKey, matchSupportedLocale, type Locale } from "@/lib/i18n/config";
 import { createLocaleFormatters } from "@/lib/i18n/formatters";
 import { englishDictionary, loadDictionary, type Dictionary } from "@/lib/i18n/load-dictionary";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
@@ -23,20 +23,21 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [dictionary, setDictionary] = useState<Dictionary>(initialDictionary);
   const [isLoading, setIsLoading] = useState(false);
 
-  const applyLocale = useCallback(async (nextLocale: Locale) => {
+  const applyLocale = useCallback(async (nextLocale: Locale, persist = true) => {
     setIsLoading(true);
     const nextDictionary = await loadDictionary(nextLocale);
     setDictionary(nextDictionary);
     setLocaleState(nextLocale);
     document.documentElement.lang = nextLocale;
-    window.localStorage.setItem(localeStorageKey, nextLocale);
+    if (persist) window.localStorage.setItem(localeStorageKey, nextLocale);
     setIsLoading(false);
   }, []);
 
   useEffect(() => {
     const storedLocale = window.localStorage.getItem(localeStorageKey);
+    const detectedLocale = matchSupportedLocale(window.navigator.languages ?? [window.navigator.language]);
     const timeoutId = window.setTimeout(() => {
-      void applyLocale(storedLocale && isLocale(storedLocale) ? storedLocale : defaultLocale);
+      void applyLocale(storedLocale && isLocale(storedLocale) ? storedLocale : detectedLocale, false);
     }, 0);
     return () => window.clearTimeout(timeoutId);
   }, [applyLocale]);
@@ -49,7 +50,11 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     return value;
   }, [dictionary]);
 
-  const value = useMemo(() => ({ locale, setLocale: applyLocale, t, format: createLocaleFormatters(locale), isLoading }), [locale, applyLocale, t, isLoading]);
+  const setLocale = useCallback((nextLocale: Locale) => {
+    void applyLocale(nextLocale, true);
+  }, [applyLocale]);
+
+  const value = useMemo(() => ({ locale, setLocale, t, format: createLocaleFormatters(locale), isLoading }), [locale, setLocale, t, isLoading]);
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
