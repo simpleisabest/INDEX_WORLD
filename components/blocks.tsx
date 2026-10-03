@@ -45,6 +45,10 @@ export function HeroBlock() {
       <div className="eyebrow"><span /> THE WORLD, INDEXED.</div>
       <h1>세상을<br /><em>숫자</em>로 보다.</h1>
       <p>세계 각국의 데이터를 검색하고, 비교하고, 발견하세요.<br className="desktop-break" /> 복잡한 세상을 이해하기 쉬운 인덱스로 만듭니다.</p>
+      <div className="free-promise" aria-label="무료, 회원가입 없이 바로 사용하는 데이터 플랫폼">
+        <strong>100% FREE · NO SIGN-UP · JUST DATA</strong>
+        <span>Explore. Compare. Visualize. Share.</span>
+      </div>
       <div className="hero-index" aria-hidden="true">01 <span>/</span> WORLD DATA</div>
     </section>
   );
@@ -57,6 +61,10 @@ export function SearchBlock() {
         <div className="search-heading-row">
           <h2 id="search-heading">무엇을 알고 싶나요?</h2>
           <span>SEARCH · MAP · DATA · COMPARE</span>
+        </div>
+        <div className="search-trust">
+          <strong>100% 무료 · 회원가입 없음 · 바로 사용</strong>
+          <span>찾고, 비교하고, 시각화하고, 공유하세요.</span>
         </div>
         <form className="search-form" role="search">
           <span className="search-icon" aria-hidden="true" />
