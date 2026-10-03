@@ -229,3 +229,11 @@ button,input,select { font:inherit; }
   .kpi-value { flex-wrap:wrap; }
   .map-visual { overflow:hidden; }
 }
+@media (min-width:761px) {
+  .kpi-value strong { font-size:44px; }
+}
+@media (min-width:761px) and (max-width:1200px) {
+  .kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .kpi-card:nth-child(2n) { border-right:0; }
+  .kpi-card:nth-child(-n+2) { border-bottom:1px solid #bdc0b9; }
+}
