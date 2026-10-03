@@ -1,3 +1,7 @@
+import Image from "next/image";
+
+const iconBasePath = process.env.INDEX_PREVIEW === "true" ? "/INDEX_WORLD" : "";
+
 const languages = [
   ["ko", "한국어"], ["en", "English"], ["ja", "日本語"], ["es", "Español"],
   ["pt", "Português"], ["de", "Deutsch"], ["fr", "Français"], ["zh-CN", "简体中文"],
@@ -22,8 +26,8 @@ export function HeaderBlock() {
   return (
     <header className="site-header shell">
       <a className="brand" href="#top" aria-label="INDEX WORLD 홈">
-        <span className="brand-mark" aria-hidden="true">IW</span>
-        <span>INDEX WORLD<sup>™</sup></span>
+        <Image className="brand-icon" src={`${iconBasePath}/icons/icon-192x192.png`} alt="" width={40} height={40} priority />
+        <span className="brand-wordmark" aria-hidden="true"><b>INDEX</b><span>WORLD</span><sup>™</sup></span>
       </a>
       <nav className="header-nav" aria-label="주요 메뉴">
         <a className="korea-link" href="#map">INDEX KOREA</a>
