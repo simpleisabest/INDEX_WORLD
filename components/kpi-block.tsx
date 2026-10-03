@@ -65,6 +65,16 @@ function AnimatedValue({ value, decimals = 0, signed = false }: { value: number;
 
 export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
   const { t, format } = useLocale();
+  const [selectedCard, setSelectedCard] = useState(0);
+  useEffect(() => {
+    const select = (event: Event) => {
+      const detail = (event as CustomEvent<{ questionId: string }>).detail;
+      if (detail.questionId === "latest") setSelectedCard(0);
+      if (detail.questionId === "decade" || detail.questionId === "compare" || detail.questionId === "history") setSelectedCard(1);
+    };
+    window.addEventListener("index-world:question-select", select);
+    return () => window.removeEventListener("index-world:question-select", select);
+  }, []);
   return (
     <section id="population-kpi" className="kpi-section" aria-labelledby="kpi-heading">
       <div className="shell">
@@ -78,7 +88,7 @@ export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
 
         <div className="kpi-grid">
           {items.map((item, index) => (
-            <article className="kpi-card" key={item.indicatorId}>
+            <article className={`kpi-card${selectedCard === index ? " is-selected" : ""}`} key={item.indicatorId}>
               <div className="kpi-card-top">
                 <span>0{index + 1}</span>
                 <span>{item.quality}</span>

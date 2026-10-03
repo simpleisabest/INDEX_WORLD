@@ -34,6 +34,16 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
     const id = window.setTimeout(() => { setBaselineId(restored.baselineId); setTargetId(restored.targetId); document.getElementById(model.contentId)?.scrollIntoView(); }, 0);
     return () => window.clearTimeout(id);
   }, [model]);
+  useEffect(() => {
+    const select = (event: Event) => {
+      const detail = (event as CustomEvent<{ target: string; baseline: string; end: string }>).detail;
+      if (detail.target !== "population-compare") return;
+      if (model.options.some((option) => option.id === detail.baseline)) setBaselineId(detail.baseline);
+      if (model.options.some((option) => option.id === detail.end)) setTargetId(detail.end);
+    };
+    window.addEventListener("index-world:question-select", select);
+    return () => window.removeEventListener("index-world:question-select", select);
+  }, [model.options]);
 
   const artifact = {
     title: `${text("compare.heading")}: ${baseline.label} → ${target.label}`,

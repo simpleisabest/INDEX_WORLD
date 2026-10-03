@@ -59,4 +59,5 @@ const ja: Partial<Record<TranslationKey,string>> = {"hero.line1":"世界を","he
   "discovery.embedUnavailable":"このURLに対応する検証済み結果はありません。",
   "discovery.original":"元の結果を見る",
   "discovery.searchPlaceholder":"韓国の最新人口、人口の長期推移…",
+  "question.latest":"韓国の人口は現在何人？","question.decade":"10年前からどれだけ変化した？","question.compare":"2024年と2025年を比べると？","question.history":"1960年以降どう変化した？",
 }; export default ja;

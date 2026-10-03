@@ -78,6 +78,7 @@ const en = {
   "discovery.embedUnavailable":"No verified result matches this embed URL.",
   "discovery.original":"View original result",
   "discovery.searchPlaceholder":"Latest Korea population, population history…",
+  "question.latest":"What is Korea’s population now?","question.decade":"How much has it changed in 10 years?","question.compare":"How do 2024 and 2025 compare?","question.history":"How has it changed since 1960?",
 } as const;
 export default en;
 export type TranslationKey = keyof typeof en;

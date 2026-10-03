@@ -59,4 +59,5 @@ const it: Partial<Record<TranslationKey,string>> = {"hero.line1":"Guarda il mond
   "discovery.embedUnavailable":"Nessun risultato verificato per questo URL.",
   "discovery.original":"Vedi risultato originale",
   "discovery.searchPlaceholder":"Popolazione recente della Corea, storico…",
+  "question.latest":"Qual è la popolazione attuale della Corea?","question.decade":"Quanto è cambiata in 10 anni?","question.compare":"Come si confrontano il 2024 e il 2025?","question.history":"Come è cambiata dal 1960?",
 }; export default it;

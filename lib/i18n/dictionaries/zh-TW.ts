@@ -59,4 +59,5 @@ const zhTW: Partial<Record<TranslationKey,string>> = {"hero.line1":"用數據","
   "discovery.embedUnavailable":"此 URL 沒有對應的已核驗結果。",
   "discovery.original":"查看原始結果",
   "discovery.searchPlaceholder":"韓國最新人口、人口歷史趨勢…",
+  "question.latest":"韓國目前有多少人口？","question.decade":"與10年前相比變化了多少？","question.compare":"2024年與2025年相比如何？","question.history":"1960年以來發生了怎樣的變化？",
 }; export default zhTW;

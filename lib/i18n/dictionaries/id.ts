@@ -59,4 +59,5 @@ const id: Partial<Record<TranslationKey,string>> = {"hero.line1":"Lihat dunia","
   "discovery.embedUnavailable":"Tidak ada hasil terverifikasi untuk URL ini.",
   "discovery.original":"Lihat hasil asli",
   "discovery.searchPlaceholder":"Populasi terbaru Korea, riwayat populasi…",
+  "question.latest":"Berapa populasi Korea saat ini?","question.decade":"Berapa perubahannya dalam 10 tahun?","question.compare":"Bagaimana perbandingan 2024 dan 2025?","question.history":"Bagaimana perubahannya sejak 1960?",
 }; export default id;

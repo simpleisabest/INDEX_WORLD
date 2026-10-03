@@ -75,4 +75,5 @@ const ko: Partial<Record<TranslationKey,string>> = {
   "discovery.embedUnavailable":"이 Embed URL에 해당하는 검증된 결과가 없습니다.",
   "discovery.original":"원본 결과 보기",
   "discovery.searchPlaceholder":"대한민국 최신 인구, 인구 장기 추이…",
+  "question.latest":"한국 인구는 지금 몇 명?","question.decade":"10년 전보다 얼마나 변했나?","question.compare":"2024년과 2025년을 비교하면?","question.history":"1960년 이후 어떻게 변했나?",
 }; export default ko;

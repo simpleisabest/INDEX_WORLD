@@ -59,4 +59,5 @@ const hi: Partial<Record<TranslationKey,string>> = {"hero.line1":"दुनि�
   "discovery.embedUnavailable":"इस URL के लिए सत्यापित परिणाम नहीं है।",
   "discovery.original":"मूल परिणाम देखें",
   "discovery.searchPlaceholder":"कोरिया की नवीनतम जनसंख्या, जनसंख्या इतिहास…",
+  "question.latest":"कोरिया की वर्तमान जनसंख्या कितनी है?","question.decade":"10 वर्षों में कितना बदलाव आया?","question.compare":"2024 और 2025 की तुलना कैसी है?","question.history":"1960 से कैसे बदलाव आया है?",
 }; export default hi;

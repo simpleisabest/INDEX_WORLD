@@ -32,6 +32,15 @@ export function PopulationTimeSeriesBlock() {
       return () => window.clearTimeout(id);
     }
   }, []);
+  useEffect(() => {
+    const select = (event: Event) => {
+      const detail = (event as CustomEvent<{ target: string; baseline: string; end: string }>).detail;
+      if (detail.target !== "population-timeseries") return;
+      setStartYear(Number(detail.baseline)); setEndYear(Number(detail.end)); setSelectedPeriod(detail.end);
+    };
+    window.addEventListener("index-world:question-select", select);
+    return () => window.removeEventListener("index-world:question-select", select);
+  }, []);
   const shareState = { contentId: "population-timeseries", regionId: "kr", referencePeriod: selected.reference_period, timeRange: { start: startYear, end: endYear } };
   const artifact = {
     title: t("timeseries.heading"), subtitle: `${startYear}–${endYear} · ${selected.reference_period}: ${format.number(selected.value)} ${t("data.people")}`,

@@ -6,6 +6,7 @@ import { localeNames, locales, type Locale } from "@/lib/i18n/config";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
 import { DiscoveryBlock } from "@/components/discovery-block";
 import type { ReactNode } from "react";
+import { latestPopulationObservation, populationObservations } from "@/lib/data/population";
 
 const iconBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -51,17 +52,26 @@ export function HeaderBlock() {
 }
 
 export function HeroBlock() {
-  const { t } = useLocale();
+  const { t, format } = useLocale();
+  const recent = populationObservations.slice(-8);
+  const min = Math.min(...recent.map((item) => item.value));
+  const max = Math.max(...recent.map((item) => item.value));
+  const path = recent.map((item,index)=>`${index?"L":"M"}${index/(recent.length-1)*220},${8+(max-item.value)/Math.max(max-min,1)*54}`).join(" ");
   return (
-    <section className="hero shell" id="top">
-      <div className="eyebrow"><span /> {t("hero.eyebrow")}</div>
-      <h1>{t("hero.line1")}<br /><em>{t("hero.line2")}</em></h1>
-      <p>{t("hero.description")}</p>
-      <div className="free-promise" aria-label="무료, 회원가입 없이 바로 사용하는 데이터 플랫폼">
-        <strong>{t("hero.free")}</strong>
-        <span>{t("hero.support")}</span>
+    <section className="hero-photo shell" id="top">
+      <Image className="hero-photo-image" src={`${iconBasePath}/brand/seoul-data-hero.webp`} alt="" width={1599} height={900} sizes="(max-width: 760px) calc(100vw - 28px), min(1320px, calc(100vw - 48px))" priority unoptimized />
+      <div className="hero-photo-shade" />
+      <div className="hero-photo-copy">
+        <div className="eyebrow"><span /> {t("hero.eyebrow")}</div>
+        <h1>{t("hero.line1")}<br /><em>{t("hero.line2")}</em></h1>
+        <p>{t("hero.description")}</p>
       </div>
-      <div className="hero-index" aria-hidden="true">01 <span>/</span> WORLD DATA</div>
+      <div className="hero-data-overlay">
+        <span>{t("kpi.total")} · {latestPopulationObservation.reference_period}</span>
+        <strong>{format.number(latestPopulationObservation.value)} <small>{t("data.people")}</small></strong>
+        <svg viewBox="0 0 220 70" role="img" aria-label={`${t("timeseries.heading")} · ${recent[0].reference_period}–${latestPopulationObservation.reference_period}`}><path d={path} pathLength="1" /></svg>
+        <a href="#population-kpi">{t("discovery.original")} <b aria-hidden="true">↘</b></a>
+      </div>
     </section>
   );
 }

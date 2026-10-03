@@ -59,4 +59,5 @@ const vi: Partial<Record<TranslationKey,string>> = {"hero.line1":"Nhìn thế gi
   "discovery.embedUnavailable":"Không có kết quả đã xác minh cho URL này.",
   "discovery.original":"Xem kết quả gốc",
   "discovery.searchPlaceholder":"Dân số mới nhất của Hàn Quốc, lịch sử dân số…",
+  "question.latest":"Dân số Hàn Quốc hiện nay là bao nhiêu?","question.decade":"Đã thay đổi bao nhiêu trong 10 năm?","question.compare":"Năm 2024 và 2025 khác nhau thế nào?","question.history":"Đã thay đổi ra sao từ năm 1960?",
 }; export default vi;

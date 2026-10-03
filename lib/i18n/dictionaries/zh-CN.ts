@@ -59,4 +59,5 @@ const zhCN: Partial<Record<TranslationKey,string>> = {"hero.line1":"用数据","
   "discovery.embedUnavailable":"此 URL 没有对应的已核验结果。",
   "discovery.original":"查看原始结果",
   "discovery.searchPlaceholder":"韩国最新人口、人口历史趋势…",
+  "question.latest":"韩国目前有多少人口？","question.decade":"与10年前相比变化了多少？","question.compare":"2024年与2025年相比如何？","question.history":"1960年以来发生了怎样的变化？",
 }; export default zhCN;
