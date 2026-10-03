@@ -9,7 +9,6 @@ button,input,select { font:inherit; }
 
 .site-header { height:92px; display:flex; align-items:center; justify-content:space-between; gap:32px; border-bottom:1px solid var(--line); }
 .brand { display:flex; align-items:center; flex:0 1 auto; min-width:0; }
-.footer sup { font-size:7px; vertical-align:top; }
 .brand-logo { display:block; width:220px; max-width:100%; height:auto; aspect-ratio:3 / 1; object-fit:contain; }
 .header-nav { display:flex; align-items:center; gap:38px; font-size:11px; font-weight:600; letter-spacing:.12em; }
 .korea-link { padding:10px 0; border-bottom:1px solid var(--ink); }
@@ -164,7 +163,9 @@ button,input,select { font:inherit; }
 .share-actions button { padding:13px 17px; color:var(--ink); background:transparent; border:1px solid rgba(17,23,20,.45); font-size:10px; letter-spacing:.09em; opacity:1; }
 .share-actions button span { margin-right:12px; }.share-copy small { font-size:8px; letter-spacing:.13em; }
 .footer { display:flex; justify-content:space-between; align-items:center; gap:30px; padding-top:25px; border-top:1px solid rgba(17,23,20,.35); font-size:9px; letter-spacing:.11em; }
-.footer > span:first-child { font-size:13px; font-weight:700; }.footer p { margin:0; }
+.footer p { margin:0; }
+.footer-logo-link { display:block; flex:0 0 auto; }
+.footer-brand-logo { display:block; width:180px; max-width:100%; height:auto; aspect-ratio:3 / 1; object-fit:contain; }
 .footer-center { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 20px; text-align:center; }
 .footer-center nav a { padding-bottom:3px; border-bottom:1px solid rgba(17,23,20,.5); }
 
@@ -189,7 +190,7 @@ button,input,select { font:inherit; }
 }
 
 @media (max-width:360px) {
-  .shell { width:calc(100% - 24px); }.site-header { gap:12px; }.brand-logo { width:140px; }.language select { max-width:95px; font-size:10px; }
+  .shell { width:calc(100% - 24px); }.site-header { gap:12px; }.brand-logo { width:140px; }.footer-brand-logo { width:135px; }.language select { max-width:95px; font-size:10px; }
   .hero h1 { font-size:48px; }.hero > p { font-size:12px; }.search-panel { padding-inline:12px; }.search-form { padding-left:14px; grid-template-columns:24px minmax(0,1fr) 38px; }.search-form input { font-size:11px; padding-inline:7px; }.search-form button { width:36px; height:36px; }.search-status p { font-size:9px; }
   .kpi-grid { grid-template-columns:1fr; }.kpi-card { min-height:250px; border-right:0; border-bottom:1px solid #bdc0b9 !important; }.kpi-card:last-child { border-bottom:0 !important; }.kpi-status { white-space:normal; }
   .map-copy h2 { font-size:36px; }.map-visual { height:450px; }.share-actions button { padding:11px 12px; }.share-actions button span { margin-right:7px; }

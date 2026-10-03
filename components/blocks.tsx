@@ -7,6 +7,20 @@ import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
 
 const iconBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+function BrandLogo({ footer = false }: { footer?: boolean }) {
+  return (
+    <Image
+      className={footer ? "footer-brand-logo" : "brand-logo"}
+      src={`${iconBasePath}/brand/index-world-logo.webp`}
+      alt=""
+      width={2172}
+      height={724}
+      sizes={footer ? "(max-width: 360px) 135px, 180px" : "(max-width: 360px) 140px, (max-width: 760px) 165px, 220px"}
+      priority={!footer}
+    />
+  );
+}
+
 const categories = [
   { number: "01", id: "population", title: "category.population", note: "category.populationNote", icon: "◎" },
   { number: "02", id: "household", title: "category.household", note: "category.householdNote", icon: "◇" },
@@ -25,15 +39,7 @@ export function HeaderBlock() {
   return (
     <header className="site-header shell">
       <a className="brand" href={`${iconBasePath}/`} aria-label="INDEX WORLD Home">
-        <Image
-          className="brand-logo"
-          src={`${iconBasePath}/brand/index-world-logo.webp`}
-          alt=""
-          width={2172}
-          height={724}
-          sizes="(max-width: 360px) 140px, (max-width: 760px) 165px, 220px"
-          priority
-        />
+        <BrandLogo />
       </a>
       <nav className="header-nav" aria-label="주요 메뉴">
         <a className="korea-link" href="#map">{t("nav.korea")}</a>
@@ -124,7 +130,7 @@ export function ShareBlock() {
         </div>
       </div>
       <footer className="shell footer">
-        <span>INDEX WORLD<sup>™</sup></span>
+        <a className="footer-logo-link" href={`${iconBasePath}/`} aria-label="INDEX WORLD Home"><BrandLogo footer /></a>
         <div className="footer-center">
           <p>{t("footer.statement")}</p>
           <nav aria-label="Footer"><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
