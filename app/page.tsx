@@ -4,9 +4,9 @@ import {
   HeroBlock,
   MapBlock,
   PopularDataBlock,
-  SearchBlock,
   ShareBlock,
 } from "@/components/blocks";
+import { SearchBlock } from "@/components/search-block";
 
 export default function Home() {
   return (
