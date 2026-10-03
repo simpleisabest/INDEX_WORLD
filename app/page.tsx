@@ -24,9 +24,9 @@ export default function Home() {
       <SearchBlock />
       <AdSlot id="A" placement="after-search" format="responsive" />
       <KPIBlock />
+      <CompareBlock />
       <PopulationTimeSeriesBlock />
       <DataCategoryBlock />
-      <CompareBlock />
       <MapBlock />
       <AdSlot id="B" placement="after-map" format="responsive" />
       <PopularDataBlock />

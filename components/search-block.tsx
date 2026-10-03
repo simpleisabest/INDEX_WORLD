@@ -87,6 +87,16 @@ export function SearchBlock() {
           <button type="submit" aria-label="검색">→</button>
         </form>
 
+        <nav className="search-intents" aria-label={t("search.recommended")}>
+          {suggestions.map((suggestion, index) => (
+            <a key={suggestion.contentId} href={discoveryHref(suggestion.contentId,populationObservations[0].reference_period,populationObservations.at(-1)!.reference_period,populationObservations.at(-2)!.reference_period)}>
+              <span>0{index + 1} · {suggestion.intent}</span>
+              <strong>{suggestion.label}</strong>
+              <b aria-hidden="true">↗</b>
+            </a>
+          ))}
+        </nav>
+
         {isOpen && (
           <div className="search-suggestions" id="search-suggestions">
             <p>{t("search.recommended")}</p>
