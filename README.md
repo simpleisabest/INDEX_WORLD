@@ -22,3 +22,7 @@ The `main` branch deploys an isolated static build to GitHub Pages. Preview buil
 ## Population UX and regional verification
 
 See [national Population UX](docs/data-sources/population-ux.md) and [V0.6 verification](docs/data-sources/v0.6-verification.md). Region Map/Ranking remain blocked; national period selection, calculated annual change, citations, and CSV downloads use only the preserved World Bank snapshot.
+
+## V0.7 Compare Foundation
+
+[Compare contract and UX](docs/compare-v0.7.md): verified national Population year comparisons with change calculations, chart/table, share restoration, CSV, and citations. Compare copy is available in all 13 supported languages; V0.6 regional publication remains blocked.
