@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LocaleProvider } from "@/components/locale-provider";
 
-const isPreview = process.env.INDEX_PREVIEW === "true";
-const basePath = isPreview ? "/INDEX_WORLD" : "";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://indexworld.app"),
@@ -29,14 +28,8 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
-  robots: isPreview
-    ? {
-        index: false,
-        follow: false,
-        nocache: true,
-        googleBot: { index: false, follow: false, noimageindex: true },
-      }
-    : { index: true, follow: true },
+  robots: { index: false, follow: false, nocache: true,
+    googleBot: { index: false, follow: false, noimageindex: true } },
 };
 
 export const viewport: Viewport = {

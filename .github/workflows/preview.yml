@@ -1,4 +1,4 @@
-name: Deploy Population Preview
+name: Deploy INDEX WORLD Pages
 
 on:
   push:
@@ -11,14 +11,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: index-world-preview
+  group: index-world-pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      INDEX_PREVIEW: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,13 +40,13 @@ jobs:
           npm test
           npm run data:verify
 
-      - name: Export preview
-        run: npm run build
+      - name: Export production and isolated preview
+        run: npm run build:pages
 
-      - name: Upload preview artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./out
+          path: ./pages-artifact
 
   deploy:
     environment:
@@ -57,6 +55,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy preview
+      - name: Deploy production and preview
         id: deployment
         uses: actions/deploy-pages@v4

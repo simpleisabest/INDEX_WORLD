@@ -17,7 +17,7 @@ Open `http://localhost:3000`. Production validation is available through `npm ru
 
 ## Preview
 
-The `main` branch deploys an isolated static build to GitHub Pages. Preview builds set `INDEX_PREVIEW=true`, use the `/INDEX_WORLD` base path, and block search indexing through robots metadata and `robots.txt`. This workflow does not configure the production domain.
+The `main` branch deploys GitHub Pages at https://indexworld.app/. `npm run build:pages` exports Production at the root and a separate Preview at `/preview/` (`INDEX_PREVIEW=true`). Each has independent assets and manifest scope. Both remain noindex with robots disallow. Share, QR, CSV, citation, and embed original links use the official HTTPS root. The artifact includes the custom-domain CNAME.
 
 ## Population UX and regional verification
 

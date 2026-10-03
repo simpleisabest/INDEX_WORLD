@@ -46,5 +46,5 @@ export const populationCitation = {
   reference_period: latestPopulationObservation.reference_period,
   original_organization: dataset.source.source_org,
   dataset: dataset.source.dataset_name,
-  index_world_page_url: "https://indexworld.app/en/korea/",
+  index_world_page_url: "https://indexworld.app/",
 };

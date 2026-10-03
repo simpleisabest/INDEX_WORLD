@@ -1,3 +1,16 @@
+export function originalResultUrl(baseUrl: string, origin = process.env.NEXT_PUBLIC_SITE_ORIGIN) {
+  const url = new URL(baseUrl);
+  if (origin) {
+    const canonical = new URL(origin);
+    url.protocol = canonical.protocol;
+    url.hostname = canonical.hostname;
+    url.port = canonical.port;
+    url.pathname = "/";
+  } else url.pathname = url.pathname.replace(/embed\/?$/, "");
+  url.hash = "";
+  return url;
+}
+
 export type ShareChannel = "web-share" | "clipboard" | "unknown";
 
 export type ShareState = {
@@ -21,7 +34,7 @@ export type ShareEventContract = {
 const trackingKeys = ["share_id", "ref", "utm_source", "utm_medium", "utm_campaign"];
 
 export function buildShareUrl(baseUrl: string, state: ShareState) {
-  const url = new URL(baseUrl);
+  const url = originalResultUrl(baseUrl);
   trackingKeys.forEach((key) => url.searchParams.delete(key));
   url.hash = "";
   url.pathname = url.pathname.replace(/embed\/?$/, "");

@@ -23,3 +23,5 @@
 *.pem
 .vercel
 *.tsbuildinfo
+
+/pages-artifact/
