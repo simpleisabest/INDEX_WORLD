@@ -1,4 +1,4 @@
-name: Deploy V0.1 Preview
+name: Deploy Population Preview
 
 on:
   push:

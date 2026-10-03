@@ -17,4 +17,8 @@ Open `http://localhost:3000`. Production validation is available through `npm ru
 
 ## Preview
 
-The `preview` branch deploys an isolated static build to GitHub Pages. Preview builds set `INDEX_PREVIEW=true`, use the `/INDEX_WORLD` base path, and block search indexing through robots metadata and `robots.txt`. This workflow does not configure the production domain.
+The `main` branch deploys an isolated static build to GitHub Pages. Preview builds set `INDEX_PREVIEW=true`, use the `/INDEX_WORLD` base path, and block search indexing through robots metadata and `robots.txt`. This workflow does not configure the production domain.
+
+## Population UX and regional verification
+
+See [national Population UX](docs/data-sources/population-ux.md) and [V0.6 verification](docs/data-sources/v0.6-verification.md). Region Map/Ranking remain blocked; national period selection, calculated annual change, citations, and CSV downloads use only the preserved World Bank snapshot.

@@ -2,8 +2,10 @@
 
 import { useLocale } from "@/components/locale-provider";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
-import { latestPopulationObservation } from "@/lib/data/population";
+import { latestPopulationObservation, populationObservations } from "@/lib/data/population";
 import { ShareButton } from "@/components/share-button";
+
+import { populationChange } from "@/lib/data/population-tools";
 
 export type KpiDatum = {
   labelKey: TranslationKey;
@@ -16,11 +18,13 @@ export type KpiDatum = {
   source: string | null;
 };
 
+const latestChange = populationChange(latestPopulationObservation, populationObservations.at(-2))!;
+
 const populationKpis: KpiDatum[] = [
   { labelKey: "kpi.total", indicatorId: "population_total", value: latestPopulationObservation.value, unit: "person", referencePeriod: latestPopulationObservation.reference_period, change: null, quality: "VERIFIED", source: latestPopulationObservation.source_org },
-  { labelKey: "kpi.change", indicatorId: "population_change", value: null, unit: "percent", referencePeriod: null, change: null, quality: "PENDING", source: null },
+  { labelKey: "kpi.change", indicatorId: "population_change", value: latestChange.absolute, unit: "person", referencePeriod: `${Number(latestPopulationObservation.reference_period) - 1}–${latestPopulationObservation.reference_period}`, change: null, quality: "VERIFIED", source: latestPopulationObservation.source_org },
+  { labelKey: "kpi.changeRate", indicatorId: "population_change_percent", value: latestChange.percent, unit: "percent", referencePeriod: `${Number(latestPopulationObservation.reference_period) - 1}–${latestPopulationObservation.reference_period}`, change: null, quality: "VERIFIED", source: latestPopulationObservation.source_org },
   { labelKey: "kpi.age65", indicatorId: "population_age_65_plus", value: null, unit: "percent", referencePeriod: null, change: null, quality: "PENDING", source: null },
-  { labelKey: "kpi.youth", indicatorId: "population_youth", value: null, unit: "person", referencePeriod: null, change: null, quality: "PENDING", source: null },
 ];
 
 export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
@@ -45,9 +49,9 @@ export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
               </div>
               <p>{item.indicatorId}</p>
               <h3>{t(item.labelKey)}</h3>
-              <div className="kpi-value" aria-label={item.value === null ? `${t(item.labelKey)} ${t("kpi.preparing")}` : `${t(item.labelKey)} ${format.number(item.value)} ${t("data.people")}`}>
-                <strong>{item.value === null ? "—" : format.number(item.value)}</strong>
-                {item.value !== null && item.unit && <span>{t("data.people")}</span>}
+              <div className="kpi-value" aria-label={item.value === null ? `${t(item.labelKey)} ${t("kpi.preparing")}` : `${t(item.labelKey)} ${format.number(item.value, { maximumFractionDigits: item.unit === "percent" ? 2 : 0, ...(item.indicatorId.startsWith("population_change") ? { signDisplay: "always" as const } : {}) })} ${(item.unit === "percent" ? "%" : t("data.people"))}`}>
+                <strong>{item.value === null ? "—" : format.number(item.value, { maximumFractionDigits: item.unit === "percent" ? 2 : 0, ...(item.indicatorId.startsWith("population_change") ? { signDisplay: "always" as const } : {}) })}</strong>
+                {item.value !== null && item.unit && <span>{(item.unit === "percent" ? "%" : t("data.people"))}</span>}
               </div>
               <dl>
                 <div><dt>{t("kpi.period")}</dt><dd>{item.referencePeriod ?? t("kpi.preparing")}</dd></div>

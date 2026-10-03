@@ -1,21 +1,47 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { populationObservations, populationSource } from "@/lib/data/population";
 import { ShareButton } from "@/components/share-button";
 
+import { clampPopulationPeriod, populationChange, populationCsv, selectPopulationRange } from "@/lib/data/population-tools";
+
 const ranges = [10, 25, 0] as const;
+const firstYear = Number(populationObservations[0].reference_period);
+const lastYear = Number(populationObservations.at(-1)!.reference_period);
 
 export function PopulationTimeSeriesBlock() {
   const { t, format } = useLocale();
-  const [range, setRange] = useState<(typeof ranges)[number]>(25);
-  const observations = useMemo(() => range ? populationObservations.slice(-range) : populationObservations, [range]);
-  const [selectedPeriod, setSelectedPeriod] = useState(populationObservations.at(-1)!.reference_period);
-  const selected = populationObservations.find((item) => item.reference_period === selectedPeriod) ?? observations.at(-1)!;
+  const [startYear, setStartYear] = useState(lastYear - 24);
+  const [endYear, setEndYear] = useState(lastYear);
+  const observations = useMemo(() => selectPopulationRange(populationObservations, startYear, endYear), [startYear, endYear]);
+  const [selectedPeriod, setSelectedPeriod] = useState(String(lastYear));
+  const selected = clampPopulationPeriod(observations, selectedPeriod);
+  const previous = populationObservations.find((point) => Number(point.reference_period) === Number(selected.reference_period) - 1);
+  const change = populationChange(selected, previous);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const citation = `${populationSource.source_org}. ${populationSource.dataset_name}, ${populationSource.source_id}, Korea, Rep., ${startYear}–${endYear}. ${populationSource.source_url}. ${populationSource.license}. INDEX WORLD: ${selected.version}; ${selected.ingested_at}.`;
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const period = params.get("period");
+    if (params.get("content") === "population-timeseries" && params.get("region") === "kr" && period && populationObservations.some((point) => point.reference_period === period)) {
+      const id = window.setTimeout(() => { setStartYear(Math.min(lastYear - 24, Number(period))); setSelectedPeriod(period); document.getElementById("population-timeseries")?.scrollIntoView(); }, 0);
+      return () => window.clearTimeout(id);
+    }
+  }, []);
+  const download = () => {
+    const blob = new Blob(["\uFEFF", populationCsv(observations, populationSource, selected.version, selected.ingested_at)], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `index-world-korea-population-${startYear}-${endYear}.csv`;
+    link.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   const width = 900;
   const height = 300;
-  const inset = { top: 24, right: 22, bottom: 42, left: 22 };
+  const inset = { top: 24, right: 22, bottom: 42, left: 96 };
   const values = observations.map((item) => item.value);
   const min = Math.min(...values);
   const max = Math.max(...values);
@@ -28,7 +54,7 @@ export function PopulationTimeSeriesBlock() {
   const path = points.map((point, index) => `${index ? "L" : "M"}${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
 
   return (
-    <section className="timeseries-section" aria-labelledby="timeseries-heading">
+    <section id="population-timeseries" className="timeseries-section" aria-labelledby="timeseries-heading">
       <div className="shell">
         <div className="timeseries-header">
           <div>
@@ -37,30 +63,39 @@ export function PopulationTimeSeriesBlock() {
           </div>
           <div className="block-tools">
             <div className="timeseries-range" aria-label={t("timeseries.range")}>
-              {ranges.map((years) => <button key={years} type="button" aria-pressed={range === years} onClick={() => setRange(years)}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
+              {ranges.map((years) => <button key={years} type="button" aria-pressed={endYear === lastYear && startYear === (years ? lastYear - years + 1 : firstYear)} onClick={() => { setStartYear(years ? lastYear - years + 1 : firstYear); setEndYear(lastYear); }}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
             </div>
             <ShareButton contentId="population-timeseries" regionId="kr" referencePeriod={selected.reference_period} title={t("timeseries.heading")} description={t("timeseries.description")} />
           </div>
         </div>
 
+        <div className="period-controls">
+          <label>{t("timeseries.start")}<select value={startYear} onChange={(event) => setStartYear(Number(event.target.value))}>{populationObservations.filter((point) => Number(point.reference_period) <= endYear).map((point) => <option key={point.reference_period}>{point.reference_period}</option>)}</select></label>
+          <label>{t("timeseries.end")}<select value={endYear} onChange={(event) => setEndYear(Number(event.target.value))}>{populationObservations.filter((point) => Number(point.reference_period) >= startYear).map((point) => <option key={point.reference_period}>{point.reference_period}</option>)}</select></label>
+          <button type="button" onClick={download}>{t("timeseries.download")} · {observations.length}</button>
+        </div>
         <div className="timeseries-grid">
           <div className="chart-panel">
             <div className="chart-reading" aria-live="polite">
               <span>{t("timeseries.region")}</span><strong>{t("timeseries.korea")}</strong>
               <span>{selected.reference_period}</span><strong>{format.number(selected.value)} {t("data.people")}</strong>
             </div>
+            <p className="chart-change">{t("kpi.change")}: {change ? `${format.number(change.absolute, { signDisplay: "always" })} ${t("data.people")} · ${change.percent === null ? "—" : format.number(change.percent, { maximumFractionDigits: 2, signDisplay: "always" }) + "%"}` : t("timeseries.unavailable")}</p>
+            <label className="year-slider">{t("timeseries.selectYear")} · {selected.reference_period}<input type="range" min={startYear} max={endYear} value={Number(selected.reference_period)} onChange={(event) => setSelectedPeriod(event.target.value)} /></label>
             <div className="chart-scroll">
-              <svg className="population-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby="chart-title chart-desc">
+              <svg className="population-chart" viewBox={`0 0 ${width} ${height}`} role="group" aria-labelledby="chart-title chart-desc">
                 <title id="chart-title">{t("timeseries.heading")}</title>
                 <desc id="chart-desc">{t("timeseries.description")}</desc>
                 {[0, .5, 1].map((step) => <line key={step} x1={inset.left} x2={width - inset.right} y1={inset.top + step * (height - inset.top - inset.bottom)} y2={inset.top + step * (height - inset.top - inset.bottom)} />)}
+                {[0, .5, 1].map((step) => <text key={step} x={inset.left - 10} y={inset.top + step * (height - inset.top - inset.bottom) + 4} textAnchor="end">{format.number(Math.round(max - step * spread))}</text>)}
                 <path className="chart-area" d={`${path} L${points.at(-1)!.x},${height - inset.bottom} L${points[0].x},${height - inset.bottom} Z`} />
                 <path className="chart-line" d={path} />
-                {points.map((point) => <circle key={point.reference_period} className={selected.reference_period === point.reference_period ? "is-selected" : ""} cx={point.x} cy={point.y} r="8" role="button" tabIndex={0} aria-label={`${point.reference_period}: ${format.number(point.value)} ${t("data.people")}`} onMouseEnter={() => setSelectedPeriod(point.reference_period)} onFocus={() => setSelectedPeriod(point.reference_period)} onClick={() => setSelectedPeriod(point.reference_period)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setSelectedPeriod(point.reference_period); }} />)}
+                {points.map((point) => <circle key={point.reference_period} className={selected.reference_period === point.reference_period ? "is-selected" : ""} cx={point.x} cy={point.y} r="8" role="button" tabIndex={0} aria-pressed={selected.reference_period === point.reference_period} aria-label={`${point.reference_period}: ${format.number(point.value)} ${t("data.people")}`} onMouseEnter={() => setSelectedPeriod(point.reference_period)} onFocus={() => setSelectedPeriod(point.reference_period)} onClick={() => setSelectedPeriod(point.reference_period)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setSelectedPeriod(point.reference_period); } }} />)}
                 <text x={inset.left} y={height - 12}>{observations[0].reference_period}</text>
                 <text x={width - inset.right} y={height - 12} textAnchor="end">{observations.at(-1)!.reference_period}</text>
               </svg>
             </div>
+            <details className="population-table"><summary>{t("timeseries.table")}</summary><table><caption>{startYear}–{endYear} · {t("data.people")}</caption><thead><tr><th scope="col">{t("timeseries.reference")}</th><th scope="col">{t("kpi.total")}</th></tr></thead><tbody>{observations.map((point) => <tr key={point.reference_period}><th scope="row">{point.reference_period}</th><td>{format.number(point.value)}</td></tr>)}</tbody></table></details>
           </div>
 
           <aside className="source-card" aria-label={t("timeseries.sourceDetails")}>
@@ -72,8 +107,11 @@ export function PopulationTimeSeriesBlock() {
               <div><dt>{t("timeseries.indicator")}</dt><dd>{populationSource.source_id}</dd></div>
               <div><dt>{t("timeseries.reference")}</dt><dd>{selected.reference_period}</dd></div>
               <div><dt>{t("timeseries.updated")}</dt><dd>{format.date(selected.ingested_at, { dateStyle: "medium" })}</dd></div>
-              <div><dt>{t("timeseries.license")}</dt><dd>{populationSource.license}</dd></div>
+              <div><dt>{t("timeseries.license")}</dt><dd><a href={populationSource.license_url} target="_blank" rel="noreferrer">{populationSource.license} ↗</a></dd></div>
+              <div><dt>{t("timeseries.publication")}</dt><dd>{selected.publication_date ? format.date(selected.publication_date) : t("timeseries.unavailable")}</dd></div>
             </dl>
+            <p className="source-note">{t("timeseries.methodology")}</p>
+            <details><summary>{t("timeseries.citation")}</summary><p className="citation-text">{citation}</p><button type="button" onClick={async () => { try { await navigator.clipboard.writeText(citation); setCopyStatus("copied"); } catch { setCopyStatus("failed"); } }}>{t("timeseries.copyCitation")}</button><span role="status">{copyStatus === "copied" ? t("share.copied") : copyStatus === "failed" ? t("share.failed") : ""}</span></details>
             <a href={populationSource.source_url} target="_blank" rel="noreferrer">{t("timeseries.original")} ↗</a>
           </aside>
         </div>

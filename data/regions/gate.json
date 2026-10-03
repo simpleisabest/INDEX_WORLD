@@ -1,0 +1,11 @@
+{
+  "version": "V0.6",
+  "status": "BLOCKED",
+  "publishable": false,
+  "map_enabled": false,
+  "ranking_enabled": false,
+  "regional_csv_snapshots": [],
+  "regional_csv_status": "NOT_PRESENT_IN_CHECKOUT",
+  "required_evidence": ["legal_history_and_effective_dates", "official_code_changes", "stable_region_id_crosswalk", "csv_reuse_terms"],
+  "verification_document": "docs/data-sources/v0.6-verification.md"
+}

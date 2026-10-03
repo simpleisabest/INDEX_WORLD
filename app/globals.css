@@ -207,3 +207,25 @@ button,input,select { font:inherit; }
 }
 
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
+
+.period-controls { display:flex; align-items:end; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+.period-controls label { display:grid; gap:8px; font-size:12px; }
+.period-controls select, .period-controls button, .source-card button { padding:10px 14px; background:white; border:1px solid var(--line); color:var(--ink); border-radius:0; }
+.period-controls button, .source-card button { cursor:pointer; }
+.year-slider { display:grid; gap:8px; font-size:12px; margin:18px 0; }
+.year-slider input { width:100%; accent-color:var(--ink); }
+.chart-change, .source-note, .citation-text { font-size:12px; line-height:1.7; overflow-wrap:anywhere; }
+.population-table { margin:20px 0; max-height:320px; overflow:auto; }
+.population-table summary, .source-card summary { cursor:pointer; padding:8px 0; font-size:12px; }
+.population-table table { width:100%; border-collapse:collapse; font-size:13px; }
+.population-table th, .population-table td { padding:10px; border-bottom:1px solid var(--line); text-align:right; }
+.population-table th:first-child { text-align:left; }
+.region-marker:disabled { cursor:default; opacity:.45; }
+.population-chart circle:focus-visible, .period-controls :focus-visible, .year-slider input:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+.kpi-card { min-width:0; }
+.kpi-card > p { overflow-wrap:anywhere; }
+@media (max-width:600px) {
+  .kpi-grid { grid-template-columns:minmax(0,1fr); }
+  .kpi-value { flex-wrap:wrap; }
+  .map-visual { overflow:hidden; }
+}
