@@ -1,25 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "@/components/locale-provider";
+import type { TranslationKey } from "@/lib/i18n/dictionaries/en";
 
 type RegionFoundation = {
   id: `kr-${string}`;
-  name: string;
+  nameKey: TranslationKey;
   nameEn: string;
   type: "SPECIAL_CITY" | "METROPOLITAN_CITY" | "SPECIAL_SELF_GOVERNING_PROVINCE";
   position: { x: number; y: number };
 };
 
 const regionFoundation: RegionFoundation[] = [
-  { id: "kr-seoul", name: "서울", nameEn: "SEOUL", type: "SPECIAL_CITY", position: { x: 42, y: 34 } },
-  { id: "kr-daejeon", name: "대전", nameEn: "DAEJEON", type: "METROPOLITAN_CITY", position: { x: 49, y: 51 } },
-  { id: "kr-daegu", name: "대구", nameEn: "DAEGU", type: "METROPOLITAN_CITY", position: { x: 62, y: 59 } },
-  { id: "kr-gwangju", name: "광주", nameEn: "GWANGJU", type: "METROPOLITAN_CITY", position: { x: 43, y: 67 } },
-  { id: "kr-busan", name: "부산", nameEn: "BUSAN", type: "METROPOLITAN_CITY", position: { x: 69, y: 69 } },
-  { id: "kr-jeju", name: "제주", nameEn: "JEJU", type: "SPECIAL_SELF_GOVERNING_PROVINCE", position: { x: 42, y: 88 } },
+  { id: "kr-seoul", nameKey: "map.seoul", nameEn: "SEOUL", type: "SPECIAL_CITY", position: { x: 42, y: 34 } },
+  { id: "kr-daejeon", nameKey: "map.daejeon", nameEn: "DAEJEON", type: "METROPOLITAN_CITY", position: { x: 49, y: 51 } },
+  { id: "kr-daegu", nameKey: "map.daegu", nameEn: "DAEGU", type: "METROPOLITAN_CITY", position: { x: 62, y: 59 } },
+  { id: "kr-gwangju", nameKey: "map.gwangju", nameEn: "GWANGJU", type: "METROPOLITAN_CITY", position: { x: 43, y: 67 } },
+  { id: "kr-busan", nameKey: "map.busan", nameEn: "BUSAN", type: "METROPOLITAN_CITY", position: { x: 69, y: 69 } },
+  { id: "kr-jeju", nameKey: "map.jeju", nameEn: "JEJU", type: "SPECIAL_SELF_GOVERNING_PROVINCE", position: { x: 42, y: 88 } },
 ];
 
 export function MapBlock() {
+  const { t } = useLocale();
   const [selectedRegionId, setSelectedRegionId] = useState<RegionFoundation["id"] | null>(null);
   const selectedRegion = regionFoundation.find((region) => region.id === selectedRegionId);
 
@@ -27,16 +30,16 @@ export function MapBlock() {
     <section className="map-section" id="map" aria-labelledby="map-heading">
       <div className="shell map-grid">
         <div className="map-copy">
-          <div className="eyebrow light"><span /> INDEX KOREA</div>
-          <h2 id="map-heading">지도로 발견하는<br />대한민국의 오늘</h2>
-          <p>지역 마커를 선택해 탐색 구조를 미리 확인하세요. 공식 행정경계와 통계는 검증된 데이터 연결 후 표시됩니다.</p>
-          <div className="pending-badge"><i /> OFFICIAL BOUNDARY DATA PENDING</div>
+          <div className="eyebrow light"><span /> {t("map.eyebrow")}</div>
+          <h2 id="map-heading">{t("map.line1")}<br />{t("map.line2")}</h2>
+          <p>{t("map.description")}</p>
+          <div className="pending-badge"><i /> {t("map.status")}</div>
           <div className="map-selection" aria-live="polite">
-            <span>SELECTED REGION</span>
+            <span>{t("map.selected")}</span>
             {selectedRegion ? (
-              <div><strong>{selectedRegion.name}</strong><p>{selectedRegion.nameEn} · {selectedRegion.id}</p></div>
+              <div><strong>{t(selectedRegion.nameKey)}</strong><p>{selectedRegion.nameEn} · {selectedRegion.id}</p></div>
             ) : (
-              <div><strong>지역을 선택하세요</strong><p>REGION CONTRACT READY</p></div>
+              <div><strong>{t("map.prompt")}</strong><p>{t("map.ready")}</p></div>
             )}
           </div>
         </div>
@@ -54,7 +57,7 @@ export function MapBlock() {
               className="region-marker"
               style={{ left: `${region.position.x}%`, top: `${region.position.y}%` }}
               key={region.id}
-              aria-label={`${region.name} 선택`}
+              aria-label={`${t(region.nameKey)} · ${region.id}`}
               aria-pressed={selectedRegionId === region.id}
               onClick={() => setSelectedRegionId(region.id)}
             >
@@ -63,8 +66,8 @@ export function MapBlock() {
           ))}
 
           <div className="map-legend" aria-label="지도 상태 범례">
-            <span><i /> 선택 가능 지역</span>
-            <span><i /> 공식 데이터 연결 대기</span>
+            <span><i /> {t("map.legend1")}</span>
+            <span><i /> {t("map.legend2")}</span>
           </div>
           <div className="map-watermark">KOREA</div>
         </div>

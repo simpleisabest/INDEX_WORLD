@@ -1,3 +1,7 @@
+"use client";
+
+import { useLocale } from "@/components/locale-provider";
+
 export type AdPlacement = "after-search" | "after-map" | "before-related-data";
 export type AdFormat = "leaderboard" | "responsive" | "adaptive-banner";
 
@@ -20,6 +24,7 @@ export function AdSlot({
   enabled = false,
   collapseWhenEmpty = true,
 }: AdSlotProps) {
+  const { t } = useLocale();
   const isPreview = process.env.INDEX_PREVIEW === "true";
   const showDevelopmentMarker = isPreview && !enabled;
 
@@ -35,12 +40,12 @@ export function AdSlot({
       data-format={format}
       data-responsive={responsive}
       style={minHeight > 0 ? { minHeight } : undefined}
-      aria-label="향후 광고 배치 영역"
+      aria-label={t("ad.aria")}
     >
       {showDevelopmentMarker && (
         <div>
           <span>AD SLOT {id}</span>
-          <p>Future Ad Placement · Preview only</p>
+          <p>{t("ad.label")}</p>
         </div>
       )}
     </aside>
