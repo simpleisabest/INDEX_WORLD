@@ -60,4 +60,5 @@ const vi: Partial<Record<TranslationKey,string>> = {"hero.line1":"Nhìn thế gi
   "discovery.original":"Xem kết quả gốc",
   "discovery.searchPlaceholder":"Dân số mới nhất của Hàn Quốc, lịch sử dân số…",
   "question.latest":"Dân số Hàn Quốc hiện nay là bao nhiêu?","question.decade":"Đã thay đổi bao nhiêu trong 10 năm?","question.compare":"Năm 2024 và 2025 khác nhau thế nào?","question.history":"Đã thay đổi ra sao từ năm 1960?",
+  "catalog.populationHousehold":"Dân số & hộ gia đình","catalog.realEstateHousing":"Bất động sản & nhà ở","catalog.economyIncome":"Kinh tế & thu nhập","catalog.jobsEmployment":"Việc làm & lao động","catalog.businessStartup":"Kinh doanh & khởi nghiệp","catalog.financeAssets":"Tài chính & tài sản","catalog.education":"Giáo dục","catalog.healthMedical":"Sức khỏe & y tế","catalog.societyLife":"Xã hội & đời sống","catalog.transportVehicles":"Giao thông & phương tiện","catalog.environmentEnergy":"Môi trường & năng lượng","catalog.countryWorld":"Quốc gia & thế giới",
 }; export default vi;

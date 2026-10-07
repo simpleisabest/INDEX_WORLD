@@ -76,4 +76,6 @@ const ko: Partial<Record<TranslationKey,string>> = {
   "discovery.original":"원본 결과 보기",
   "discovery.searchPlaceholder":"대한민국 최신 인구, 인구 장기 추이…",
   "question.latest":"한국 인구는 지금 몇 명?","question.decade":"10년 전보다 얼마나 변했나?","question.compare":"2024년과 2025년을 비교하면?","question.history":"1960년 이후 어떻게 변했나?",
+  "catalog.heading":"데이터 카테고리 탐색","catalog.description":"카테고리와 지표에서 근거·비교·인용·내보내기까지 하나의 공통 경로로 연결합니다.","catalog.connected":"개 연결","catalog.research":"출처 검토","catalog.candidates":"개 지표 후보","catalog.phase2":"Phase 1 검증 후 확장 예정입니다.","catalog.open":"데이터 보기","catalog.blocked":"차단 큐","catalog.review":"출처 검토","catalog.recommended":"추천 데이터","catalog.updated":"최신 검증 업데이트","catalog.compare":"비교하기","catalog.ranking":"데이터 Ranking","catalog.rankingBlocked":"지역 Ranking은 아직 공개하지 않습니다","catalog.rankingReason":"Stable region ID·이력·비교 가능한 공식 관측값이 필요합니다.",
+  "catalog.populationHousehold":"인구·가구","catalog.realEstateHousing":"부동산·주거","catalog.economyIncome":"경제·소득","catalog.jobsEmployment":"일자리·고용","catalog.businessStartup":"사업·창업","catalog.financeAssets":"금융·자산","catalog.education":"교육","catalog.healthMedical":"건강·의료","catalog.societyLife":"사회·생활","catalog.transportVehicles":"교통·자동차","catalog.environmentEnergy":"환경·에너지","catalog.countryWorld":"국가·세계",
 }; export default ko;

@@ -1,4 +1,4 @@
-import dataset from "@/data/population/korea-total.json";
+import dataset from "../../data/population/korea-total.json" with { type: "json" };
 
 export const qualityStatuses = ["VERIFIED", "PROVISIONAL", "STALE", "REVIEW_REQUIRED", "SOURCE_ERROR"] as const;
 export type QualityStatus = (typeof qualityStatuses)[number];

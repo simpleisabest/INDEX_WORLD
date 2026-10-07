@@ -60,4 +60,5 @@ const zhTW: Partial<Record<TranslationKey,string>> = {"hero.line1":"用數據","
   "discovery.original":"查看原始結果",
   "discovery.searchPlaceholder":"韓國最新人口、人口歷史趨勢…",
   "question.latest":"韓國目前有多少人口？","question.decade":"與10年前相比變化了多少？","question.compare":"2024年與2025年相比如何？","question.history":"1960年以來發生了怎樣的變化？",
+  "catalog.populationHousehold":"人口與家戶","catalog.realEstateHousing":"房地產與住宅","catalog.economyIncome":"經濟與所得","catalog.jobsEmployment":"工作與就業","catalog.businessStartup":"商業與創業","catalog.financeAssets":"金融與資產","catalog.education":"教育","catalog.healthMedical":"健康與醫療","catalog.societyLife":"社會與生活","catalog.transportVehicles":"交通與汽車","catalog.environmentEnergy":"環境與能源","catalog.countryWorld":"國家與世界",
 }; export default zhTW;

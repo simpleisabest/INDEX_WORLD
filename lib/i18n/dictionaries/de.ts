@@ -60,4 +60,5 @@ const de: Partial<Record<TranslationKey,string>> = {"hero.line1":"Die Welt","her
   "discovery.original":"Originalergebnis ansehen",
   "discovery.searchPlaceholder":"Aktuelle Bevölkerung Koreas, Bevölkerungsverlauf…",
   "question.latest":"Wie groß ist Koreas Bevölkerung heute?","question.decade":"Wie stark hat sie sich in 10 Jahren verändert?","question.compare":"Wie unterscheiden sich 2024 und 2025?","question.history":"Wie hat sie sich seit 1960 verändert?",
+  "catalog.populationHousehold":"Bevölkerung & Haushalte","catalog.realEstateHousing":"Immobilien & Wohnen","catalog.economyIncome":"Wirtschaft & Einkommen","catalog.jobsEmployment":"Arbeit & Beschäftigung","catalog.businessStartup":"Unternehmen & Gründungen","catalog.financeAssets":"Finanzen & Vermögen","catalog.education":"Bildung","catalog.healthMedical":"Gesundheit & Medizin","catalog.societyLife":"Gesellschaft & Leben","catalog.transportVehicles":"Verkehr & Fahrzeuge","catalog.environmentEnergy":"Umwelt & Energie","catalog.countryWorld":"Länder & Welt",
 }; export default de;

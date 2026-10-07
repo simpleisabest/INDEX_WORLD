@@ -60,4 +60,5 @@ const es: Partial<Record<TranslationKey,string>> = {"hero.line1":"Mira el mundo"
   "discovery.original":"Ver resultado original",
   "discovery.searchPlaceholder":"Última población de Corea, historia de población…",
   "question.latest":"¿Cuál es la población actual de Corea?","question.decade":"¿Cuánto ha cambiado en 10 años?","question.compare":"¿Cómo se comparan 2024 y 2025?","question.history":"¿Cómo ha cambiado desde 1960?",
+  "catalog.populationHousehold":"Población y hogares","catalog.realEstateHousing":"Inmuebles y vivienda","catalog.economyIncome":"Economía e ingresos","catalog.jobsEmployment":"Trabajo y empleo","catalog.businessStartup":"Empresas y emprendimiento","catalog.financeAssets":"Finanzas y activos","catalog.education":"Educación","catalog.healthMedical":"Salud y medicina","catalog.societyLife":"Sociedad y vida","catalog.transportVehicles":"Transporte y vehículos","catalog.environmentEnergy":"Medioambiente y energía","catalog.countryWorld":"Países y mundo",
 }; export default es;

@@ -79,6 +79,8 @@ const en = {
   "discovery.original":"View original result",
   "discovery.searchPlaceholder":"Latest Korea population, population history…",
   "question.latest":"What is Korea’s population now?","question.decade":"How much has it changed in 10 years?","question.compare":"How do 2024 and 2025 compare?","question.history":"How has it changed since 1960?",
+  "catalog.heading":"Explore the data catalog","catalog.description":"One reusable path from category and indicator to evidence, comparison, citation and export.","catalog.connected":"connected","catalog.research":"SOURCE REVIEW","catalog.candidates":"indicator candidates","catalog.phase2":"Planned after Phase 1 verification.","catalog.open":"Open data","catalog.blocked":"Blocked queue","catalog.review":"Source review","catalog.recommended":"Recommended data","catalog.updated":"Latest verified update","catalog.compare":"Compare","catalog.ranking":"Ranking","catalog.rankingBlocked":"Regional ranking is not published yet","catalog.rankingReason":"Stable region IDs, history and comparable official observations are required.",
+  "catalog.populationHousehold":"Population & households","catalog.realEstateHousing":"Real estate & housing","catalog.economyIncome":"Economy & income","catalog.jobsEmployment":"Jobs & employment","catalog.businessStartup":"Business & startups","catalog.financeAssets":"Finance & assets","catalog.education":"Education","catalog.healthMedical":"Health & medical","catalog.societyLife":"Society & life","catalog.transportVehicles":"Transport & vehicles","catalog.environmentEnergy":"Environment & energy","catalog.countryWorld":"Countries & world",
 } as const;
 export default en;
 export type TranslationKey = keyof typeof en;

@@ -60,4 +60,5 @@ const zhCN: Partial<Record<TranslationKey,string>> = {"hero.line1":"用数据","
   "discovery.original":"查看原始结果",
   "discovery.searchPlaceholder":"韩国最新人口、人口历史趋势…",
   "question.latest":"韩国目前有多少人口？","question.decade":"与10年前相比变化了多少？","question.compare":"2024年与2025年相比如何？","question.history":"1960年以来发生了怎样的变化？",
+  "catalog.populationHousehold":"人口与家庭","catalog.realEstateHousing":"房地产与住房","catalog.economyIncome":"经济与收入","catalog.jobsEmployment":"工作与就业","catalog.businessStartup":"商业与创业","catalog.financeAssets":"金融与资产","catalog.education":"教育","catalog.healthMedical":"健康与医疗","catalog.societyLife":"社会与生活","catalog.transportVehicles":"交通与汽车","catalog.environmentEnergy":"环境与能源","catalog.countryWorld":"国家与世界",
 }; export default zhCN;

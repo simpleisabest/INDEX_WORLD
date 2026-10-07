@@ -60,4 +60,5 @@ const id: Partial<Record<TranslationKey,string>> = {"hero.line1":"Lihat dunia","
   "discovery.original":"Lihat hasil asli",
   "discovery.searchPlaceholder":"Populasi terbaru Korea, riwayat populasi…",
   "question.latest":"Berapa populasi Korea saat ini?","question.decade":"Berapa perubahannya dalam 10 tahun?","question.compare":"Bagaimana perbandingan 2024 dan 2025?","question.history":"Bagaimana perubahannya sejak 1960?",
+  "catalog.populationHousehold":"Populasi & rumah tangga","catalog.realEstateHousing":"Properti & perumahan","catalog.economyIncome":"Ekonomi & pendapatan","catalog.jobsEmployment":"Pekerjaan & ketenagakerjaan","catalog.businessStartup":"Bisnis & startup","catalog.financeAssets":"Keuangan & aset","catalog.education":"Pendidikan","catalog.healthMedical":"Kesehatan & medis","catalog.societyLife":"Masyarakat & kehidupan","catalog.transportVehicles":"Transportasi & kendaraan","catalog.environmentEnergy":"Lingkungan & energi","catalog.countryWorld":"Negara & dunia",
 }; export default id;

@@ -1,0 +1,56 @@
+import type { TranslationKey } from "../i18n/dictionaries/en";
+import { populationObservations, populationSource, type PopulationObservation } from "./population.ts";
+
+export const categoryIds = ["population-household","real-estate-housing","economy-income","jobs-employment","business-startup","finance-assets","education","health-medical","society-life","transport-vehicles","environment-energy","country-world"] as const;
+export type CategoryId = typeof categoryIds[number];
+export type IndicatorStatus = "CONNECTED" | "CANDIDATE" | "BLOCKED";
+export type Capability = "kpi" | "timeseries" | "map" | "ranking" | "compare" | "questions" | "share" | "export" | "citation" | "embed";
+
+export type CategoryDefinition = { id: CategoryId; order: number; labelKey: TranslationKey; color: "blue" | "cyan" | "purple" | "orange" | "lime"; phase: 1 | 2; };
+export const categoryRegistry: CategoryDefinition[] = [
+  ["population-household",1,"catalog.populationHousehold","blue",1], ["real-estate-housing",2,"catalog.realEstateHousing","orange",1],
+  ["economy-income",3,"catalog.economyIncome","cyan",1], ["jobs-employment",4,"catalog.jobsEmployment","purple",1],
+  ["business-startup",5,"catalog.businessStartup","lime",1], ["finance-assets",6,"catalog.financeAssets","blue",2],
+  ["education",7,"catalog.education","purple",2], ["health-medical",8,"catalog.healthMedical","orange",2],
+  ["society-life",9,"catalog.societyLife","cyan",2], ["transport-vehicles",10,"catalog.transportVehicles","blue",2],
+  ["environment-energy",11,"catalog.environmentEnergy","lime",2], ["country-world",12,"catalog.countryWorld","purple",2],
+].map(([id,order,labelKey,color,phase])=>({id:id as CategoryId,order:order as number,labelKey:labelKey as TranslationKey,color:color as CategoryDefinition["color"],phase:phase as 1|2}));
+
+export type IndicatorDefinition = {
+  id: string; categoryId: CategoryId; title: { en: string; ko: string }; status: IndicatorStatus; unit: string;
+  geography: "country" | "region" | "mixed"; cadence: string; sourceOrg: string; sourceUrl: string;
+  access: string; license: string; automation: "HIGH" | "MEDIUM" | "LOW"; capabilities: Capability[]; blockReason?: string;
+};
+
+const fullNational: Capability[] = ["kpi","timeseries","compare","questions","share","export","citation","embed"];
+export const indicatorRegistry: IndicatorDefinition[] = [
+  { id:"population_total",categoryId:"population-household",title:{en:"Total population",ko:"총인구"},status:"CONNECTED",unit:"person",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"preserved versioned snapshot",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
+  { id:"population_change_annual",categoryId:"population-household",title:{en:"Annual population change",ko:"연간 인구 증감"},status:"CONNECTED",unit:"person",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"derived from adjacent verified observations",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
+  { id:"population_change_rate_annual",categoryId:"population-household",title:{en:"Annual population change rate",ko:"연간 인구 증감률"},status:"CONNECTED",unit:"percent",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"derived: change / previous year × 100",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
+  { id:"household_total",categoryId:"population-household",title:{en:"Households",ko:"가구수"},status:"BLOCKED",unit:"household",geography:"mixed",cadence:"monthly/annual",sourceOrg:"Ministry of the Interior and Safety / Statistics Korea",sourceUrl:"https://jumin.mois.go.kr/",access:"portal/download",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","map","ranking","compare"],blockReason:"Stable region history and dataset license not yet verified" },
+  { id:"single_person_household_share",categoryId:"population-household",title:{en:"Single-person household share",ko:"1인가구 비율"},status:"CANDIDATE",unit:"percent",geography:"region",cadence:"annual",sourceOrg:"Statistics Korea (KOSIS)",sourceUrl:"https://kosis.kr/",access:"OpenAPI key/download review",license:"KOSIS terms + dataset review",automation:"MEDIUM",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"apartment_price_index",categoryId:"real-estate-housing",title:{en:"Apartment sale price index",ko:"아파트 매매가격지수"},status:"CANDIDATE",unit:"index",geography:"region",cadence:"monthly",sourceOrg:"Korea Real Estate Board",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%A3%BC%ED%83%9D%EA%B0%80%EA%B2%A9%EB%8F%99%ED%96%A5",access:"file/API review",license:"dataset-level verification required",automation:"HIGH",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"apartment_transaction_price",categoryId:"real-estate-housing",title:{en:"Apartment transaction price",ko:"아파트 실거래가"},status:"BLOCKED",unit:"KRW",geography:"region",cadence:"monthly",sourceOrg:"Ministry of Land, Infrastructure and Transport",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%8B%A4%EA%B1%B0%EB%9E%98%EA%B0%80",access:"service key required",license:"dataset-level verification required",automation:"HIGH",capabilities:["kpi","timeseries","map","ranking","compare"],blockReason:"Service key, transaction cleaning and stable region codes required" },
+  { id:"housing_stock",categoryId:"real-estate-housing",title:{en:"Housing stock",ko:"주택수"},status:"CANDIDATE",unit:"dwelling",geography:"region",cadence:"annual",sourceOrg:"Statistics Korea (KOSIS)",sourceUrl:"https://kosis.kr/",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"MEDIUM",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"gdp_real",categoryId:"economy-income",title:{en:"Real GDP",ko:"실질 국내총생산"},status:"CANDIDATE",unit:"KRW",geography:"country",cadence:"quarterly/annual",sourceOrg:"Bank of Korea ECOS",sourceUrl:"https://ecos.bok.or.kr/",access:"OpenAPI key",license:"ECOS terms review",automation:"HIGH",capabilities:fullNational },
+  { id:"grdp",categoryId:"economy-income",title:{en:"Regional gross domestic product",ko:"지역내총생산"},status:"BLOCKED",unit:"KRW",geography:"region",cadence:"annual",sourceOrg:"Statistics Korea / regional governments",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%A7%80%EC%97%AD%EB%82%B4%EC%B4%9D%EC%83%9D%EC%82%B0",access:"fragmented downloads",license:"dataset-level verification required",automation:"LOW",capabilities:["kpi","timeseries","map","ranking","compare"],blockReason:"Nationally consistent series and region history not yet verified" },
+  { id:"consumer_price_index",categoryId:"economy-income",title:{en:"Consumer price index",ko:"소비자물가지수"},status:"CANDIDATE",unit:"index",geography:"mixed",cadence:"monthly",sourceOrg:"Statistics Korea (KOSIS)",sourceUrl:"https://kosis.kr/",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"HIGH",capabilities:["kpi","timeseries","compare"] },
+  { id:"employment_rate",categoryId:"jobs-employment",title:{en:"Employment rate",ko:"고용률"},status:"CANDIDATE",unit:"percent",geography:"region",cadence:"monthly",sourceOrg:"Statistics Korea",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EA%B3%A0%EC%9A%A9%EB%A5%A0",access:"KOSIS/API review",license:"dataset-level verification required",automation:"HIGH",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"unemployment_rate",categoryId:"jobs-employment",title:{en:"Unemployment rate",ko:"실업률"},status:"CANDIDATE",unit:"percent",geography:"region",cadence:"monthly",sourceOrg:"Statistics Korea",sourceUrl:"https://kosis.kr/search/search.do?query=%EC%8B%A4%EC%97%85%EB%A5%A0",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"HIGH",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"employed_total",categoryId:"jobs-employment",title:{en:"Employed persons",ko:"취업자수"},status:"CANDIDATE",unit:"person",geography:"region",cadence:"monthly",sourceOrg:"Statistics Korea",sourceUrl:"https://kosis.kr/",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"HIGH",capabilities:["kpi","timeseries","map","ranking","compare"] },
+  { id:"establishment_total",categoryId:"business-startup",title:{en:"Establishments",ko:"사업체수"},status:"BLOCKED",unit:"establishment",geography:"region",cadence:"annual",sourceOrg:"Statistics Korea",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%A0%84%EA%B5%AD%EC%82%AC%EC%97%85%EC%B2%B4%EC%A1%B0%EC%82%AC",access:"file/API review",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","map","ranking","compare"],blockReason:"Industry revisions and stable region history need normalization" },
+  { id:"business_birth_rate",categoryId:"business-startup",title:{en:"Enterprise birth rate",ko:"기업 신생률"},status:"CANDIDATE",unit:"percent",geography:"mixed",cadence:"annual",sourceOrg:"Statistics Korea (KOSIS)",sourceUrl:"https://kosis.kr/",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"MEDIUM",capabilities:["kpi","timeseries","ranking","compare"] },
+  { id:"startup_total",categoryId:"business-startup",title:{en:"New businesses",ko:"창업기업수"},status:"CANDIDATE",unit:"business",geography:"mixed",cadence:"monthly/annual",sourceOrg:"Ministry of SMEs and Startups / KOSIS",sourceUrl:"https://www.data.go.kr/",access:"dataset review",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","ranking","compare"] },
+];
+
+export type CatalogObservation = Omit<PopulationObservation,"indicator_id"|"unit"> & { indicator_id: string; unit: "person" | "percent"; derivation: string | null };
+export function connectedIndicatorSeries(indicatorId: string): CatalogObservation[] {
+  if (indicatorId === "population_total") return populationObservations.map(point=>({...point,derivation:null}));
+  if (!["population_change_annual","population_change_rate_annual"].includes(indicatorId)) return [];
+  return populationObservations.slice(1).map((point,index)=>{
+    const previous=populationObservations[index]; const absolute=point.value-previous.value;
+    return {...point,indicator_id:indicatorId,unit:indicatorId.endsWith("rate_annual")?"percent":"person",value:indicatorId.endsWith("rate_annual")?absolute/previous.value*100:absolute,derivation:indicatorId.endsWith("rate_annual")?"(current - previous) / previous × 100":"current - previous"};
+  });
+}
+
+export function catalogSummary(categoryId: CategoryId) { const items=indicatorRegistry.filter(item=>item.categoryId===categoryId); return { total:items.length, connected:items.filter(item=>item.status==="CONNECTED").length, blocked:items.filter(item=>item.status==="BLOCKED").length }; }

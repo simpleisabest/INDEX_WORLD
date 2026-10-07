@@ -60,4 +60,5 @@ const pt: Partial<Record<TranslationKey,string>> = {"hero.line1":"Veja o mundo",
   "discovery.original":"Ver resultado original",
   "discovery.searchPlaceholder":"População recente da Coreia, histórico populacional…",
   "question.latest":"Qual é a população atual da Coreia?","question.decade":"Quanto mudou em 10 anos?","question.compare":"Como 2024 e 2025 se comparam?","question.history":"Como mudou desde 1960?",
+  "catalog.populationHousehold":"População e domicílios","catalog.realEstateHousing":"Imóveis e habitação","catalog.economyIncome":"Economia e renda","catalog.jobsEmployment":"Trabalho e emprego","catalog.businessStartup":"Negócios e startups","catalog.financeAssets":"Finanças e ativos","catalog.education":"Educação","catalog.healthMedical":"Saúde e medicina","catalog.societyLife":"Sociedade e vida","catalog.transportVehicles":"Transporte e veículos","catalog.environmentEnergy":"Ambiente e energia","catalog.countryWorld":"Países e mundo",
 }; export default pt;

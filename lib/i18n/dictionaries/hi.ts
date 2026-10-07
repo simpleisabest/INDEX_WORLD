@@ -60,4 +60,5 @@ const hi: Partial<Record<TranslationKey,string>> = {"hero.line1":"दुनि�
   "discovery.original":"मूल परिणाम देखें",
   "discovery.searchPlaceholder":"कोरिया की नवीनतम जनसंख्या, जनसंख्या इतिहास…",
   "question.latest":"कोरिया की वर्तमान जनसंख्या कितनी है?","question.decade":"10 वर्षों में कितना बदलाव आया?","question.compare":"2024 और 2025 की तुलना कैसी है?","question.history":"1960 से कैसे बदलाव आया है?",
+  "catalog.populationHousehold":"जनसंख्या और परिवार","catalog.realEstateHousing":"रियल एस्टेट और आवास","catalog.economyIncome":"अर्थव्यवस्था और आय","catalog.jobsEmployment":"नौकरियाँ और रोजगार","catalog.businessStartup":"व्यवसाय और स्टार्टअप","catalog.financeAssets":"वित्त और संपत्ति","catalog.education":"शिक्षा","catalog.healthMedical":"स्वास्थ्य और चिकित्सा","catalog.societyLife":"समाज और जीवन","catalog.transportVehicles":"परिवहन और वाहन","catalog.environmentEnergy":"पर्यावरण और ऊर्जा","catalog.countryWorld":"देश और विश्व",
 }; export default hi;

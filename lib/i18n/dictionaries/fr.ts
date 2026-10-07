@@ -60,4 +60,5 @@ const fr: Partial<Record<TranslationKey,string>> = {"hero.line1":"Voir le monde"
   "discovery.original":"Voir le résultat original",
   "discovery.searchPlaceholder":"Population récente de Corée, historique…",
   "question.latest":"Quelle est la population actuelle de la Corée ?","question.decade":"Quelle évolution en 10 ans ?","question.compare":"Comment comparer 2024 et 2025 ?","question.history":"Quelle évolution depuis 1960 ?",
+  "catalog.populationHousehold":"Population et ménages","catalog.realEstateHousing":"Immobilier et logement","catalog.economyIncome":"Économie et revenus","catalog.jobsEmployment":"Travail et emploi","catalog.businessStartup":"Entreprises et création","catalog.financeAssets":"Finance et patrimoine","catalog.education":"Éducation","catalog.healthMedical":"Santé et médecine","catalog.societyLife":"Société et vie","catalog.transportVehicles":"Transport et véhicules","catalog.environmentEnergy":"Environnement et énergie","catalog.countryWorld":"Pays et monde",
 }; export default fr;

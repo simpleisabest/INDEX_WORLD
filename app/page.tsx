@@ -1,5 +1,4 @@
 import {
-  DataCategoryBlock,
   HeaderBlock,
   HeroBlock,
   PopularDataBlock,
@@ -15,6 +14,7 @@ import { CompareBlock } from "@/components/compare-block";
 import { ContentAnchor } from "@/components/content-anchor";
 import { DiscoveryBlock } from "@/components/discovery-block";
 import { QuestionDeck } from "@/components/question-deck";
+import { CategoryCatalog } from "@/components/category-catalog";
 
 export default function Home() {
   return (
@@ -26,9 +26,9 @@ export default function Home() {
       <QuestionDeck />
       <AdSlot id="A" placement="after-search" format="responsive" />
       <KPIBlock />
+      <CategoryCatalog />
       <CompareBlock />
       <PopulationTimeSeriesBlock />
-      <DataCategoryBlock />
       <MapBlock />
       <AdSlot id="B" placement="after-map" format="responsive" />
       <PopularDataBlock />
