@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { PolicyPage } from "@/components/policy-page";
+export const metadata:Metadata={title:"Privacy Policy | INDEX WORLD",description:"INDEX WORLD 개인정보 처리 안내입니다.",alternates:{canonical:"/privacy/"}};
+export default function Privacy(){return <PolicyPage eyebrow="PRIVACY POLICY" title="개인정보 처리 안내" summary="현재 INDEX WORLD는 회원가입, 결제, 사용자 계정 또는 데이터베이스 기반 개인 프로필을 운영하지 않습니다."><section><h2>Information</h2><p>서비스 자체는 이름, 전화번호, 주소를 요구하지 않습니다. 이메일로 문의하면 답변을 위해 발신 주소와 메시지 내용이 이메일 서비스에 처리될 수 있습니다.</p></section><section><h2>Local preferences</h2><p>언어 선택 등 사용 편의를 위한 설정은 브라우저 저장소에 보관될 수 있습니다. 현재 광고 또는 제3자 추적 스크립트는 삽입하지 않습니다.</p></section><section><h2>External links</h2><p>공식 데이터 원문 등 외부 사이트에는 해당 운영자의 개인정보 정책이 적용됩니다.</p></section><section><h2>Contact</h2><p>개인정보 문의: <a href="mailto:simpleisabest@gmail.com">simpleisabest@gmail.com</a></p></section></PolicyPage>}

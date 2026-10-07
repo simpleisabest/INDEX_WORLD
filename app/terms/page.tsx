@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { PolicyPage } from "@/components/policy-page";
+export const metadata:Metadata={title:"Terms of Use | INDEX WORLD",description:"INDEX WORLD 이용안내와 데이터 사용 조건입니다.",alternates:{canonical:"/terms/"}};
+export default function Terms(){return <PolicyPage eyebrow="TERMS OF USE" title="이용안내" summary="INDEX WORLD는 정보를 이해하고 탐색하기 위한 서비스이며 전문적인 법률·의료·재무 조언을 제공하지 않습니다."><section><h2>Data use</h2><p>각 데이터에는 원기관의 이용조건과 라이선스가 적용됩니다. 다운로드·인용·공유 시 표시된 원출처, 기준시점과 라이선스를 함께 확인해야 합니다.</p></section><section><h2>Accuracy and updates</h2><p>공식 출처 변경, 개정 또는 수집 시점에 따라 값이 달라질 수 있습니다. 오류 제보를 받으면 출처와 버전을 확인해 수정합니다.</p></section><section><h2>Availability</h2><p>서비스는 예고 없이 개선되거나 일시 중단될 수 있습니다. 검증이 끝나지 않은 데이터와 기능은 비활성 또는 준비 중으로 표시됩니다.</p></section><section><h2>Contact</h2><p>이용 및 권리 관련 문의: <a href="mailto:simpleisabest@gmail.com">simpleisabest@gmail.com</a></p></section></PolicyPage>}

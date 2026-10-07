@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { PolicyPage } from "@/components/policy-page";
+export const metadata:Metadata={title:"About | INDEX WORLD",description:"INDEX WORLD의 데이터 원칙, 운영 범위와 연락처입니다.",alternates:{canonical:"/about/"}};
+export default function About(){return <PolicyPage eyebrow="ABOUT INDEX WORLD" title="세상을 이해하기 쉬운 데이터로" summary="INDEX WORLD는 공식 출처의 데이터를 검색하고 비교하고 공유할 수 있게 만드는 글로벌 데이터 탐색 서비스입니다."><section><h2>What we publish</h2><p>검증된 출처, 기준시점, 단위, 라이선스를 추적할 수 있는 데이터만 공개합니다. 현재 연결된 국가 인구 시계열과 재현 가능한 파생값은 World Bank World Development Indicators를 사용합니다.</p></section><section><h2>What we do not publish</h2><p>출처와 라이선스가 확인되지 않은 숫자, 사용량 근거가 없는 인기순위, 안정적인 지역 ID가 없는 지역 Ranking은 공개하지 않습니다.</p></section><section><h2>Contact</h2><p>서비스, 데이터 오류, 광고 및 제휴 문의: <a href="mailto:simpleisabest@gmail.com">simpleisabest@gmail.com</a></p></section></PolicyPage>}

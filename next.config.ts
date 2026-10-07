@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   env: {
-    NEXT_PUBLIC_SHOW_AD_PLACEHOLDERS: "true",
+    NEXT_PUBLIC_SHOW_AD_PLACEHOLDERS: isPreview ? "true" : "false",
     NEXT_PUBLIC_SITE_ORIGIN: "https://indexworld.app",
     NEXT_PUBLIC_BASE_PATH: isPreview ? "/preview" : "",
   },

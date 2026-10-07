@@ -115,7 +115,7 @@ export function ShareBlock() {
         <a className="footer-logo-link" href={`${iconBasePath}/`} aria-label="INDEX WORLD Home"><BrandLogo footer /></a>
         <div className="footer-center">
           <p>{t("footer.statement")}</p>
-          <nav aria-label="Footer"><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
+          <nav aria-label="Footer"><a href={`${iconBasePath}/about/`}>About</a><a href={`${iconBasePath}/methodology/`}>Data & Methodology</a><a href={`${iconBasePath}/privacy/`}>Privacy</a><a href={`${iconBasePath}/terms/`}>Terms</a><a href="mailto:simpleisabest@gmail.com">{t("footer.advertising")} · simpleisabest@gmail.com</a></nav>
         </div>
         <span>V1.0 · VERIFIED DATA SPRINT</span>
       </footer>

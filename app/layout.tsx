@@ -3,6 +3,7 @@ import "./globals.css";
 import { LocaleProvider } from "@/components/locale-provider";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const isPreview = basePath === "/preview";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://indexworld.app"),
@@ -28,8 +29,9 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
-  robots: { index: false, follow: false, nocache: true,
-    googleBot: { index: false, follow: false, noimageindex: true } },
+  robots: isPreview
+    ? { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false, noimageindex: true } }
+    : { index: true, follow: true, googleBot: { index: true, follow: true, noimageindex: false, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
 export const viewport: Viewport = {
