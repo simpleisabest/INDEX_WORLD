@@ -38,7 +38,7 @@ export function HeaderBlock() {
         <BrandLogo />
       </a>
       <nav className="header-nav" aria-label="주요 메뉴">
-        <a className="korea-link" href="#population-kpi">{t("nav.korea")}</a>
+        <label className="country-selector"><span>COUNTRY</span><select value="kr" aria-label="Country" onChange={()=>undefined}><option value="kr">{t("nav.korea")}</option><option disabled>INDEX JAPAN · SOON</option><option disabled>INDEX AMERICA · SOON</option><option disabled>GLOBAL · SOON</option></select></label>
         <label className="language">
           <span className="sr-only">Language</span>
           <span aria-hidden="true">○</span>
@@ -64,7 +64,7 @@ export function HeroBlock() {
       <div className="hero-photo-copy">
         <div className="eyebrow"><span /> {t("hero.eyebrow")}</div>
         <h1>{t("hero.line1")}<br /><em>{t("hero.line2")}</em></h1>
-        <p>{t("hero.description")}</p>
+        <p>{t("hero.description")} <a className="hero-search-link" href="#global-search">{t("search.heading")} →</a></p>
       </div>
       <div className="hero-data-overlay">
         <span>{t("kpi.total")} · {latestPopulationObservation.reference_period}</span>

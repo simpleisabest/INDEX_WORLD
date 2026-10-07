@@ -15,6 +15,8 @@ import { ContentAnchor } from "@/components/content-anchor";
 import { DiscoveryBlock } from "@/components/discovery-block";
 import { QuestionDeck } from "@/components/question-deck";
 import { CategoryCatalog } from "@/components/category-catalog";
+import { DataSnapshot } from "@/components/data-snapshot";
+import { RankingFoundation } from "@/components/ranking-foundation";
 
 export default function Home() {
   return (
@@ -23,10 +25,12 @@ export default function Home() {
       <HeaderBlock />
       <HeroBlock />
       <SearchBlock />
-      <QuestionDeck />
-      <AdSlot id="A" placement="after-search" format="responsive" />
-      <KPIBlock />
       <CategoryCatalog />
+      <AdSlot id="A" placement="after-search" format="responsive" />
+      <DataSnapshot />
+      <QuestionDeck />
+      <KPIBlock />
+      <RankingFoundation />
       <CompareBlock />
       <PopulationTimeSeriesBlock />
       <MapBlock />

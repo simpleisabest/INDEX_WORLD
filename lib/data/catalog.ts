@@ -6,15 +6,21 @@ export type CategoryId = typeof categoryIds[number];
 export type IndicatorStatus = "CONNECTED" | "CANDIDATE" | "BLOCKED";
 export type Capability = "kpi" | "timeseries" | "map" | "ranking" | "compare" | "questions" | "share" | "export" | "citation" | "embed";
 
-export type CategoryDefinition = { id: CategoryId; order: number; labelKey: TranslationKey; color: "blue" | "cyan" | "purple" | "orange" | "lime"; phase: 1 | 2; };
+export type CategoryDefinition = { id: CategoryId; order: number; labelKey: TranslationKey; color: "blue" | "cyan" | "purple" | "orange" | "lime"; phase: 1 | 2; icon: string; description: { en: string; ko: string }; examples: { en: string[]; ko: string[] }; };
 export const categoryRegistry: CategoryDefinition[] = [
-  ["population-household",1,"catalog.populationHousehold","blue",1], ["real-estate-housing",2,"catalog.realEstateHousing","orange",1],
-  ["economy-income",3,"catalog.economyIncome","cyan",1], ["jobs-employment",4,"catalog.jobsEmployment","purple",1],
-  ["business-startup",5,"catalog.businessStartup","lime",1], ["finance-assets",6,"catalog.financeAssets","blue",2],
-  ["education",7,"catalog.education","purple",2], ["health-medical",8,"catalog.healthMedical","orange",2],
-  ["society-life",9,"catalog.societyLife","cyan",2], ["transport-vehicles",10,"catalog.transportVehicles","blue",2],
-  ["environment-energy",11,"catalog.environmentEnergy","lime",2], ["country-world",12,"catalog.countryWorld","purple",2],
-].map(([id,order,labelKey,color,phase])=>({id:id as CategoryId,order:order as number,labelKey:labelKey as TranslationKey,color:color as CategoryDefinition["color"],phase:phase as 1|2}));
+  {id:"population-household",order:1,labelKey:"catalog.populationHousehold",color:"blue",phase:1,icon:"people",description:{en:"People, households and demographic change",ko:"사람·가구와 인구 구조의 변화"},examples:{en:["Population","Households","Annual change"],ko:["총인구","가구수","연간 증감"]}},
+  {id:"real-estate-housing",order:2,labelKey:"catalog.realEstateHousing",color:"orange",phase:1,icon:"home",description:{en:"Homes, prices and places to live",ko:"주택·가격과 거주의 변화"},examples:{en:["Price index","Transactions","Housing stock"],ko:["가격지수","실거래가","주택수"]}},
+  {id:"economy-income",order:3,labelKey:"catalog.economyIncome",color:"cyan",phase:1,icon:"growth",description:{en:"Growth, income and the cost of living",ko:"성장·소득과 생활물가"},examples:{en:["GDP","Income","Consumer prices"],ko:["GDP","소득","소비자물가"]}},
+  {id:"jobs-employment",order:4,labelKey:"catalog.jobsEmployment",color:"purple",phase:1,icon:"work",description:{en:"Employment, unemployment and workers",ko:"고용·실업과 일하는 사람들"},examples:{en:["Employment rate","Unemployment","Workers"],ko:["고용률","실업률","취업자수"]}},
+  {id:"business-startup",order:5,labelKey:"catalog.businessStartup",color:"lime",phase:1,icon:"business",description:{en:"Businesses, startups and local activity",ko:"사업체·창업과 지역 경제 활동"},examples:{en:["Establishments","Birth rate","Startups"],ko:["사업체수","신생률","창업기업"]}},
+  {id:"finance-assets",order:6,labelKey:"catalog.financeAssets",color:"blue",phase:2,icon:"finance",description:{en:"Money, markets and household assets",ko:"금융·시장과 가계 자산"},examples:{en:["Rates","Assets","Debt"],ko:["금리","자산","부채"]}},
+  {id:"education",order:7,labelKey:"catalog.education",color:"purple",phase:2,icon:"education",description:{en:"Schools, students and learning",ko:"학교·학생과 배움의 변화"},examples:{en:["Students","Schools","Attainment"],ko:["학생수","학교수","학력"]}},
+  {id:"health-medical",order:8,labelKey:"catalog.healthMedical",color:"orange",phase:2,icon:"health",description:{en:"Health, care and medical access",ko:"건강·의료와 돌봄 접근성"},examples:{en:["Life expectancy","Hospitals","Doctors"],ko:["기대수명","병원","의사수"]}},
+  {id:"society-life",order:9,labelKey:"catalog.societyLife",color:"cyan",phase:2,icon:"society",description:{en:"Daily life, safety and social change",ko:"생활·안전과 사회 변화"},examples:{en:["Safety","Culture","Families"],ko:["안전","문화","가족"]}},
+  {id:"transport-vehicles",order:10,labelKey:"catalog.transportVehicles",color:"blue",phase:2,icon:"transport",description:{en:"Movement, mobility and vehicles",ko:"이동·교통과 자동차"},examples:{en:["Vehicles","Transit","Travel"],ko:["자동차","대중교통","통행"]}},
+  {id:"environment-energy",order:11,labelKey:"catalog.environmentEnergy",color:"lime",phase:2,icon:"energy",description:{en:"Climate, emissions and energy",ko:"기후·배출과 에너지"},examples:{en:["Emissions","Energy","Air quality"],ko:["배출량","에너지","대기질"]}},
+  {id:"country-world",order:12,labelKey:"catalog.countryWorld",color:"purple",phase:2,icon:"world",description:{en:"Compare countries and global change",ko:"국가 비교와 세계의 변화"},examples:{en:["Countries","Population","Economy"],ko:["국가","인구","경제"]}},
+];
 
 export type IndicatorDefinition = {
   id: string; categoryId: CategoryId; title: { en: string; ko: string }; status: IndicatorStatus; unit: string;

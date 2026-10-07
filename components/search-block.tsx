@@ -4,6 +4,7 @@ import { FormEvent, KeyboardEvent, useId, useState } from "react";
 import { searchDemandContract, discoveryHref, type DiscoveryTarget } from "@/lib/discovery";
 import {populationObservations} from "@/lib/data/population";
 import { useLocale } from "@/components/locale-provider";
+import { categoryRegistry } from "@/lib/data/catalog";
 
 type SearchIntent = "REGION" | "INDICATOR" | "RANKING" | "COMPARE" | "QUESTION";
 
@@ -53,7 +54,7 @@ export function SearchBlock() {
   };
 
   return (
-    <section className="search-wrap shell" aria-labelledby="search-heading">
+    <section className="search-wrap shell" id="global-search" aria-labelledby="search-heading">
       <div className="search-panel">
         <div className="search-heading-row">
           <h2 id="search-heading">{t("search.heading")}</h2>
@@ -96,6 +97,10 @@ export function SearchBlock() {
             </a>
           ))}
         </nav>
+        <div className="search-topics" aria-label="Data topics">
+          {categoryRegistry.slice(0,5).map((category,index)=><a key={category.id} href={index===0?"#population-kpi":"#data-catalog"} className={`tone-${category.color}`}><span>{t(category.labelKey)}</span><small>{index===0?"LIVE":"SOURCE REVIEW"}</small></a>)}
+          <a href="#data-catalog" className="tone-orange"><span>{locale==="ko"?"물가":"Prices"}</span><small>SOURCE REVIEW</small></a>
+        </div>
 
         {isOpen && (
           <div className="search-suggestions" id="search-suggestions">
