@@ -4,6 +4,7 @@ import { LocaleProvider } from "@/components/locale-provider";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const isPreview = basePath === "/preview";
+const adsenseClient = "ca-pub-6775676862232694";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://indexworld.app"),
@@ -43,6 +44,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
+      <head>{!isPreview && <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous" />}</head>
       <body><LocaleProvider>{children}</LocaleProvider></body>
     </html>
   );
