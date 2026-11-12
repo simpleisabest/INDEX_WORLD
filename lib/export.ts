@@ -3,7 +3,7 @@ export type ExportArtifact = {
   subtitle: string;
   headers: string[];
   rows: (string | number)[][];
-  points: { label: string; value: number; display: string }[];
+  points: { label: string; value: number; display: string; position?: number }[];
   chart: "line" | "bars";
   citation: string;
   source: string;
@@ -20,6 +20,7 @@ export type ExportArtifact = {
 export function validateExport(artifact: ExportArtifact) {
   if (artifact.quality !== "VERIFIED" || !artifact.points.length || artifact.points.some(p => !Number.isFinite(p.value) || (!artifact.allowNegative && p.value < 0))) throw new Error("Export requires verified data");
   if (![artifact.source, artifact.sourceUrl, artifact.license, artifact.licenseUrl, artifact.citation].every(Boolean)) throw new Error("Export requires provenance");
+  if (artifact.points.some(point => point.position !== undefined && (!Number.isFinite(point.position) || point.position < 0 || point.position > 1))) throw new Error("Invalid chart position");
 }
 
 export function escapeHtml(value: string | number) {

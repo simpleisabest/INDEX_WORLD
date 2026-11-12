@@ -40,8 +40,8 @@ export async function exportCanvas(artifact: ExportArtifact, url: string, card: 
   for (const step of [0, .5, 1]) { const axisY = plotTop + step * (plotBottom - plotTop); ctx.beginPath();ctx.moveTo(left, axisY);ctx.lineTo(right, axisY);ctx.stroke(); text(new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(max - spread * step), 56, axisY + 6, 16); }
   if (artifact.chart === "line") {
     ctx.strokeStyle = "#152019"; ctx.lineWidth = 4; ctx.beginPath();
-    artifact.points.forEach((p, index) => { const x = left + index / Math.max(values.length - 1, 1) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); if (index) ctx.lineTo(x, py); else ctx.moveTo(x, py); }); ctx.stroke();
-    artifact.points.forEach((p, index) => { const x = left + index / Math.max(values.length - 1, 1) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); ctx.fillStyle = "#152019";ctx.beginPath();ctx.arc(x,py,4,0,Math.PI*2);ctx.fill(); });
+    artifact.points.forEach((p, index) => { const x = left + (p.position ?? index / Math.max(values.length - 1, 1)) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); if (index) ctx.lineTo(x, py); else ctx.moveTo(x, py); }); ctx.stroke();
+    artifact.points.forEach((p, index) => { const x = left + (p.position ?? index / Math.max(values.length - 1, 1)) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); ctx.fillStyle = "#152019";ctx.beginPath();ctx.arc(x,py,4,0,Math.PI*2);ctx.fill(); });
     text(artifact.points[0].label, left, plotBottom + 30, 18); text(artifact.points.at(-1)!.label, right - 65, plotBottom + 30, 18);
   } else {
     const zeroY = plotTop + max / spread * (plotBottom - plotTop);

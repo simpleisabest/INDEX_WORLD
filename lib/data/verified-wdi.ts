@@ -8,6 +8,10 @@ const reviewed = {
   gdp_per_capita_usd: { code: "NY.GDP.PCAP.CD", category: "economy-income", unit: "current USD/person" },
   consumer_price_inflation_wdi: { code: "FP.CPI.TOTL.ZG", category: "economy-income", unit: "percent" },
   unemployment_ilo_modelled: { code: "SL.UEM.TOTL.ZS", category: "jobs-employment", unit: "percent" },
+  life_expectancy: { code: "SP.DYN.LE00.IN", category: "health-medical", unit: "year" },
+  world_gdp_ppp: { code: "NY.GDP.PCAP.PP.CD", category: "country-world", unit: "current international dollar/person" },
+  tertiary_attainment: { code: "SE.TER.CUAT.ST.ZS", category: "education", unit: "percent" },
+  electricity_consumption_per_capita: { code: "EG.USE.ELEC.KH.PC", category: "environment-energy", unit: "kWh/person" },
 } as const;
 
 export function reviewedWdiSeries(indicatorId: string): CatalogObservation[] {

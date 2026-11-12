@@ -3,6 +3,7 @@ import { validatePublication } from "./publication.ts";
 import { verifiedDataRecords } from "./verified-records.ts";
 import type { CompareModel } from "./compare.ts";
 import type { ExportArtifact } from "../export.ts";
+import { periodPositions } from "./periods.ts";
 
 export const liveSprintIds = verifiedDataRecords.map(record => record.id);
 export function indicatorContentId(id: string) { return `indicator-${id}`; }
@@ -48,9 +49,10 @@ export function indicatorArtifact(id: string, title: string, selectedPeriod: str
   validatePublication(points);
   const selected = points.find(point => point.reference_period === selectedPeriod);
   if (!selected) throw new Error("Unsupported indicator period");
+  const positions = periodPositions(points.map(point => point.reference_period));
   return { title, subtitle: `Korea, Rep. · ${selectedPeriod}: ${selected.value} ${selected.unit}`,
-    headers: ["Year", "Value", "Unit"], rows: points.map(point => [point.reference_period, point.value, point.unit]),
-    points: points.map(point => ({ label: point.reference_period, value: point.value, display: `${point.value} ${point.unit}` })),
+    headers: ["Period", "Value", "Unit"], rows: points.map(point => [point.reference_period, point.value, point.unit]),
+    points: points.map((point, index) => ({ label: point.reference_period, value: point.value, display: `${point.value} ${point.unit}`, position: positions[index] })),
     chart: "line", citation: indicatorCitation(points), source: `${selected.source_org} · ${selected.source_id}`,
     sourceUrl: selected.source_url, license: selected.license, licenseUrl: selected.license_url,
     metadata: `${verifiedDataRecords.find(item => item.id === id)!.cadence} · national · ${points[0].reference_period}–${points.at(-1)!.reference_period} · ${selected.version} · retrieved ${selected.ingested_at}`,

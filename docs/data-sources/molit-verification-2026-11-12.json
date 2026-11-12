@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-11-12",
+  "method": "Normal public attachment download button, no login/key; original bytes retained",
+  "policy_url": "https://stat.molit.go.kr/portal/info/protect.do",
+  "policy_html_sha256": "5dd6bc6ea5a9f97b0ca2c7503a5b6720d9f3e3ebdaa47f470c4c3927564c29a2",
+  "scope": "MOLIT statistical-information reuse policy explicitly permits commercial and non-commercial reuse with accurate attribution. No third-party material, photographs, personal records or logos reused. Not presented as a blanket license for unrelated content.",
+  "annual_final_release": "Metadata explicitly identifies revised final annual 2014–2024 release, 2025-09-30. Later years and monthly provisional figures excluded.",
+  "files": [
+    {
+      "path": "data/molit-permits-final-2024.xlsx",
+      "sha256": "0d4884a661b461039e0c5f0879f158eea83d77b97d12caa389617924ed568b53"
+    },
+    {
+      "path": "data/molit-starts-final-2024.xlsx",
+      "sha256": "3c5280aacb61d35d3e22d8118df549672fa63480ec492298aa7683cffdc227cb"
+    },
+    {
+      "path": "data/molit-completions-final-2024.xlsx",
+      "sha256": "80d5214e2215d8733c6d4d03a3a7083cfceec8847905eaf3fd78aabca3fac77f"
+    },
+    {
+      "path": "data/molit-unsold-2026-07.xlsx",
+      "sha256": "31b7384464e1bf5891633778e5728dfb89754c34b423b9ef4c3a6390e8cc0536"
+    },
+    {
+      "path": "data/molit-unsold-2026-08.xlsx",
+      "sha256": "8b4e5bd953f129f641217ffa72ddfb97dca7064538782eb751e21a8ee230e364"
+    },
+    {
+      "path": "data/molit-unsold-2026-09.xlsx",
+      "sha256": "e3ae59a3e613e1065b53a85e4c924f2a405d99de84fa083c0e9f469432bf728c"
+    }
+  ],
+  "supplemental_catalogs": [
+    {
+      "name": "국토교통부_주택 착공 실적",
+      "url": "https://www.data.go.kr/data/15068728/fileData.do",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true
+    },
+    {
+      "name": "국토교통부_주택 준공 실적",
+      "url": "https://www.data.go.kr/data/15068725/fileData.do",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true
+    }
+  ]
+}

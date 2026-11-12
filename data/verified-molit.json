@@ -1,0 +1,1168 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "housing_permits",
+      "code": "MOLIT/31/626",
+      "title": {
+        "ko": "주택 인허가 (연간 확정)",
+        "en": "Housing permits (annual final)"
+      },
+      "category": "real-estate-housing",
+      "unit": "dwelling",
+      "cadence": "annual",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "source_org": "Ministry of Land, Infrastructure and Transport (MOLIT)",
+      "original_source": "국토교통부 통계누리, 주택정책과",
+      "dataset_name": "주택 인허가 (연간 확정)",
+      "source_url": "https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=31&hFormId=626&hSelectId=626&hPoint=00&sFormId=626",
+      "license": "MOLIT statistical information reuse policy (commercial reuse with attribution)",
+      "license_url": "https://stat.molit.go.kr/portal/info/protect.do",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T04:22:32.867926+00:00",
+      "version": "molit-reviewed-2026-11-12-housing_permits",
+      "definition": "National annual final housing permits, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply.",
+      "notes": {
+        "ko": "전국 주택 인허가 연간 확정치 2014~2024년입니다. 2025년 9월 30일 소급 확정 공표 범위만 사용하며, 2025년 이후와 월별 잠정치는 제외했습니다. 단위는 호입니다. 현재 월의 공급량이 아닙니다.",
+        "en": "National annual final housing permits, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply."
+      },
+      "raw_files": [
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "raw_sha256": "0d4884a661b461039e0c5f0879f158eea83d77b97d12caa389617924ed568b53"
+        }
+      ],
+      "cell_evidence": [
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "L23",
+          "header": "'14",
+          "value_cell": "L24",
+          "value": "529100",
+          "region_cell": "A24",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "M23",
+          "header": "'15",
+          "value_cell": "M24",
+          "value": "788314",
+          "region_cell": "A24",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "N23",
+          "header": "'16",
+          "value_cell": "N24",
+          "value": "746441",
+          "region_cell": "A24",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "O23",
+          "header": "'17",
+          "value_cell": "O24",
+          "value": "685003",
+          "region_cell": "A24",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "B44",
+          "header": "’18",
+          "value_cell": "B45",
+          "value": "549184",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "C44",
+          "header": "’19",
+          "value_cell": "C45",
+          "value": "504908",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "D44",
+          "header": "’20",
+          "value_cell": "D45",
+          "value": "466404",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "E44",
+          "header": "’21",
+          "value_cell": "E45",
+          "value": "535971",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "F44",
+          "header": "’22",
+          "value_cell": "F45",
+          "value": "506139",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "G44",
+          "header": "’23",
+          "value_cell": "G45",
+          "value": "425634",
+          "region_cell": "A45",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-permits-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "H44",
+          "header": "’24",
+          "value_cell": "H45",
+          "value": "435234",
+          "region_cell": "A45",
+          "region": "합  계"
+        }
+      ],
+      "series": [
+        [
+          "2014",
+          529100
+        ],
+        [
+          "2015",
+          788314
+        ],
+        [
+          "2016",
+          746441
+        ],
+        [
+          "2017",
+          685003
+        ],
+        [
+          "2018",
+          549184
+        ],
+        [
+          "2019",
+          504908
+        ],
+        [
+          "2020",
+          466404
+        ],
+        [
+          "2021",
+          535971
+        ],
+        [
+          "2022",
+          506139
+        ],
+        [
+          "2023",
+          425634
+        ],
+        [
+          "2024",
+          435234
+        ]
+      ]
+    },
+    {
+      "id": "housing_starts",
+      "code": "MOLIT/471/5388",
+      "title": {
+        "ko": "주택 착공 (연간 확정)",
+        "en": "Housing starts (annual final)"
+      },
+      "category": "real-estate-housing",
+      "unit": "dwelling",
+      "cadence": "annual",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "source_org": "Ministry of Land, Infrastructure and Transport (MOLIT)",
+      "original_source": "국토교통부 통계누리, 주택정책과",
+      "dataset_name": "주택 착공 (연간 확정)",
+      "source_url": "https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=471&hFormId=5388&hSelectId=5388&hPoint=00&sFormId=5388",
+      "license": "MOLIT statistical information reuse policy (commercial reuse with attribution)",
+      "license_url": "https://stat.molit.go.kr/portal/info/protect.do",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T04:22:32.867926+00:00",
+      "version": "molit-reviewed-2026-11-12-housing_starts",
+      "definition": "National annual final housing starts, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply.",
+      "notes": {
+        "ko": "전국 주택 착공 연간 확정치 2014~2024년입니다. 2025년 9월 30일 소급 확정 공표 범위만 사용하며, 2025년 이후와 월별 잠정치는 제외했습니다. 단위는 호입니다. 현재 월의 공급량이 아닙니다.",
+        "en": "National annual final housing starts, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply."
+      },
+      "raw_files": [
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "raw_sha256": "3c5280aacb61d35d3e22d8118df549672fa63480ec492298aa7683cffdc227cb"
+        }
+      ],
+      "cell_evidence": [
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "K3",
+          "header": "'14년",
+          "value_cell": "K4",
+          "value": "523890",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "L3",
+          "header": "'15년",
+          "value_cell": "L4",
+          "value": "750170",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "M3",
+          "header": "'16년",
+          "value_cell": "M4",
+          "value": "694646",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "N3",
+          "header": "'17년",
+          "value_cell": "N4",
+          "value": "567866",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "O3",
+          "header": "'18년",
+          "value_cell": "O4",
+          "value": "483404",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "P3",
+          "header": "'19년",
+          "value_cell": "P4",
+          "value": "511354",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "Q3",
+          "header": "'20년",
+          "value_cell": "Q4",
+          "value": "537314",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "R3",
+          "header": "'21년",
+          "value_cell": "R4",
+          "value": "537395",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "S3",
+          "header": "'22년",
+          "value_cell": "S4",
+          "value": "386039",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "T3",
+          "header": "'23년",
+          "value_cell": "T4",
+          "value": "246265",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-starts-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "U3",
+          "header": "'24년",
+          "value_cell": "U4",
+          "value": "303433",
+          "region_cell": "A4",
+          "region": "합  계"
+        }
+      ],
+      "series": [
+        [
+          "2014",
+          523890
+        ],
+        [
+          "2015",
+          750170
+        ],
+        [
+          "2016",
+          694646
+        ],
+        [
+          "2017",
+          567866
+        ],
+        [
+          "2018",
+          483404
+        ],
+        [
+          "2019",
+          511354
+        ],
+        [
+          "2020",
+          537314
+        ],
+        [
+          "2021",
+          537395
+        ],
+        [
+          "2022",
+          386039
+        ],
+        [
+          "2023",
+          246265
+        ],
+        [
+          "2024",
+          303433
+        ]
+      ]
+    },
+    {
+      "id": "housing_completions",
+      "code": "MOLIT/468/5374",
+      "title": {
+        "ko": "주택 준공 (연간 확정)",
+        "en": "Housing completions (annual final)"
+      },
+      "category": "real-estate-housing",
+      "unit": "dwelling",
+      "cadence": "annual",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "source_org": "Ministry of Land, Infrastructure and Transport (MOLIT)",
+      "original_source": "국토교통부 통계누리, 주택정책과",
+      "dataset_name": "주택 준공 (연간 확정)",
+      "source_url": "https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=468&hFormId=5374&hSelectId=5374&hPoint=00&sFormId=5374",
+      "license": "MOLIT statistical information reuse policy (commercial reuse with attribution)",
+      "license_url": "https://stat.molit.go.kr/portal/info/protect.do",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T04:22:32.867926+00:00",
+      "version": "molit-reviewed-2026-11-12-housing_completions",
+      "definition": "National annual final housing completions, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply.",
+      "notes": {
+        "ko": "전국 주택 준공 연간 확정치 2014~2024년입니다. 2025년 9월 30일 소급 확정 공표 범위만 사용하며, 2025년 이후와 월별 잠정치는 제외했습니다. 단위는 호입니다. 현재 월의 공급량이 아닙니다.",
+        "en": "National annual final housing completions, 2014–2024 only, from the explicitly revised final release of 30 September 2025. Later years and monthly provisional data excluded. Unit: dwellings, not buildings or current-month supply."
+      },
+      "raw_files": [
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "raw_sha256": "80d5214e2215d8733c6d4d03a3a7083cfceec8847905eaf3fd78aabca3fac77f"
+        }
+      ],
+      "cell_evidence": [
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "K3",
+          "header": "'14년",
+          "value_cell": "K4",
+          "value": "448118",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "L3",
+          "header": "'15년",
+          "value_cell": "L4",
+          "value": "473311",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "M3",
+          "header": "'16년",
+          "value_cell": "M4",
+          "value": "517777",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "N3",
+          "header": "'17년",
+          "value_cell": "N4",
+          "value": "572985",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "O3",
+          "header": "'18년",
+          "value_cell": "O4",
+          "value": "613862",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "P3",
+          "header": "'19년",
+          "value_cell": "P4",
+          "value": "518885",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "Q3",
+          "header": "'20년",
+          "value_cell": "Q4",
+          "value": "448777",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "R3",
+          "header": "'21년",
+          "value_cell": "R4",
+          "value": "407005",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "S3",
+          "header": "'22년",
+          "value_cell": "S4",
+          "value": "415987",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "T3",
+          "header": "'23년",
+          "value_cell": "T4",
+          "value": "439090",
+          "region_cell": "A4",
+          "region": "합  계"
+        },
+        {
+          "raw_file": "data/molit-completions-final-2024.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "U3",
+          "header": "'24년",
+          "value_cell": "U4",
+          "value": "416382",
+          "region_cell": "A4",
+          "region": "합  계"
+        }
+      ],
+      "series": [
+        [
+          "2014",
+          448118
+        ],
+        [
+          "2015",
+          473311
+        ],
+        [
+          "2016",
+          517777
+        ],
+        [
+          "2017",
+          572985
+        ],
+        [
+          "2018",
+          613862
+        ],
+        [
+          "2019",
+          518885
+        ],
+        [
+          "2020",
+          448777
+        ],
+        [
+          "2021",
+          407005
+        ],
+        [
+          "2022",
+          415987
+        ],
+        [
+          "2023",
+          439090
+        ],
+        [
+          "2024",
+          416382
+        ]
+      ]
+    },
+    {
+      "id": "unsold_housing",
+      "code": "MOLIT/32/2082",
+      "title": {
+        "ko": "미분양 주택 (월말 재고)",
+        "en": "Unsold housing (month-end stock)"
+      },
+      "category": "real-estate-housing",
+      "unit": "dwelling",
+      "cadence": "monthly",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "source_org": "Ministry of Land, Infrastructure and Transport (MOLIT)",
+      "original_source": "국토교통부 통계누리, 주택정책과",
+      "dataset_name": "미분양 주택 (월말 재고)",
+      "source_url": "https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=32&hFormId=2082&hSelectId=2082&hPoint=00&sFormId=2082",
+      "license": "MOLIT statistical information reuse policy (commercial reuse with attribution)",
+      "license_url": "https://stat.molit.go.kr/portal/info/protect.do",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T04:22:32.867926+00:00",
+      "version": "molit-reviewed-2026-11-12-unsold_housing",
+      "definition": "Published national private-sector unsold housing, including before and after completion. Month-end stock, January 2024–September 2026; not monthly transactions or a flow. The source may revise reported figures.",
+      "notes": {
+        "ko": "전국 민간 미분양 주택의 월말 재고(준공 전·후 포함)입니다. 2024년 1월~2026년 9월 공표값이며 매월 발생 건수나 거래량이 아닙니다. 원본은 사후 수정될 수 있습니다.",
+        "en": "Published national private-sector unsold housing, including before and after completion. Month-end stock, January 2024–September 2026; not monthly transactions or a flow. The source may revise reported figures."
+      },
+      "raw_files": [
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "raw_sha256": "e3ae59a3e613e1065b53a85e4c924f2a405d99de84fa083c0e9f469432bf728c"
+        }
+      ],
+      "cell_evidence": [
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "CX3",
+          "header": "24.1",
+          "value_cell": "CX5",
+          "value": "63755",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "CY3",
+          "header": "24.2",
+          "value_cell": "CY5",
+          "value": "64874",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "CZ3",
+          "header": "24.3",
+          "value_cell": "CZ5",
+          "value": "64964",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DA3",
+          "header": "24.4",
+          "value_cell": "DA5",
+          "value": "71997",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DB3",
+          "header": "24.5",
+          "value_cell": "DB5",
+          "value": "72129",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DC3",
+          "header": "24.6",
+          "value_cell": "DC5",
+          "value": "74037",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DD3",
+          "header": "24.7",
+          "value_cell": "DD5",
+          "value": "71822",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DE3",
+          "header": "24.8",
+          "value_cell": "DE5",
+          "value": "67550",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DF3",
+          "header": "24.9",
+          "value_cell": "DF5",
+          "value": "66776",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DG3",
+          "header": "24.10",
+          "value_cell": "DG5",
+          "value": "65836",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DH3",
+          "header": "24.11",
+          "value_cell": "DH5",
+          "value": "65146",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DI3",
+          "header": "24.12",
+          "value_cell": "DI5",
+          "value": "70173",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DJ3",
+          "header": "25.1",
+          "value_cell": "DJ5",
+          "value": "72624",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DK3",
+          "header": "25.2",
+          "value_cell": "DK5",
+          "value": "70061",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DL3",
+          "header": "25.3",
+          "value_cell": "DL5",
+          "value": "68920",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DM3",
+          "header": "25.4",
+          "value_cell": "DM5",
+          "value": "67793",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DN3",
+          "header": "25.5",
+          "value_cell": "DN5",
+          "value": "66678",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DO3",
+          "header": "25.6",
+          "value_cell": "DO5",
+          "value": "63734",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DP3",
+          "header": "25.7",
+          "value_cell": "DP5",
+          "value": "62244",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DQ3",
+          "header": "25.8",
+          "value_cell": "DQ5",
+          "value": "66613",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DR3",
+          "header": "25.9",
+          "value_cell": "DR5",
+          "value": "66762",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DS3",
+          "header": "25.10",
+          "value_cell": "DS5",
+          "value": "69069",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DT3",
+          "header": "25.11",
+          "value_cell": "DT5",
+          "value": "68794",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DU3",
+          "header": "25.12",
+          "value_cell": "DU5",
+          "value": "66510",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DV3",
+          "header": "26.1",
+          "value_cell": "DV5",
+          "value": "66576",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DW3",
+          "header": "26.2",
+          "value_cell": "DW5",
+          "value": "66208",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DX3",
+          "header": "26.3",
+          "value_cell": "DX5",
+          "value": "65283",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DY3",
+          "header": "26.4",
+          "value_cell": "DY5",
+          "value": "65179",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "DZ3",
+          "header": "26.5",
+          "value_cell": "DZ5",
+          "value": "65239",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "EA3",
+          "header": "26.6",
+          "value_cell": "EA5",
+          "value": "67464",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "EB3",
+          "header": "26.7",
+          "value_cell": "EB5",
+          "value": "68217",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "EC3",
+          "header": "26.8",
+          "value_cell": "EC5",
+          "value": "69134",
+          "region_cell": "A5",
+          "region": "계"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet1.xml",
+          "header_cell": "ED3",
+          "header": "26.9",
+          "value_cell": "ED5",
+          "value": "65941",
+          "region_cell": "A5",
+          "region": "계"
+        }
+      ],
+      "series": [
+        [
+          "2024-01",
+          63755
+        ],
+        [
+          "2024-02",
+          64874
+        ],
+        [
+          "2024-03",
+          64964
+        ],
+        [
+          "2024-04",
+          71997
+        ],
+        [
+          "2024-05",
+          72129
+        ],
+        [
+          "2024-06",
+          74037
+        ],
+        [
+          "2024-07",
+          71822
+        ],
+        [
+          "2024-08",
+          67550
+        ],
+        [
+          "2024-09",
+          66776
+        ],
+        [
+          "2024-10",
+          65836
+        ],
+        [
+          "2024-11",
+          65146
+        ],
+        [
+          "2024-12",
+          70173
+        ],
+        [
+          "2025-01",
+          72624
+        ],
+        [
+          "2025-02",
+          70061
+        ],
+        [
+          "2025-03",
+          68920
+        ],
+        [
+          "2025-04",
+          67793
+        ],
+        [
+          "2025-05",
+          66678
+        ],
+        [
+          "2025-06",
+          63734
+        ],
+        [
+          "2025-07",
+          62244
+        ],
+        [
+          "2025-08",
+          66613
+        ],
+        [
+          "2025-09",
+          66762
+        ],
+        [
+          "2025-10",
+          69069
+        ],
+        [
+          "2025-11",
+          68794
+        ],
+        [
+          "2025-12",
+          66510
+        ],
+        [
+          "2026-01",
+          66576
+        ],
+        [
+          "2026-02",
+          66208
+        ],
+        [
+          "2026-03",
+          65283
+        ],
+        [
+          "2026-04",
+          65179
+        ],
+        [
+          "2026-05",
+          65239
+        ],
+        [
+          "2026-06",
+          67464
+        ],
+        [
+          "2026-07",
+          68217
+        ],
+        [
+          "2026-08",
+          69134
+        ],
+        [
+          "2026-09",
+          65941
+        ]
+      ]
+    },
+    {
+      "id": "unsold_completed_housing",
+      "code": "MOLIT/32/5328",
+      "title": {
+        "ko": "준공 후 미분양 주택 (월말 재고)",
+        "en": "Completed unsold housing (month-end stock)"
+      },
+      "category": "real-estate-housing",
+      "unit": "dwelling",
+      "cadence": "monthly",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "source_org": "Ministry of Land, Infrastructure and Transport (MOLIT)",
+      "original_source": "국토교통부 통계누리, 주택정책과",
+      "dataset_name": "준공 후 미분양 주택 (월말 재고)",
+      "source_url": "https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=32&hFormId=2082&hSelectId=2082&hPoint=00&sFormId=2082",
+      "license": "MOLIT statistical information reuse policy (commercial reuse with attribution)",
+      "license_url": "https://stat.molit.go.kr/portal/info/protect.do",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T04:22:32.867926+00:00",
+      "version": "molit-reviewed-2026-11-12-unsold_completed_housing",
+      "definition": "National completed unsold housing, month-end stock. Only the three acquired public monthly reports for July–September 2026. A subset of total unsold housing; do not add the two series. Reported source values may be revised.",
+      "notes": {
+        "ko": "전국 공사완료 후 미분양 주택의 월말 재고입니다. 정상 공개 월보 2026년 7~9월 3개월만 확보했습니다. 전체 미분양의 부분집합이며 별도로 더하지 않습니다. 원본은 사후 수정될 수 있습니다.",
+        "en": "National completed unsold housing, month-end stock. Only the three acquired public monthly reports for July–September 2026. A subset of total unsold housing; do not add the two series. Reported source values may be revised."
+      },
+      "raw_files": [
+        {
+          "raw_file": "data/molit-unsold-2026-07.xlsx",
+          "raw_sha256": "31b7384464e1bf5891633778e5728dfb89754c34b423b9ef4c3a6390e8cc0536"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-08.xlsx",
+          "raw_sha256": "8b4e5bd953f129f641217ffa72ddfb97dca7064538782eb751e21a8ee230e364"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "raw_sha256": "e3ae59a3e613e1065b53a85e4c924f2a405d99de84fa083c0e9f469432bf728c"
+        }
+      ],
+      "cell_evidence": [
+        {
+          "raw_file": "data/molit-unsold-2026-07.xlsx",
+          "sheet": "xl/worksheets/sheet4.xml",
+          "value_cell": "C5",
+          "value": "29152",
+          "region_cell": "A5",
+          "region": "전 국"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-08.xlsx",
+          "sheet": "xl/worksheets/sheet4.xml",
+          "value_cell": "C5",
+          "value": "28080",
+          "region_cell": "A5",
+          "region": "전 국"
+        },
+        {
+          "raw_file": "data/molit-unsold-2026-09.xlsx",
+          "sheet": "xl/worksheets/sheet4.xml",
+          "value_cell": "C5",
+          "value": "27549",
+          "region_cell": "A5",
+          "region": "전 국"
+        }
+      ],
+      "series": [
+        [
+          "2026-07",
+          29152
+        ],
+        [
+          "2026-08",
+          28080
+        ],
+        [
+          "2026-09",
+          27549
+        ]
+      ]
+    }
+  ]
+}

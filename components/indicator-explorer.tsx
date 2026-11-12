@@ -8,8 +8,13 @@ import { connectedIndicatorSeries, indicatorRegistry } from "@/lib/data/catalog"
 import { validatePublication } from "@/lib/data/publication";
 import { verifiedDataRecords } from "@/lib/data/verified-records";
 import { indicatorArtifact, indicatorCompareModel, indicatorContentId, indicatorSelection, liveSprintIds } from "@/lib/data/indicator-tools";
+import { periodPositions } from "@/lib/data/periods";
 
 const notes: Record<string, { ko: string; en: string }> = {
+  life_expectancy: { ko: "현재 연령별 사망률이 유지될 때 출생아가 살 것으로 기대되는 평균 연수입니다. WDI/원제공기관의 한국 전국 연간 지표이며 개인의 수명 예측이나 지역 순위가 아닙니다.", en: "Expected years of life for a newborn under prevailing age-specific mortality rates. WDI/original-provider national series for Korea, not an individual prediction or regional ranking." },
+  world_gdp_ppp: { ko: "한국의 당해년 국제달러 기준 구매력평가 1인당 GDP입니다. 불변가격 성장률·급여·실제 환전 가능한 달러가 아니며 국가 비교 데이터는 아직 연결하지 않았습니다.", en: "Korea's GDP per capita at purchasing-power parity in current international dollars. Not constant-price growth, salary or convertible US dollars. Only Korea is connected; cross-country comparison remains unavailable." },
+  tertiary_attainment: { ko: "25세 이상 인구 중 전문대 수준 이상의 고등교육을 이수한 비율(ISCED 누적 기준)입니다. 대학 재학률·학생수·25~64세 OECD 지표와 구분합니다. 관측이 없는 연도는 채우지 않습니다.", en: "Share of the population age 25+ with at least completed short-cycle tertiary education (cumulative ISCED attainment). Not enrollment, student counts or the OECD age-25–64 measure. Missing years are not filled." },
+  electricity_consumption_per_capita: { ko: "WDI/IEA의 한국 1인당 전력 소비량(kWh/명)입니다. 국가 전체 전력량·가정 전기요금·시간별 부하가 아닙니다. 원래의 총 전력 소비량 후보는 별도 BLOCKED로 유지합니다.", en: "WDI/IEA electric power consumption per capita for Korea, kWh/person. Not total national electricity, household bills or hourly load. The separate total-consumption candidate remains blocked." },
   business_birth_rate: { ko: "기업생멸행정통계의 산업 전체 신생률 공표값입니다. 제11차 산업분류 기준 2016~2024년 확정치만 표시하며 2025년 잠정치는 제외했습니다. 비율 차이는 %p입니다.", en: "Published enterprise birth rate, all industries, KSIC 11th revision. Final observations for 2016–2024 only; 2025 provisional values excluded. Rate differences are percentage points." },
   business_death_rate: { ko: "기업생멸행정통계의 산업 전체 소멸률 공표값입니다. 제11차 산업분류 기준 2016~2024년 확정치만 표시하며 미공표·잠정치는 생성하지 않습니다. 비율 차이는 %p입니다.", en: "Published enterprise death rate, all industries, KSIC 11th revision. Final observations for 2016–2024 only. Missing or provisional observations are never generated. Rate differences are percentage points." },
   apartment_price_index: { ko: "월간 전국 아파트 매매가격지수, 2026년 6월=100. 계절조정하지 않은 조사 지수이며 실거래가격지수와 다릅니다. 공개 CSV의 2025년 12월~2026년 9월 10개월 범위입니다.", en: "Monthly national apartment sale survey index, June 2026=100, not seasonally adjusted or a transaction-price index. Public CSV coverage: December 2025–September 2026 (10 months)." },
@@ -52,12 +57,13 @@ function IndicatorPanel({ id, requestedPeriod }: { id: string; requestedPeriod: 
   const record = verifiedDataRecords.find(item => item.id === id)!;
   const indicator = indicatorRegistry.find(item => item.id === id)!;
   const title = locale === "ko" ? indicator.title.ko : indicator.title.en;
-  const note = notes[id][locale === "ko" ? "ko" : "en"];
+  const note = ("notes" in record ? record.notes : notes[id])[locale === "ko" ? "ko" : "en"];
   const artifact = indicatorArtifact(id, title, selected.reference_period);
   const min = Math.min(...points.map(point => point.value));
   const max = Math.max(...points.map(point => point.value));
   const spread = max - min || 1;
-  const line = points.map((point, index) => `${index ? "L" : "M"}${90 + index / (points.length - 1) * 780},${24 + (max - point.value) / spread * 240}`).join(" ");
+  const positions = periodPositions(points.map(point => point.reference_period));
+  const line = points.map((point, index) => `${index ? "L" : "M"}${90 + positions[index] * 780},${24 + (max - point.value) / spread * 240}`).join(" ");
   return <>
     <section className="timeseries-section indicator-series" id={indicatorContentId(id)} aria-labelledby={`${id}-heading`}>
       <div className="shell"><div className="timeseries-header"><div><p>VERIFIED · KOREA, REP. · {record.cadence.toUpperCase()}</p><h2 id={`${id}-heading`}>{title}</h2></div><ExportMenu artifact={artifact} shareState={{ contentId: indicatorContentId(id), regionId: "kr", referencePeriod: selected.reference_period }} allowEmbed={false} /></div>
@@ -72,6 +78,6 @@ function IndicatorPanel({ id, requestedPeriod }: { id: string; requestedPeriod: 
         <details><summary>{t("compare.table")}</summary><div className="compare-table-wrap"><table className="compare-table"><caption>{title} · {selected.unit}</caption><thead><tr><th scope="col">{t("compare.period")}</th><th scope="col">{locale === "ko" ? "값" : "Value"}</th></tr></thead><tbody>{points.map(point => <tr key={point.reference_period}><th scope="row">{point.reference_period}</th><td>{format.number(point.value, { maximumFractionDigits: 4 })}</td></tr>)}</tbody></table></div></details>
       </div>
     </section>
-    <CompareBlock key={id} model={model} heading={`${title} · ${locale === "ko" ? "시점 비교" : "Compare periods"}`} description={note} differenceUnit={indicator.unit === "percent" ? (locale === "ko" ? "%p" : "percentage points") : indicator.unit} copy={{ "compare.kicker": "COMPARE · VERIFIED DATA", "compare.period": locale === "ko" ? "시점" : "Period", "compare.baseline": locale === "ko" ? "기준 시점" : "Baseline period", "compare.target": locale === "ko" ? "비교 시점" : "Comparison period", "compare.swap": locale === "ko" ? "시점 바꾸기" : "Swap periods", "compare.difference": locale === "ko" ? "값의 차이" : "Value difference", "compare.value": locale === "ko" ? "값" : "Value", "compare.chart": title, "compare.methodology": note, "compare.same": locale === "ko" ? "동일 연도: 차이는 0입니다." : "Same year: the difference is zero." }} precision={2} allowNegative={id === "consumer_price_inflation_wdi"} allowEmbed={false} />
+    <CompareBlock key={id} model={model} heading={`${title} · ${locale === "ko" ? "시점 비교" : "Compare periods"}`} description={note} differenceUnit={indicator.unit === "percent" ? (locale === "ko" ? "%p" : "percentage points") : indicator.unit} copy={{ "compare.kicker": "COMPARE · VERIFIED DATA", "compare.period": locale === "ko" ? "시점" : "Period", "compare.baseline": locale === "ko" ? "기준 시점" : "Baseline period", "compare.target": locale === "ko" ? "비교 시점" : "Comparison period", "compare.swap": locale === "ko" ? "시점 바꾸기" : "Swap periods", "compare.difference": locale === "ko" ? "값의 차이" : "Value difference", "compare.value": locale === "ko" ? "값" : "Value", "compare.chart": title, "compare.methodology": note, "compare.same": locale === "ko" ? "동일 시점: 차이는 0입니다." : "Same period: the difference is zero." }} precision={2} allowNegative={id === "consumer_price_inflation_wdi"} allowEmbed={false} />
   </>;
 }

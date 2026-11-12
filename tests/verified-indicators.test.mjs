@@ -14,12 +14,12 @@ import { verifyKosisCsv } from '../scripts/verify-kosis-csv.mjs';
 import { verifiedDataRecords } from '../lib/data/verified-records.ts';
 import { verifiedKosisRecords } from '../lib/data/verified-kosis.ts';
 
-test('three reviewed series preserve every official value, raw hash, definition, license and national annual scope', () => {
-  assert.equal(verifiedWdiRecords.length, 3);
+test('seven reviewed WDI series preserve every official value, raw hash, definition, license and national annual scope', () => {
+  assert.equal(verifiedWdiRecords.length, 7);
   for (const record of verifiedWdiRecords) {
     assert.equal(createHash('sha256').update(record.raw_response).digest('hex'), record.raw_sha256);
     assert.equal(record.license, 'CC BY 4.0');
-    assert.equal(record.license_evidence_url, record.source_url);
+    assert.equal(record.license_evidence_url, ['life_expectancy','tertiary_attainment','electricity_consumption_per_capita'].includes(record.id) ? `https://databank.worldbank.org/metadataglossary/world-development-indicators/series/${record.code}` : record.source_url);
     assert.ok(record.license_checked_at && record.original_source && record.definition);
     assert.equal(record.cadence, 'annual');
     const [header, rows] = JSON.parse(record.raw_response);
@@ -90,7 +90,7 @@ test('new share URLs restore exact indicator, year and comparison without accept
     shared.searchParams.set('baseline', 'bad');
     assert.equal(indicatorSelection(shared.searchParams), null);
   }
-  for (const id of ['housing_permits']) {
+  for (const id of ['household_credit', 'electricity_consumption']) {
     assert.equal(indicatorRegistry.find(item => item.id === id).status, 'BLOCKED');
     assert.deepEqual(connectedIndicatorSeries(id), []);
   }

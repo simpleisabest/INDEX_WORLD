@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright, expect
 
 base = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:3112/"
 preview = "/preview/" in base
-records = sum([json.loads(Path("data/verified-" + source + ".json").read_text(encoding="utf-8"))["records"] for source in ["reb", "wdi", "kosis"]], [])
+records = sum([json.loads(Path("data/verified-" + source + ".json").read_text(encoding="utf-8"))["records"] for source in ["reb", "wdi", "kosis", "molit"]], [])
 output = Path(".npm-cache")
 
 with sync_playwright() as p:

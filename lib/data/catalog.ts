@@ -1,7 +1,7 @@
 import type { TranslationKey } from "../i18n/dictionaries/en";
 import { populationObservations, populationSource, type PopulationObservation } from "./population.ts";
 import { expansionCandidates } from "./expansion-candidates.ts";
-import { reviewedSprintSeries } from "./verified-records.ts";
+import { reviewedSprintSeries, verifiedDataRecords } from "./verified-records.ts";
 
 export const categoryIds = ["population-household","real-estate-housing","economy-income","jobs-employment","business-startup","finance-assets","education","health-medical","society-life","transport-vehicles","environment-energy","country-world"] as const;
 export type CategoryId = typeof categoryIds[number];
@@ -31,7 +31,7 @@ export type IndicatorDefinition = {
 };
 
 const fullNational: Capability[] = ["kpi","timeseries","compare","questions","share","export","citation","embed"];
-export const indicatorRegistry: IndicatorDefinition[] = [
+const baseIndicatorRegistry: IndicatorDefinition[] = [
   { id:"population_total",categoryId:"population-household",title:{en:"Total population",ko:"총인구"},status:"CONNECTED",unit:"person",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"preserved versioned snapshot",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
   { id:"population_change_annual",categoryId:"population-household",title:{en:"Annual population change",ko:"연간 인구 증감"},status:"CONNECTED",unit:"person",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"derived from adjacent verified observations",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
   { id:"population_change_rate_annual",categoryId:"population-household",title:{en:"Annual population change rate",ko:"연간 인구 증감률"},status:"CONNECTED",unit:"percent",geography:"country",cadence:"annual",sourceOrg:populationSource.source_org,sourceUrl:populationSource.source_url,access:"derived: change / previous year × 100",license:populationSource.license,automation:"HIGH",capabilities:fullNational },
@@ -52,6 +52,26 @@ export const indicatorRegistry: IndicatorDefinition[] = [
   { id:"startup_total",categoryId:"business-startup",title:{en:"New businesses",ko:"창업기업수"},status:"CANDIDATE",unit:"business",geography:"mixed",cadence:"monthly/annual",sourceOrg:"Ministry of SMEs and Startups / KOSIS",sourceUrl:"https://www.data.go.kr/",access:"dataset review",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","ranking","compare"] },
   ...expansionCandidates,
 ];
+
+// New public-source series are distinct from similarly named blocked datasets.
+const extraIndicators: IndicatorDefinition[] = verifiedDataRecords.filter(record => !baseIndicatorRegistry.some(item => item.id === record.id)).map(record => ({
+  id: record.id, categoryId: record.category as CategoryId,
+  title: "title" in record ? record.title : { en: "Electric power consumption per capita", ko: "1인당 전력 소비량" },
+  status: "CONNECTED", unit: record.unit, geography: "country", cadence: record.cadence,
+  sourceOrg: record.source_org, sourceUrl: record.source_url, access: "reviewed frozen official snapshot",
+  license: record.license, automation: "MEDIUM", capabilities: ["kpi", "timeseries", "compare", "share", "export", "citation"],
+}));
+export const indicatorRegistry: IndicatorDefinition[] = [...baseIndicatorRegistry, ...extraIndicators].map(candidate => {
+  const record = verifiedDataRecords.find(item => item.id === candidate.id);
+  if (!record) return candidate;
+  if (!reviewedSprintSeries(candidate.id).length) throw new Error("Connected indicator lacks reviewed observations");
+  return { ...candidate, title: "title" in record ? record.title : candidate.id === "tertiary_attainment"
+    ? { en: "At least short-cycle tertiary attainment (age 25+)", ko: "25세 이상 고등교육 이수율 (전문대 이상)" }
+    : candidate.id === "world_gdp_ppp" ? { en: "GDP per capita, PPP (current international $), Korea", ko: "한국 구매력평가 1인당 GDP (당해년 국제달러)" } : candidate.title,
+    status: "CONNECTED", unit: record.unit, geography: "country", cadence: record.cadence,
+    sourceOrg: record.source_org, sourceUrl: record.source_url, access: "reviewed frozen official snapshot", license: record.license,
+    blockReason: undefined, capabilities: ["kpi", "timeseries", "compare", "share", "export", "citation"] };
+});
 
 export type CatalogObservation = Omit<PopulationObservation,"indicator_id"|"unit"> & {
   indicator_id: string; unit: string; derivation: string | null;
