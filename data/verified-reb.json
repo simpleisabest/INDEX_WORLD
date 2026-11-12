@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "apartment_price_index",
+      "code": "A_2024_00045",
+      "category": "real-estate-housing",
+      "unit": "index (2026.06=100)",
+      "cadence": "monthly",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "license": "이용허락범위 제한 없음",
+      "license_url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+      "license_evidence_url": "https://www.data.go.kr/catalog/15069821/fileData.json",
+      "license_evidence": {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "한국부동산원_전국주택가격동향조사_월별동향_아파트_매매가격지수(지역별)",
+        "alternateName": "한국부동산원_전국주택가격동향조사_월별동향_아파트_매매가격지수(지역별)_20250430",
+        "description": "한국부동산원(구.한국감정원)에서 제공하는 전국주택가격동향 월간동향 중 아파트의 지역별 매매가격지수 데이터입니다. <전국주택가격동향조사 개요> ㅇ 국가통계 승인번호 : 제304004호 ㅇ 법적근거 : 「주택법」제88조 1항 및 제89조 제2항 제4호 동법 시행령 제91조 제2항 제3호 ㅇ 조사목적 : 전국 주택시장의 매매, 전세, 월세가격을 조사하여 주택시장의 평균적인 가격변화를 측정, 주택시장 판단지표 또는 주택정책수립의 참고자료 제공 ㅇ 조사방법 : 표본조사 ㅇ 공표주기 : 월간 및 주간 ㅇ 공표시기 - 월간 : 익월 15일(발표일이 휴일인 경우 그 다음날) - 주간 : 매주 목요일(공표일이 휴일인 경우 사전 안내 예정) ※ 유의사항 : 전국주택가격동향조사는 주택가격지수를 산출하여 제공하는 것이 주된 목적이며, 조사항목, 표본추출방법, 지수산출방법 등이 이에 맞게 설계되었음. 본 조사는 주택가격 지수산출에 맞게 설계되었기 때문에 평균/중위 주택가격 결과는 참고 사항으로 이용하기 바람.",
+        "url": "https://www.data.go.kr/data/15069821/fileData.do",
+        "identifier": "15069821",
+        "inLanguage": "ko",
+        "keywords": "주택동향,아파트 매매가격지수,지역별 매매가격지수,부동산통계,부동산조사",
+        "license": {
+          "name": "이용허락범위 제한 없음",
+          "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+          "@type": "CreativeWork"
+        },
+        "isAccessibleForFree": true,
+        "dateCreated": "2020-10-26",
+        "dateModified": "2025-06-11",
+        "datePublished": "2020-10-26",
+        "creator": {
+          "name": "한국부동산원",
+          "contactPoint": {
+            "contactType": "AX데이터전략부",
+            "telephone": "+82-53-663-8466",
+            "@type": "ContactPoint"
+          },
+          "@type": "Organization"
+        },
+        "encodingFormat": "CSV",
+        "includedInDataCatalog": {
+          "name": "공공데이터포털",
+          "url": "https://www.data.go.kr",
+          "@id": "https://www.data.go.kr/#datacatalog",
+          "@type": "DataCatalog"
+        },
+        "additionalProperty": [
+          {
+            "name": "분류체계",
+            "value": "일반공공행정 - 국가통계",
+            "@type": "PropertyValue"
+          },
+          {
+            "name": "업데이트 주기",
+            "value": "수시 (자동 갱신)",
+            "@type": "PropertyValue"
+          }
+        ]
+      },
+      "source_org": "Korea Real Estate Board",
+      "original_source": "Korea Real Estate Board, National Housing Price Survey (monthly, non-seasonally adjusted)",
+      "source_url": "https://www.reb.or.kr/r-one/portal/stat/easyStatPage/A_2024_00045.do",
+      "dataset_name": "(월) 매매가격지수_아파트",
+      "definition": "National apartment price survey index; June 2026=100. Public CSV selected-window snapshot, not the transaction-price index or full historical series.",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T03:54:22.309420+00:00",
+      "version": "reb-A_2024_00045-2026-09-base202606",
+      "raw_file": "data/reb-A_2024_00045.csv",
+      "raw_sha256": "91a1219db7d0f4d50cc844b56c7eefcd2f0f25ff0bf4a51ddce55c7a3a214978",
+      "csv_header": [
+        "No",
+        "지역",
+        "지역",
+        "지역",
+        "지역",
+        "2025년 12월",
+        "2026년 1월",
+        "2026년 2월",
+        "2026년 3월",
+        "2026년 4월",
+        "2026년 5월",
+        "2026년 6월",
+        "2026년 7월",
+        "2026년 8월",
+        "2026년 9월"
+      ],
+      "csv_national_row": [
+        "1",
+        "전국",
+        "전국",
+        "전국",
+        "전국",
+        "98.40",
+        "98.74",
+        "99.02",
+        "99.18",
+        "99.36",
+        "99.60",
+        "100.00",
+        "100.44",
+        "100.83",
+        "101.18"
+      ],
+      "source_region_count": 236,
+      "coverage_note": "2025-12 to 2026-09, 10 selected monthly observations; national only. No sample API data or interpolated periods.",
+      "series": [
+        [
+          "2025-12",
+          98.4
+        ],
+        [
+          "2026-01",
+          98.74
+        ],
+        [
+          "2026-02",
+          99.02
+        ],
+        [
+          "2026-03",
+          99.18
+        ],
+        [
+          "2026-04",
+          99.36
+        ],
+        [
+          "2026-05",
+          99.6
+        ],
+        [
+          "2026-06",
+          100.0
+        ],
+        [
+          "2026-07",
+          100.44
+        ],
+        [
+          "2026-08",
+          100.83
+        ],
+        [
+          "2026-09",
+          101.18
+        ]
+      ]
+    },
+    {
+      "id": "apartment_jeonse_price_index",
+      "code": "A_2024_00050",
+      "category": "real-estate-housing",
+      "unit": "index (2026.06=100)",
+      "cadence": "monthly",
+      "country_id": "kr",
+      "region_id": "kr",
+      "quality_status": "VERIFIED",
+      "license": "이용허락범위 제한 없음",
+      "license_url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+      "license_evidence_url": "https://www.data.go.kr/catalog/15044018/fileData.json",
+      "license_evidence": {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "한국부동산원_전국주택가격동향조사_월별동향_아파트_전세가격지수(지역별)",
+        "alternateName": "한국부동산원_전국주택가격동향조사_월별동향_아파트_전세가격지수(지역별)_20250430",
+        "description": "한국부동산원(구.한국감정원)에서 제공하는 전국주택가격동향조사 월간동향 중 아파트 지역별 전세가격지수 데이터입니다. <전국주택가격동향조사 개요> ㅇ 국가통계 승인번호 : 제304004호 ㅇ 법적근거 : 「주택법」제88조 1항 및 제89조 제2항 제4호 동법 시행령 제91조 제2항 제3호 ㅇ 조사목적 : 전국 주택시장의 매매, 전세, 월세가격을 조사하여 주택시장의 평균적인 가격변화를 측정, 주택시장 판단지표 또는 주택정책수립의 참고자료 제공 ㅇ 조사방법 : 표본조사 ㅇ 공표주기 : 월간 및 주간 ㅇ 공표시기 - 월간 : 익월 15일(발표일이 휴일인 경우 그 다음날) - 주간 : 매주 목요일(공표일이 휴일인 경우 사전 안내 예정) ※ 유의사항 : 전국주택가격동향조사는 주택가격지수를 산출하여 제공하는 것이 주된 목적이며, 조사항목, 표본추출방법, 지수산출방법 등이 이에 맞게 설계되었음. 본 조사는 주택가격 지수산출에 맞게 설계되었기 때문에 평균/중위 주택가격 결과는 참고 사항으로 이용하기 바람.",
+        "url": "https://www.data.go.kr/data/15044018/fileData.do",
+        "identifier": "15044018",
+        "inLanguage": "ko",
+        "keywords": "주택동향,아파트 전세가격지수,전세가격지수,부동산통계,부동산조사",
+        "license": {
+          "name": "이용허락범위 제한 없음",
+          "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+          "@type": "CreativeWork"
+        },
+        "isAccessibleForFree": true,
+        "dateCreated": "2018-07-03",
+        "dateModified": "2025-06-11",
+        "datePublished": "2018-07-03",
+        "creator": {
+          "name": "한국부동산원",
+          "contactPoint": {
+            "contactType": "AX데이터전략부",
+            "telephone": "+82-53-663-8466",
+            "@type": "ContactPoint"
+          },
+          "@type": "Organization"
+        },
+        "encodingFormat": "CSV",
+        "includedInDataCatalog": {
+          "name": "공공데이터포털",
+          "url": "https://www.data.go.kr",
+          "@id": "https://www.data.go.kr/#datacatalog",
+          "@type": "DataCatalog"
+        },
+        "additionalProperty": [
+          {
+            "name": "분류체계",
+            "value": "일반공공행정 - 국가통계",
+            "@type": "PropertyValue"
+          },
+          {
+            "name": "업데이트 주기",
+            "value": "수시 (자동 갱신)",
+            "@type": "PropertyValue"
+          }
+        ]
+      },
+      "source_org": "Korea Real Estate Board",
+      "original_source": "Korea Real Estate Board, National Housing Price Survey (monthly, non-seasonally adjusted)",
+      "source_url": "https://www.reb.or.kr/r-one/portal/stat/easyStatPage/A_2024_00050.do",
+      "dataset_name": "(월) 전세가격지수_아파트",
+      "definition": "National apartment price survey index; June 2026=100. Public CSV selected-window snapshot, not the transaction-price index or full historical series.",
+      "publication_date": null,
+      "source_last_updated": null,
+      "ingested_at": "2026-11-12T03:54:22.424743+00:00",
+      "version": "reb-A_2024_00050-2026-09-base202606",
+      "raw_file": "data/reb-A_2024_00050.csv",
+      "raw_sha256": "d9536cf71b2b244c44ef54b06d75ac8215ff0c67c03f2a67425fec665ebf6bb2",
+      "csv_header": [
+        "No",
+        "지역",
+        "지역",
+        "지역",
+        "지역",
+        "2025년 12월",
+        "2026년 1월",
+        "2026년 2월",
+        "2026년 3월",
+        "2026년 4월",
+        "2026년 5월",
+        "2026년 6월",
+        "2026년 7월",
+        "2026년 8월",
+        "2026년 9월"
+      ],
+      "csv_national_row": [
+        "1",
+        "전국",
+        "전국",
+        "전국",
+        "전국",
+        "97.63",
+        "97.99",
+        "98.29",
+        "98.66",
+        "99.06",
+        "99.51",
+        "100.00",
+        "100.49",
+        "100.94",
+        "101.36"
+      ],
+      "source_region_count": 236,
+      "coverage_note": "2025-12 to 2026-09, 10 selected monthly observations; national only. No sample API data or interpolated periods.",
+      "series": [
+        [
+          "2025-12",
+          97.63
+        ],
+        [
+          "2026-01",
+          97.99
+        ],
+        [
+          "2026-02",
+          98.29
+        ],
+        [
+          "2026-03",
+          98.66
+        ],
+        [
+          "2026-04",
+          99.06
+        ],
+        [
+          "2026-05",
+          99.51
+        ],
+        [
+          "2026-06",
+          100.0
+        ],
+        [
+          "2026-07",
+          100.49
+        ],
+        [
+          "2026-08",
+          100.94
+        ],
+        [
+          "2026-09",
+          101.36
+        ]
+      ]
+    }
+  ]
+}

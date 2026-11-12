@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { categoryRegistry, catalogSummary, indicatorRegistry, type CategoryDefinition, type CategoryId } from "@/lib/data/catalog";
 
+import { indicatorContentId, liveSprintIds } from "@/lib/data/indicator-tools";
+
 function CategoryVisual({ category }: { category: CategoryDefinition }) {
   const bars = [34 + category.order % 3 * 7, 55 + category.order % 4 * 6, 42 + category.order % 5 * 5, 76 - category.order % 3 * 4];
   return <span className="catalog-visual" aria-hidden="true"><i>{category.icon.slice(0,1).toUpperCase()}</i><span>{bars.map((height,index)=><b key={index} style={{height:`${height}%`}} />)}</span></span>;
@@ -25,7 +27,7 @@ export function CategoryCatalog() {
     </button>})}</div>
     <aside className={`catalog-detail tone-${category.color}`} aria-live="polite">
       <div className="catalog-detail-head"><span>{String(category.order).padStart(2,"0")} · {category.phase===1?"PHASE 1":"ROADMAP"}</span><div><h3>{t(category.labelKey)}</h3><p>{copy(category.description)}</p></div></div>
-      <div className="indicator-list">{indicators.length ? indicators.map(item=><article key={item.id} className={`indicator-row status-${item.status.toLowerCase()}`}><div><span>{item.status}</span><strong>{locale==="ko"?item.title.ko:item.title.en}</strong><small>{item.sourceOrg} · {item.cadence}</small></div>{item.status==="CONNECTED"?<a href={item.id==="population_total"?"#population-kpi":"#population-timeseries"}>{t("catalog.open")} ↗</a>:<em>{item.status==="BLOCKED"?t("catalog.blocked"):t("catalog.review")}</em>}</article>):<p className="catalog-empty">{t("catalog.phase2")}</p>}</div>
+      <div className="indicator-list">{indicators.length ? indicators.map(item=><article key={item.id} className={`indicator-row status-${item.status.toLowerCase()}`}><div><span>{item.status==="CONNECTED"?"VERIFIED":item.status}</span><strong>{locale==="ko"?item.title.ko:item.title.en}</strong><small>{item.sourceOrg} · {item.cadence}</small></div>{item.status==="CONNECTED"?<a href={liveSprintIds.includes(item.id)?`?content=${indicatorContentId(item.id)}&region=kr#${indicatorContentId(item.id)}`:item.id==="population_total"?"#population-kpi":"#population-timeseries"}>{t("catalog.open")} ↗</a>:<em>{item.status==="BLOCKED"?t("catalog.blocked"):t("catalog.review")}</em>}</article>):<p className="catalog-empty">{t("catalog.phase2")}</p>}</div>
     </aside>
   </div></section>;
 }

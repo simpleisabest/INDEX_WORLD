@@ -1,7 +1,7 @@
 import type { CategoryId, IndicatorDefinition } from "./catalog.ts";
+import { reviewedSprintSeries, verifiedDataRecords } from "./verified-records.ts";
 
-// Research targets, not observations. Cadence/geography describe the intended
-// series; neither is considered verified until a specific dataset is frozen.
+// Research targets remain blocked unless an explicitly reviewed, frozen adapter exists.
 type Candidate = [string, string, string, string, string, string];
 const groups: [CategoryId, string, string, Candidate[]][] = [
   ["real-estate-housing", "Ministry of Land, Infrastructure and Transport", "https://www.data.go.kr/", [
@@ -54,7 +54,7 @@ const groups: [CategoryId, string, string, Candidate[]][] = [
   ]],
 ];
 
-export const expansionCandidates: IndicatorDefinition[] = groups.flatMap(([categoryId, sourceOrg, sourceUrl, rows]) => rows.map(([id, en, ko, unit, cadence, geography]) => ({
+const researchCandidates: IndicatorDefinition[] = groups.flatMap(([categoryId, sourceOrg, sourceUrl, rows]) => rows.map(([id, en, ko, unit, cadence, geography]) => ({
   id, categoryId, title: { en, ko }, unit, cadence,
   geography: geography as IndicatorDefinition["geography"],
   sourceOrg: id === "household_net_assets" ? "Statistics Korea (KOSIS), Survey of Household Finances and Living Conditions" : sourceOrg,
@@ -64,6 +64,17 @@ export const expansionCandidates: IndicatorDefinition[] = groups.flatMap(([categ
   capabilities: [],
   blockReason: "Official access, dataset ID, definitions, reuse terms and geography have not passed verification",
 })));
+
+export const expansionCandidates: IndicatorDefinition[] = researchCandidates.map(candidate => {
+  const record = verifiedDataRecords.find(item => item.id === candidate.id);
+  if (!record) return candidate;
+  const points = reviewedSprintSeries(candidate.id);
+  if (!points.length) return candidate;
+  return { ...candidate, status: "CONNECTED", unit: record.unit, geography: "country", cadence: record.cadence,
+    sourceOrg: record.source_org, sourceUrl: record.source_url, license: record.license,
+    access: "reviewed versioned official snapshot", automation: record.source_org === "World Bank WDI" ? "HIGH" : "MEDIUM", blockReason: undefined,
+    capabilities: ["kpi", "timeseries", "compare", "share", "export", "citation"] };
+});
 
 // A candidate code is not a verified dataset ID. Do not publish values from it.
 export const candidateSourceCodes: Record<string, string> = {

@@ -7,7 +7,7 @@ import { validateExport, attributedCsv, exportPrintHtml, exportTable, type Expor
 import { embedCode } from "@/lib/embed";
 import { copyExportText, exportCanvas, saveExport } from "@/lib/export-browser";
 
-export function ExportMenu({ artifact, shareState }: { artifact: ExportArtifact; shareState: ShareState }) {
+export function ExportMenu({ artifact, shareState, allowEmbed = true }: { artifact: ExportArtifact; shareState: ShareState; allowEmbed?: boolean }) {
   const { t, locale } = useLocale(); const menu = useRef<HTMLDetailsElement>(null);
   const [ratio,setRatio] = useState<"1:1"|"4:5"|"9:16">("1:1");
   const [busy, setBusy] = useState(false); const [status, setStatus] = useState<"idle" | "done" | "failed">("idle");
@@ -16,7 +16,7 @@ export function ExportMenu({ artifact, shareState }: { artifact: ExportArtifact;
     try {
       validateExport(artifact);
       const url = buildShareUrl(window.location.href, shareState);
-      if (action === "embed") await copyExportText(embedCode(url, artifact.title, artifact.source, artifact.sourceUrl));
+      if (action === "embed" && allowEmbed) await copyExportText(embedCode(url, artifact.title, artifact.source, artifact.sourceUrl));
       else if (action === "table") await copyExportText(exportTable(artifact, url));
       else if (action === "citation") await copyExportText(`${artifact.citation}\n${artifact.metadata}\nINDEX WORLD · ${url}`);
       else if (action === "csv") saveExport(new Blob(["\uFEFF", attributedCsv(artifact.csv, url)], { type: "text/csv;charset=utf-8" }), `${artifact.filename}.csv`);
@@ -45,5 +45,5 @@ export function ExportMenu({ artifact, shareState }: { artifact: ExportArtifact;
       setStatus("done");
     } catch { setStatus("failed"); } finally { setBusy(false); }
   };
-  return <div className="export-control"><details ref={menu} onKeyDown={event => { if (event.key === "Escape") { menu.current!.open = false; menu.current?.querySelector("summary")?.focus(); } }}><summary>{t("export.menu")}</summary><div className="export-options"><label>{t("discovery.format")}<select value={ratio} onChange={event=>setRatio(event.target.value as typeof ratio)}><option>1:1</option><option>4:5</option><option>9:16</option></select></label>{(["png", "print", "table", "citation", "csv", "card", "embed"] as const).map(action => <button type="button" disabled={busy} key={action} onClick={() => void run(action)}>{action === "embed" ? t("discovery.embed") : t(`export.${action}`)}</button>)}<ShareButton {...shareState} title={artifact.title} description={`${artifact.subtitle}\n${artifact.source} · ${artifact.license}`} /></div></details><span role="status">{status === "done" ? t("export.done") : status === "failed" ? t("export.failed") : ""}</span></div>;
+  return <div className="export-control"><details ref={menu} onKeyDown={event => { if (event.key === "Escape") { menu.current!.open = false; menu.current?.querySelector("summary")?.focus(); } }}><summary>{t("export.menu")}</summary><div className="export-options"><label>{t("discovery.format")}<select value={ratio} onChange={event=>setRatio(event.target.value as typeof ratio)}><option>1:1</option><option>4:5</option><option>9:16</option></select></label>{(["png", "print", "table", "citation", "csv", "card", "embed"] as const).filter(action => allowEmbed || action !== "embed").map(action => <button type="button" disabled={busy} key={action} onClick={() => void run(action)}>{action === "embed" ? t("discovery.embed") : t(`export.${action}`)}</button>)}<ShareButton {...shareState} title={artifact.title} description={`${artifact.subtitle}\n${artifact.source} · ${artifact.license}`} /></div></details><span role="status">{status === "done" ? t("export.done") : status === "failed" ? t("export.failed") : ""}</span></div>;
 }

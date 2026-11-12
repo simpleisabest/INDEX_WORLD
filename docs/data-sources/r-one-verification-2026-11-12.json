@@ -1,0 +1,114 @@
+{
+  "checked_at": "2026-11-12T03:37:33.746Z",
+  "reason": "Full series requires an issued API key; sample responses are not published as complete data.",
+  "license_evidence_url": "https://www.data.go.kr/data/15134761/openapi.do",
+  "recorded_license": "이용허락범위 제한 없음",
+  "guide": "https://www.reb.or.kr/r-one/portal/openapi/openApiDevPage.do",
+  "definitions": [
+    {
+      "id": "A_2024_00045",
+      "table": [
+        {
+          "STATBL_ID": "A_2024_00045",
+          "STATBL_NM": "(월) 매매가격지수_아파트",
+          "DTACYCLE_CD": "MM",
+          "DTACYCLE_NM": "월",
+          "STAT_ID": "S234820263",
+          "TOP_ORG_NM": "한국부동산원",
+          "OPEN_STATE": "Y",
+          "DATA_START_YY": "2003",
+          "DATA_END_YY": "2024",
+          "STATBL_IDTFR": null,
+          "STATBL_CMMT": "※조사ㆍ통계문의 : 부동산통계처 주택통계부(053-663-8505,515)",
+          "V_ORDER": 511030,
+          "RPSTUI_NM": "기준시점 : 2026.06.=100.0"
+        }
+      ],
+      "items": [
+        {
+          "STATBL_ID": "A_2024_00045",
+          "ITM_TAG": "항목",
+          "ITM_ID": 100001,
+          "PAR_ITM_ID": 0,
+          "ITM_NM": "지수",
+          "ITM_FULLNM": "지수",
+          "UI_NM": "지수",
+          "ITM_CMMT_IDTFR": null,
+          "ITM_CMMT_CONT": null,
+          "V_ORDER": 1
+        }
+      ],
+      "national_region": {
+        "STATBL_ID": "A_2024_00045",
+        "ITM_TAG": "분류",
+        "ITM_ID": 500001,
+        "PAR_ITM_ID": 0,
+        "ITM_NM": "전국",
+        "ITM_FULLNM": "전국",
+        "UI_NM": null,
+        "ITM_CMMT_IDTFR": null,
+        "ITM_CMMT_CONT": null,
+        "V_ORDER": 1
+      },
+      "data_url": "https://www.reb.or.kr/r-one/openapi/SttsApiTblData.do?Type=json&STATBL_ID=A_2024_00045&DTACYCLE_CD=MM&CLS_ID=500001&ITM_ID=100001&START_WRTTIME=2025",
+      "total_count": 21,
+      "returned_rows": 5
+    },
+    {
+      "id": "A_2024_00050",
+      "table": [
+        {
+          "STATBL_ID": "A_2024_00050",
+          "STATBL_NM": "(월) 전세가격지수_아파트",
+          "DTACYCLE_CD": "MM",
+          "DTACYCLE_NM": "월",
+          "STAT_ID": "S234820263",
+          "TOP_ORG_NM": "한국부동산원",
+          "OPEN_STATE": "Y",
+          "DATA_START_YY": "2003",
+          "DATA_END_YY": "2024",
+          "STATBL_IDTFR": null,
+          "STATBL_CMMT": "※조사ㆍ통계문의 : 부동산통계처 주택통계부(053-663-8505,515)",
+          "V_ORDER": 513035,
+          "RPSTUI_NM": "기준시점 : 2026.06.=100.0"
+        }
+      ],
+      "items": [
+        {
+          "STATBL_ID": "A_2024_00050",
+          "ITM_TAG": "항목",
+          "ITM_ID": 100001,
+          "PAR_ITM_ID": 0,
+          "ITM_NM": "지수",
+          "ITM_FULLNM": "지수",
+          "UI_NM": "지수",
+          "ITM_CMMT_IDTFR": null,
+          "ITM_CMMT_CONT": null,
+          "V_ORDER": 1
+        }
+      ],
+      "national_region": {
+        "STATBL_ID": "A_2024_00050",
+        "ITM_TAG": "분류",
+        "ITM_ID": 500001,
+        "PAR_ITM_ID": 0,
+        "ITM_NM": "전국",
+        "ITM_FULLNM": "전국",
+        "UI_NM": null,
+        "ITM_CMMT_IDTFR": null,
+        "ITM_CMMT_CONT": null,
+        "V_ORDER": 1
+      },
+      "data_url": "https://www.reb.or.kr/r-one/openapi/SttsApiTblData.do?Type=json&STATBL_ID=A_2024_00050&DTACYCLE_CD=MM&CLS_ID=500001&ITM_ID=100001&START_WRTTIME=2025",
+      "total_count": 21,
+      "returned_rows": 5
+    }
+  ],
+  "api_status": "BLOCKED",
+  "csv_status": "VERIFIED",
+  "csv_method": "Normal public CSV download from each table UI; national selected-window values, no API key or sample pagination.",
+  "csv_license_catalogs": [
+    "15069821",
+    "15044018"
+  ]
+}

@@ -14,10 +14,11 @@ export type ExportArtifact = {
   quality: string;
   csv: string;
   filename: string;
+  allowNegative?: boolean;
 };
 
 export function validateExport(artifact: ExportArtifact) {
-  if (artifact.quality !== "VERIFIED" || !artifact.points.length || artifact.points.some(p => !Number.isFinite(p.value) || p.value < 0)) throw new Error("Export requires verified data");
+  if (artifact.quality !== "VERIFIED" || !artifact.points.length || artifact.points.some(p => !Number.isFinite(p.value) || (!artifact.allowNegative && p.value < 0))) throw new Error("Export requires verified data");
   if (![artifact.source, artifact.sourceUrl, artifact.license, artifact.licenseUrl, artifact.citation].every(Boolean)) throw new Error("Export requires provenance");
 }
 

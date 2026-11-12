@@ -35,16 +35,17 @@ export async function exportCanvas(artifact: ExportArtifact, url: string, card: 
   };
   text("INDEX WORLD", 56, 68, 28); let y = wrap(artifact.title, 132, 36); y = wrap(artifact.subtitle, y + 4, 22);
   const plotTop = y + 30, plotBottom = plotTop + (card ? 380 : 300), left = 160, right = 1120;
-  const values = artifact.points.map(p => p.value); const max = Math.max(...values); const min = artifact.chart === "bars" ? 0 : Math.min(...values); const spread = Math.max(max - min, 1);
+  const values = artifact.points.map(p => p.value); const max = Math.max(...values, ...(artifact.chart === "bars" ? [0] : [])); const min = Math.min(...values, ...(artifact.chart === "bars" ? [0] : [])); const spread = Math.max(max - min, 0.01);
   ctx.strokeStyle = "#c9cec6"; ctx.lineWidth = 1;
-  for (const step of [0, .5, 1]) { const axisY = plotTop + step * (plotBottom - plotTop); ctx.beginPath();ctx.moveTo(left, axisY);ctx.lineTo(right, axisY);ctx.stroke(); text(new Intl.NumberFormat(locale).format(Math.round(max - spread * step)), 56, axisY + 6, 16); }
+  for (const step of [0, .5, 1]) { const axisY = plotTop + step * (plotBottom - plotTop); ctx.beginPath();ctx.moveTo(left, axisY);ctx.lineTo(right, axisY);ctx.stroke(); text(new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(max - spread * step), 56, axisY + 6, 16); }
   if (artifact.chart === "line") {
     ctx.strokeStyle = "#152019"; ctx.lineWidth = 4; ctx.beginPath();
     artifact.points.forEach((p, index) => { const x = left + index / Math.max(values.length - 1, 1) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); if (index) ctx.lineTo(x, py); else ctx.moveTo(x, py); }); ctx.stroke();
     artifact.points.forEach((p, index) => { const x = left + index / Math.max(values.length - 1, 1) * (right - left), py = plotTop + (max - p.value) / spread * (plotBottom - plotTop); ctx.fillStyle = "#152019";ctx.beginPath();ctx.arc(x,py,4,0,Math.PI*2);ctx.fill(); });
     text(artifact.points[0].label, left, plotBottom + 30, 18); text(artifact.points.at(-1)!.label, right - 65, plotBottom + 30, 18);
   } else {
-    artifact.points.forEach((p, index) => { const x = left + 160 + index * 390, barHeight = max ? p.value / max * (plotBottom - plotTop) : 0; ctx.fillStyle = index ? "#c9f343" : "#152019";ctx.fillRect(x,plotBottom - barHeight,170,barHeight);text(p.label,x,plotBottom + 30,22);text(p.display,x - 25,plotBottom - barHeight - 18,20); });
+    const zeroY = plotTop + max / spread * (plotBottom - plotTop);
+    artifact.points.forEach((p, index) => { const x = left + 160 + index * 390, pointY = plotTop + (max - p.value) / spread * (plotBottom - plotTop); ctx.fillStyle = index ? "#c9f343" : "#152019";ctx.fillRect(x,Math.min(zeroY,pointY),170,Math.abs(zeroY-pointY));text(p.label,x,plotBottom + 30,22);text(p.display,x - 25,Math.min(zeroY,pointY) - 18,20); });
   }
   y = wrap(artifact.metadata, plotBottom + 80, 19);
   y = wrap(`${artifact.source} · ${artifact.license}`, y, 18);

@@ -51,10 +51,13 @@ test('every unconnected dataset remains queued and cannot supply numeric observa
 });
 
 // Local recovery acceptance: research targets must never become live datasets.
-test('all 26 recovered expansion candidates remain blocked without display capabilities', () => {
+test('only four reviewed expansion candidates leave the blocked queue', () => {
   assert.equal(expansionCandidates.length, 26);
-  for (const candidate of expansionCandidates) {
-    assert.equal(candidate.status, 'BLOCKED');
+  const connected = expansionCandidates.filter(item => item.status === 'CONNECTED');
+  assert.deepEqual(connected.map(item => item.id), ['gdp_per_capita_usd','consumer_price_inflation_wdi','unemployment_ilo_modelled','business_death_rate']);
+  const blocked = expansionCandidates.filter(item => item.status === 'BLOCKED');
+  assert.equal(blocked.length, 22);
+  for (const candidate of blocked) {
     assert.deepEqual(candidate.capabilities, []);
     assert.deepEqual(connectedIndicatorSeries(candidate.id), []);
     assert.ok(blockedDataQueue.some(item => item.indicator_id === candidate.id));

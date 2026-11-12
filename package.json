@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs && node scripts/validate-population.mjs",
-    "data:verify": "node scripts/verify-world-bank-source.mjs"
+    "data:verify": "node scripts/verify-world-bank-source.mjs && node scripts/collect-verified-wdi.mjs && node scripts/verify-reb-csv.mjs && node scripts/verify-kosis-csv.mjs"
   },
   "dependencies": {
     "next": "16.3.8",

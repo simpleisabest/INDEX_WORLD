@@ -9,20 +9,22 @@ import { compareObservations, comparisonCsv, resolveComparisonIds, type CompareM
 import { populationCompareModel } from "@/lib/data/population-compare";
 
 type CompareCopyKey = Extract<TranslationKey, `compare.${string}`>;
-export type CompareBlockProps = { model?: CompareModel; labels?: Partial<Record<CompareCopyKey, TranslationKey>> };
+export type CompareBlockProps = { model?: CompareModel; labels?: Partial<Record<CompareCopyKey, TranslationKey>>; copy?: Partial<Record<CompareCopyKey, string>>; heading?: string; description?: string; precision?: number; differenceUnit?: string; allowNegative?: boolean; allowEmbed?: boolean };
 
-export function CompareBlock({ model = populationCompareModel, labels = {} }: CompareBlockProps) {
+export function CompareBlock({ model = populationCompareModel, labels = {}, copy = {}, heading, description, precision = 0, differenceUnit, allowNegative = false, allowEmbed = true }: CompareBlockProps) {
   const { t, format } = useLocale();
-  const text = (key: CompareCopyKey) => t(labels[key] ?? key);
+  const text = (key: CompareCopyKey) => copy[key] ?? t(labels[key] ?? key);
   const [baselineId, setBaselineId] = useState(model.baselineId);
   const [targetId, setTargetId] = useState(model.targetId);
   const baseline = model.options.find((option) => option.id === baselineId)!;
   const target = model.options.find((option) => option.id === targetId)!;
   const result = compareObservations(model.dimension, baseline.observation, target.observation);
   const unit = (value: string) => value === "person" ? text("compare.people") : value;
-  const number = (value: number) => format.number(value, { maximumFractionDigits: 0 });
-  const signed = (value: number, precision = 0) => format.number(value, { signDisplay: "always", maximumFractionDigits: precision });
+  const number = (value: number) => format.number(value, { maximumFractionDigits: precision });
+  const signed = (value: number, digits = precision) => format.number(value, { signDisplay: "always", maximumFractionDigits: digits });
   const maxValue = Math.max(baseline.observation.value, target.observation.value, 0);
+  const minValue = Math.min(baseline.observation.value, target.observation.value, 0);
+  const axisRange = maxValue - minValue || 1;
   const shareState = { contentId: model.contentId, regionId: baseline.observation.region_id, comparison: { dimension: model.dimension, baselineId, targetId } };
   const citation = [baseline, target].map((option) => `${option.label}: ${option.observation.source_org}, ${option.observation.dataset_name}, ${option.observation.source_id}, ${option.observation.country_id}/${option.observation.region_id}, ${option.observation.reference_period}: ${option.observation.value} ${option.observation.unit}. ${option.observation.source_url}. ${option.observation.license} (${option.observation.license_url}). ${option.observation.version}; ${option.observation.ingested_at}.`).join("\n");
 
@@ -37,17 +39,17 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
   useEffect(() => {
     const select = (event: Event) => {
       const detail = (event as CustomEvent<{ target: string; baseline: string; end: string }>).detail;
-      if (detail.target !== "population-compare") return;
+      if (detail.target !== model.contentId) return;
       if (model.options.some((option) => option.id === detail.baseline)) setBaselineId(detail.baseline);
       if (model.options.some((option) => option.id === detail.end)) setTargetId(detail.end);
     };
     window.addEventListener("index-world:question-select", select);
     return () => window.removeEventListener("index-world:question-select", select);
-  }, [model.options]);
+  }, [model.options, model.contentId]);
 
   const artifact = {
-    title: `${text("compare.heading")}: ${baseline.label} → ${target.label}`,
-    subtitle: `${text("compare.difference")}: ${result.absolute === null ? text("compare.unavailable") : signed(result.absolute)} ${unit(target.observation.unit)} · ${text("compare.rate")}: ${result.percent === null ? text("compare.unavailable") : signed(result.percent, 2) + "%"}`,
+    title: `${heading ?? text("compare.heading")}: ${baseline.label} → ${target.label}`,
+    subtitle: `${text("compare.difference")}: ${result.absolute === null ? text("compare.unavailable") : signed(result.absolute)} ${differenceUnit ?? unit(target.observation.unit)} · ${text("compare.rate")}: ${result.percent === null ? text("compare.unavailable") : signed(result.percent, 2) + "%"}`,
     headers: [text("compare.role"), text("compare.period"), text("compare.value")],
     rows: [baseline, target].map((option, index) => [text(index ? "compare.target" : "compare.baseline"), option.observation.reference_period, `${number(option.observation.value)} ${unit(option.observation.unit)}`]),
     points: [baseline, target].map(option => ({ label: option.label, value: option.observation.value, display: `${number(option.observation.value)} ${unit(option.observation.unit)}` })),
@@ -55,25 +57,25 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
     source: `${baseline.observation.source_org} · ${baseline.observation.dataset_name} · ${baseline.observation.source_id}`,
     sourceUrl: baseline.observation.source_url, license: baseline.observation.license, licenseUrl: baseline.observation.license_url,
     metadata: `${text("compare.formula")} ${text("compare.zeroAxis")} · ${baseline.observation.version} · ${text("compare.ingested")}: ${baseline.observation.ingested_at}`,
-    quality: result.comparable ? "VERIFIED" : "REVIEW_REQUIRED", csv: comparisonCsv(result), filename: `index-world-population-compare-${baselineId}-${targetId}`,
+    quality: result.comparable ? "VERIFIED" : "REVIEW_REQUIRED", allowNegative, csv: comparisonCsv(result), filename: `index-world-${model.contentId}-${baselineId}-${targetId}`,
   };
 
   return (
     <section id={model.contentId} className="compare-section" aria-labelledby={`${model.contentId}-heading`}>
       <div className="shell">
         <div className="timeseries-header">
-          <div><p>{text("compare.kicker")}</p><h2 id={`${model.contentId}-heading`}>{text("compare.heading")}</h2></div>
-          <ExportMenu artifact={artifact} shareState={shareState} />
+          <div><p>{text("compare.kicker")}</p><h2 id={`${model.contentId}-heading`}>{heading ?? text("compare.heading")}</h2></div>
+          <ExportMenu artifact={artifact} shareState={shareState} allowEmbed={allowEmbed} />
         </div>
-        <p className="compare-intro">{text("compare.description")}</p>
-        <div className="compare-dimensions" aria-label="Compare dimensions"><span className="is-active">YEAR ↔ YEAR <b>LIVE</b></span><span>REGION ↔ REGION <b>REVIEW</b></span><span>COUNTRY ↔ COUNTRY <b>ROADMAP</b></span><span>INDICATOR ↔ INDICATOR <b>ROADMAP</b></span></div>
+        <p className="compare-intro">{description ?? text("compare.description")}</p>
+        <div className="compare-dimensions" aria-label="Compare dimensions"><span className="is-active">{model.options.some(option => /^\d{4}-\d{2}$/.test(option.id)) ? "MONTH ↔ MONTH" : "YEAR ↔ YEAR"} <b>LIVE</b></span><span>REGION ↔ REGION <b>REVIEW</b></span><span>COUNTRY ↔ COUNTRY <b>ROADMAP</b></span><span>INDICATOR ↔ INDICATOR <b>ROADMAP</b></span></div>
         <div className="period-controls">
           <label>{text("compare.baseline")}<select value={baselineId} onChange={(event) => setBaselineId(event.target.value)}>{model.options.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
           <button type="button" onClick={() => { setBaselineId(targetId); setTargetId(baselineId); }}>{text("compare.swap")}</button>
           <label>{text("compare.target")}<select value={targetId} onChange={(event) => setTargetId(event.target.value)}>{model.options.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
         </div>
         <div className="compare-summary" aria-live="polite" aria-atomic="true">
-          <article><h3>{text("compare.difference")}</h3><strong>{result.absolute === null ? text("compare.unavailable") : signed(result.absolute)}</strong><span>{result.absolute === null ? "" : unit(target.observation.unit)}</span><p>{baseline.label} → {target.label}</p></article>
+          <article><h3>{text("compare.difference")}</h3><strong>{result.absolute === null ? text("compare.unavailable") : signed(result.absolute)}</strong><span>{result.absolute === null ? "" : differenceUnit ?? unit(target.observation.unit)}</span><p>{baseline.label} → {target.label}</p></article>
           <article><h3>{text("compare.rate")}</h3><strong>{result.percent === null ? text("compare.unavailable") : `${signed(result.percent, 2)}%`}</strong><p>{text("compare.denominator")}: {baseline.label}</p></article>
         </div>
         {baselineId === targetId && <p className="compare-note">{text("compare.same")}</p>}
@@ -81,8 +83,8 @@ export function CompareBlock({ model = populationCompareModel, labels = {} }: Co
         <div className="compare-visual-grid">
           <div className="compare-chart" role="img" aria-label={`${text("compare.chart")}: ${baseline.label}: ${number(baseline.observation.value)} ${unit(baseline.observation.unit)}; ${target.label}: ${number(target.observation.value)} ${unit(target.observation.unit)}`}>
             <h3>{text("compare.chart")}</h3>
-            {result.comparable && baseline.observation.value >= 0 && target.observation.value >= 0 ? <>
-              {[baseline, target].map((option, index) => <div className="compare-bar-row" key={index} aria-hidden="true"><div><span>{option.label}</span><strong>{number(option.observation.value)} {unit(option.observation.unit)}</strong></div><div className="compare-track"><div className={index ? "compare-bar target" : "compare-bar"} style={{ width: `${maxValue ? option.observation.value / maxValue * 100 : 0}%` }} /></div></div>)}
+            {result.comparable && (allowNegative || (baseline.observation.value >= 0 && target.observation.value >= 0)) ? <>
+              {[baseline, target].map((option, index) => <div className="compare-bar-row" key={index} aria-hidden="true"><div><span>{option.label}</span><strong>{number(option.observation.value)} {unit(option.observation.unit)}</strong></div><div className="compare-track"><div className={index ? "compare-bar target" : "compare-bar"} style={{ marginLeft: `${(Math.min(option.observation.value, 0) - minValue) / axisRange * 100}%`, width: `${Math.abs(option.observation.value) / axisRange * 100}%` }} /></div></div>)}
               <p className="compare-note">{text("compare.zeroAxis")}</p>
             </> : <p>{text("compare.incompatible")}</p>}
           </div>
