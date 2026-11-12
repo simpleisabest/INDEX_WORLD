@@ -14,8 +14,8 @@ import { verifyKosisCsv } from '../scripts/verify-kosis-csv.mjs';
 import { verifiedDataRecords } from '../lib/data/verified-records.ts';
 import { verifiedKosisRecords } from '../lib/data/verified-kosis.ts';
 
-test('seven reviewed WDI series preserve every official value, raw hash, definition, license and national annual scope', () => {
-  assert.equal(verifiedWdiRecords.length, 7);
+test('six reviewed WDI series preserve every official value, raw hash, definition, license and national annual scope', () => {
+  assert.equal(verifiedWdiRecords.length, 6);
   for (const record of verifiedWdiRecords) {
     assert.equal(createHash('sha256').update(record.raw_response).digest('hex'), record.raw_sha256);
     assert.equal(record.license, 'CC BY 4.0');

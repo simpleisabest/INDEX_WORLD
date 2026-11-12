@@ -1,0 +1,165 @@
+{
+  "status": "BLOCKED",
+  "indicator_id": "tertiary_attainment",
+  "reason": "Repeated HTTP 502 during GitHub CI live-source verification; official source=2 queries also returned 502. No assumption of a global outage or invalid historical values. Source availability cannot pass this release gate.",
+  "recheck": "2026-11-12",
+  "publication_allowed": false,
+  "retained_record": {
+    "id": "tertiary_attainment",
+    "code": "SE.TER.CUAT.ST.ZS",
+    "category": "education",
+    "unit": "percent",
+    "cadence": "annual",
+    "country_id": "kr",
+    "region_id": "kr",
+    "quality_status": "BLOCKED",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_evidence_url": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SE.TER.CUAT.ST.ZS",
+    "license_checked_at": "2026-11-12T04:21:55.513Z",
+    "api_url": "https://api.worldbank.org/v2/country/KOR/indicator/SE.TER.CUAT.ST.ZS?format=json&per_page=1000",
+    "metadata_url": "https://api.worldbank.org/v2/indicator/SE.TER.CUAT.ST.ZS?format=json",
+    "source_url": "https://data.worldbank.org/indicator/SE.TER.CUAT.ST.ZS?locations=KR",
+    "source_org": "World Bank WDI",
+    "original_source": "Data API, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources, note: The data are obtained through the UIS API.  Detailed documentation is available at: https://api.uis.unesco.org/api/public/documentation/, publisher: UNESCO Institute for Statistics (UIS), type: Bulk file (csv), date accessed: 2026-03-19, date published: 2026-02",
+    "definition": "The percentage of population ages 25 and over that attained or completed short-cycle tertiary education.",
+    "dataset_name": "Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)",
+    "publication_date": null,
+    "source_last_updated": "2026-11-11",
+    "ingested_at": "2026-11-12T04:21:55.515Z",
+    "version": "wdi-2026-11-11-SE.TER.CUAT.ST.ZS",
+    "raw_sha256": "320cbe981cd4a5c38b6bf40ed8ad859f98e95ef1a2c18ee3118634d72b997ab8",
+    "raw_response": "[{\"page\":1,\"pages\":1,\"per_page\":1000,\"total\":66,\"sourceid\":\"2\",\"lastupdated\":\"2026-11-11\"},[{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2025\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2024\",\"value\":49.5557386831013,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2023\",\"value\":48.6515113220861,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2022\",\"value\":47.5099167162514,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2021\",\"value\":46.9363236351046,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2020\",\"value\":46.4535750453089,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2019\",\"value\":46.0058004727794,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2018\",\"value\":45.3113742089373,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2017\",\"value\":44.3815791101734,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2016\",\"value\":43.6879936737268,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2015\",\"value\":40.3022689819336,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2014\",\"value\":42.3194875847618,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2013\",\"value\":41.3201644251948,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2012\",\"value\":40.2923419430666,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2011\",\"value\":39.3404518967575,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2010\",\"value\":35.3209915161133,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2009\",\"value\":28.0064601898193,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2008\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2007\",\"value\":34.686310983059,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2006\",\"value\":33.1663368098624,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2005\",\"value\":31.5887393951416,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2004\",\"value\":30.5232148068074,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2003\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2002\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2001\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"2000\",\"value\":24.0501899719238,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1999\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1998\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1997\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1996\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1995\",\"value\":20.827880859375,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1994\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1993\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1992\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1991\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1990\",\"value\":13.3999996185303,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1989\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1988\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1987\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1986\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1985\",\"value\":11.7081699371338,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1984\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1983\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1982\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1981\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1980\",\"value\":8.91444969177246,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1979\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1978\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1977\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1976\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1975\",\"value\":6.90000009536743,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1974\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1973\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1972\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1971\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1970\",\"value\":5.73538017272949,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1969\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1968\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1967\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1966\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1965\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1964\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1963\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1962\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1961\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1},{\"indicator\":{\"id\":\"SE.TER.CUAT.ST.ZS\",\"value\":\"Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)\"},\"country\":{\"id\":\"KR\",\"value\":\"Korea, Rep.\"},\"countryiso3code\":\"KOR\",\"date\":\"1960\",\"value\":null,\"unit\":\"\",\"obs_status\":\"\",\"decimal\":1}]]",
+    "metadata": {
+      "id": "SE.TER.CUAT.ST.ZS",
+      "name": "Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)",
+      "unit": "",
+      "source": {
+        "id": "2",
+        "value": "World Development Indicators"
+      },
+      "sourceNote": "The percentage of population ages 25 and over that attained or completed short-cycle tertiary education.",
+      "sourceOrganization": "Data API, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources, note: The data are obtained through the UIS API.  Detailed documentation is available at: https://api.uis.unesco.org/api/public/documentation/, publisher: UNESCO Institute for Statistics (UIS), type: Bulk file (csv), date accessed: 2026-03-19, date published: 2026-02",
+      "topics": [
+        {
+          "id": "4",
+          "value": "Education "
+        },
+        {
+          "id": "17",
+          "value": "Gender"
+        }
+      ]
+    },
+    "series": [
+      [
+        "1970",
+        5.73538017272949
+      ],
+      [
+        "1975",
+        6.90000009536743
+      ],
+      [
+        "1980",
+        8.91444969177246
+      ],
+      [
+        "1985",
+        11.7081699371338
+      ],
+      [
+        "1990",
+        13.3999996185303
+      ],
+      [
+        "1995",
+        20.827880859375
+      ],
+      [
+        "2000",
+        24.0501899719238
+      ],
+      [
+        "2004",
+        30.5232148068074
+      ],
+      [
+        "2005",
+        31.5887393951416
+      ],
+      [
+        "2006",
+        33.1663368098624
+      ],
+      [
+        "2007",
+        34.686310983059
+      ],
+      [
+        "2009",
+        28.0064601898193
+      ],
+      [
+        "2010",
+        35.3209915161133
+      ],
+      [
+        "2011",
+        39.3404518967575
+      ],
+      [
+        "2012",
+        40.2923419430666
+      ],
+      [
+        "2013",
+        41.3201644251948
+      ],
+      [
+        "2014",
+        42.3194875847618
+      ],
+      [
+        "2015",
+        40.3022689819336
+      ],
+      [
+        "2016",
+        43.6879936737268
+      ],
+      [
+        "2017",
+        44.3815791101734
+      ],
+      [
+        "2018",
+        45.3113742089373
+      ],
+      [
+        "2019",
+        46.0058004727794
+      ],
+      [
+        "2020",
+        46.4535750453089
+      ],
+      [
+        "2021",
+        46.9363236351046
+      ],
+      [
+        "2022",
+        47.5099167162514
+      ],
+      [
+        "2023",
+        48.6515113220861
+      ],
+      [
+        "2024",
+        49.5557386831013
+      ]
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # Next Data Sprint 2 — 2026-11-12
 
-Baseline main 4501166, D:\INDEX WORLD. Nine new indicators and 233 unchanged official observations. Total: nineteen connected indicators, 634 observations including existing population and its two derived series, nine of twelve categories with live data. Of the original expansion list, four more candidates passed (housing permits, tertiary attainment, life expectancy, GDP PPP); eighteen remain BLOCKED. New adjacent series do not silently unlock similarly named datasets.
+Baseline main 4501166, D:\INDEX WORLD. Eight new indicators and 206 unchanged official observations. Total: eighteen connected indicators, 607 observations including existing population and its two derived series, eight of twelve categories with live data. Of the original expansion list, three more candidates passed (housing permits, life expectancy, GDP PPP); nineteen remain BLOCKED. New adjacent series do not silently unlock similarly named datasets.
 
 | Category | New indicator | Official code | Unit and cadence | Acquired/published scope |
 |---|---|---|---|---|
@@ -10,7 +10,6 @@ Baseline main 4501166, D:\INDEX WORLD. Nine new indicators and 233 unchanged off
 | Housing | Unsold housing | MOLIT/32/2082 | dwellings, monthly stock | 2024-01–2026-09, 33 |
 | Housing | Completed unsold housing | MOLIT/32/5328 | dwellings, monthly stock | 2026-07–2026-09, 3 |
 | Health | Life expectancy at birth | SP.DYN.LE00.IN | years, annual | 1960–2024, 65 |
-| Education | At least short-cycle tertiary attainment, age 25+ | SE.TER.CUAT.ST.ZS | percent, annual | 1970–2024, 27 observed years |
 | Environment | Electricity consumption per capita | EG.USE.ELEC.KH.PC | kWh/person, annual | 1990–2025, 36 |
 | Country/world | Korea GDP per capita, PPP, current international dollars | NY.GDP.PCAP.PP.CD | current international dollars/person, annual | 1990–2025, 36 |
 
@@ -26,20 +25,21 @@ Unsold housing is the reported private-sector month-end stock, including before 
 
 WDI records retain the full original country API response, raw SHA-256, metadata, original organizations, definition, license evidence URL and check time, source DB date and acquisition time. Individual official [life expectancy](https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=KR), [education glossary](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SE.TER.CUAT.ST.ZS), [electricity](https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC?locations=KR) and [PPP GDP](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD?locations=KR) identify CC BY 4.0. Source definitions and original providers are included in citations. No provisional/nonblank observation-status values, missing data, foreign-country observations or partial API pages are accepted. Existing three WDI records are preserved exactly. The collector now isolates failed new records, retaining other independently verified candidates; its normal verification mode is read-only.
 
-Life expectancy is a population mortality measure, not an individual's prognosis. Education is cumulative ISCED attainment for age 25+, not enrollment or the OECD 25–64 denominator. Its missing years are not generated; screen and exported PNG use actual elapsed year distances. Electricity is per capita, not total consumption; the original electricity_consumption candidate remains blocked. PPP dollars are current international dollars, not constant-price growth, income, salary or convertible USD. Korea-only data do not enable country rankings/comparison; world_population and world_life_expectancy remain blocked.
+Life expectancy is a population mortality measure, not an individual's prognosis. The quarantined education series is cumulative ISCED attainment for age 25+, not enrollment or the OECD 25–64 denominator. Its historical missing years are not generated; the reusable screen/PNG period axis preserves actual elapsed year distances. Electricity is per capita, not total consumption; the original electricity_consumption candidate remains blocked. PPP dollars are current international dollars, not constant-price growth, income, salary or convertible USD. Korea-only data do not enable country rankings/comparison; world_population and world_life_expectancy remain blocked.
 
 ## Quarantine and next candidates
 
+- Education attainment was initially acquired and licensed but repeatedly failed CI live-source verification with HTTP 502, including a separate official source=2 query. It is BLOCKED for this release. The original response, hash, metadata, license evidence and 27 observations are preserved in quarantined-tertiary-attainment-2026-11-12.json outside the runtime/publication imports. No current global outage is inferred. A healthy exact source recheck and explicit review are required before promotion.
 - R-ONE API connectors still require a key and remain BLOCKED. Existing licensed sale/jeonse public CSV records are unchanged. No secret was read, installed, generated or copied.
 - Housing transaction-volume data were not acquired and reconciled in this sprint; no placeholder is published.
 - An official index.go.kr single-person household table was accessible, but its policy requires a dataset-level KOGL mark; such permission was not established for this acquired table. It is quarantined in ignored local research only. Household totals and single-person share remain unconnected pending a directly licensed KOSIS original. Census general households must not be substituted with resident-registration households or projections.
 - Wages, employment-survey rates, establishments and startup/closure counts still require exact definitions, industry revisions, original files and reuse verification. Existing enterprise rates and ILO modeled unemployment are unchanged; enterprise counts are not labeled establishments.
-- Finance, society and transport remain categories to fill. All eighteen unreconciled expansion candidates stay BLOCKED. Historical Cloud 403 notes are not used as current source availability evidence.
+- Finance, society and transport remain categories to fill. All nineteen unreconciled expansion candidates stay BLOCKED. Historical Cloud 403 notes are not used as current source availability evidence.
 
 ## Reproduction and release checks
 
 Use each public table's normal attachment button; do not fetch API-key-only endpoints or infer missing values. To review retained originals: python scripts/verify-molit-xlsx.py. --normalize is an explicit manual operation confined to the reviewed final/monthly scopes. A newer selection requires reviewing definitions, revision/final status, unit, geography, cadence and reuse terms again.
 
-The publication allowlists bind source code/URL/license/unit/category/cadence/period/quality, and all displayed/exported observations must equal the reviewed adapter. New tamper tests reject changed raw values, provisional/later construction periods, units, fake provenance, extrapolated months and unreviewed datasets. Existing KPI/Chart/Compare/Citation/CSV/Share and thirteen-language controls are reused; unsupported Embed/map/ranking features stay unavailable. Run TypeScript, Lint, all tests, Publication tests, source verification, production and preview builds, browser checks of all sixteen frozen series, secret scan and git diff --check before push/deployment.
+The publication allowlists bind source code/URL/license/unit/category/cadence/period/quality, and all displayed/exported observations must equal the reviewed adapter. New tamper tests reject changed raw values, provisional/later construction periods, units, fake provenance, extrapolated months and unreviewed datasets. Existing KPI/Chart/Compare/Citation/CSV/Share and thirteen-language controls are reused; unsupported Embed/map/ranking features stay unavailable. Run TypeScript, Lint, all tests, Publication tests, source verification, production and preview builds, browser checks of all fifteen frozen series, secret scan and git diff --check before push/deployment.
 
 No DB, schema, environment variable, secret, paid API, workflow or production infrastructure change.

@@ -50,15 +50,30 @@ test('MOLIT stock series preserve month identity and original proof, rejecting t
   assert.deepEqual(reviewedMolitSeries('unreviewed-housing'),[]);
 });
 
-test('irregular annual education observations retain actual elapsed time in screen and PNG artifacts', () => {
+test('irregular annual observations retain actual elapsed time without fabricating missing years', async () => {
   assert.deepEqual(periodPositions(['2010','2012','2020']),[0,.2,1]);
   assert.deepEqual(periodPositions(['2024-11','2024-12','2025-01']),[0,.5,1]);
   for (const periods of [[],['2025','2024'],['2025','2025'],['2025-13']]) assert.throws(()=>periodPositions(periods));
-  const points = connectedIndicatorSeries('tertiary_attainment');
-  assert.ok(points.some((point,index)=>index>0 && Number(point.reference_period)-Number(points[index-1].reference_period)>1));
-  const artifact = indicatorArtifact('tertiary_attainment','Education',points.at(-1).reference_period);
+  const quarantined = JSON.parse(await readFile(new URL('../docs/data-sources/quarantined-tertiary-attainment-2026-11-12.json',import.meta.url),'utf8'));
+  const periods = quarantined.retained_record.series.map(([period])=>period);
+  assert.ok(periods.some((period,index)=>index>0 && Number(period)-Number(periods[index-1])>1));
+  const positions = periodPositions(periods);
+  assert.equal(positions[0],0); assert.equal(positions.at(-1),1);
+  const points = connectedIndicatorSeries('life_expectancy');
+  const artifact = indicatorArtifact('life_expectancy','Life expectancy',points.at(-1).reference_period);
   assert.deepEqual(artifact.points.map(point=>point.position),periodPositions(points.map(point=>point.reference_period)));
   assert.equal(artifact.rows.length,points.length);
+});
+
+test('education with repeated failed live-source checks stays quarantined and cannot display or export', async () => {
+  const quarantine = JSON.parse(await readFile(new URL('../docs/data-sources/quarantined-tertiary-attainment-2026-11-12.json',import.meta.url),'utf8'));
+  assert.equal(quarantine.publication_allowed,false);
+  assert.equal(quarantine.status,'BLOCKED');
+  assert.equal(quarantine.retained_record.series.length,27);
+  assert.equal(createHash('sha256').update(quarantine.retained_record.raw_response).digest('hex'),quarantine.retained_record.raw_sha256);
+  assert.equal(indicatorRegistry.find(item=>item.id==='tertiary_attainment').status,'BLOCKED');
+  assert.deepEqual(connectedIndicatorSeries('tertiary_attainment'),[]);
+  assert.throws(()=>indicatorArtifact('tertiary_attainment','Education','2024'));
 });
 
 test('per-capita electricity and Korea-only PPP never unlock total electricity or country rankings', () => {
