@@ -68,7 +68,7 @@ export function CompareBlock({ model = populationCompareModel, labels = {}, copy
           <ExportMenu artifact={artifact} shareState={shareState} allowEmbed={allowEmbed} />
         </div>
         <p className="compare-intro">{description ?? text("compare.description")}</p>
-        <div className="compare-dimensions" aria-label="Compare dimensions"><span className="is-active">{model.options.some(option => /^\d{4}-\d{2}$/.test(option.id)) ? "MONTH ↔ MONTH" : "YEAR ↔ YEAR"} <b>LIVE</b></span><span>REGION ↔ REGION <b>REVIEW</b></span><span>COUNTRY ↔ COUNTRY <b>ROADMAP</b></span><span>INDICATOR ↔ INDICATOR <b>ROADMAP</b></span></div>
+        <div className="compare-dimensions" role="group" aria-label="Compare dimensions"><span className="is-active">{model.options.some(option => /^\d{4}-\d{2}$/.test(option.id)) ? "MONTH ↔ MONTH" : "YEAR ↔ YEAR"} <b>LIVE</b></span><span>REGION ↔ REGION <b>REVIEW</b></span><span>COUNTRY ↔ COUNTRY <b>ROADMAP</b></span><span>INDICATOR ↔ INDICATOR <b>ROADMAP</b></span></div>
         <div className="period-controls">
           <label>{text("compare.baseline")}<select value={baselineId} onChange={(event) => setBaselineId(event.target.value)}>{model.options.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
           <button type="button" onClick={() => { setBaselineId(targetId); setTargetId(baselineId); }}>{text("compare.swap")}</button>

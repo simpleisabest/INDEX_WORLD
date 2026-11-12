@@ -1,0 +1,1038 @@
+{
+  "policy_order": [
+    "SEARCH",
+    "LICENSE",
+    "SECURITY",
+    "MAINTENANCE",
+    "DECISION"
+  ],
+  "checked_at": "2026-11-12T04:56:12.822806+00:00",
+  "candidates": [
+    {
+      "package": "next",
+      "reviewed_version": "16.4.6",
+      "source_url": "https://github.com/vercel/next.js",
+      "pinned_commit": null,
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/vercel/next.js",
+        "actual_license_review_required_before_new_adoption": false
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-12T04:18:02Z",
+        "evidence_url": "https://api.github.com/repos/vercel/next.js"
+      },
+      "direct_runtime_dependencies": {
+        "postcss": "8.5.23",
+        "@next/env": "16.4.6",
+        "styled-jsx": "5.1.6",
+        "@swc/helpers": "0.5.23",
+        "caniuse-lite": "^1.0.30001579",
+        "baseline-browser-mapping": "^2.9.19"
+      },
+      "decision": "REUSE",
+      "reason": "Replace known-vulnerable 16.3.8 with patched supported 16.4.6; existing static-export architecture unchanged.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-QZJiYhaZLJMo2KpkQGQIwvmd79WVsAWeYIU554a8d7zArS3si/IRy3lBNV/rtYhE70oLwdLYhPAXLPx8HwcwtA=="
+    },
+    {
+      "package": "eslint-config-next",
+      "reviewed_version": "16.4.6",
+      "source_url": "https://github.com/vercel/next.js",
+      "pinned_commit": null,
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/vercel/next.js",
+        "actual_license_review_required_before_new_adoption": false
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-12T04:18:02Z",
+        "evidence_url": "https://api.github.com/repos/vercel/next.js"
+      },
+      "direct_runtime_dependencies": {
+        "globals": "16.4.0",
+        "typescript-eslint": "^8.56.0",
+        "eslint-plugin-react": "^7.37.0",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jsx-a11y": "^6.10.0",
+        "@next/eslint-plugin-next": "16.4.6",
+        "eslint-plugin-react-hooks": "^7.1.0",
+        "eslint-import-resolver-node": "^0.3.6",
+        "eslint-import-resolver-typescript": "^3.5.2"
+      },
+      "decision": "REUSE",
+      "reason": "Keep the lint configuration aligned with installed Next; audit the resolved graph.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-IBGGrVf9E6pL0NGL0hmeicVGeSyv1VEzIWq6IecDqkw+YFByhEtDJS9u1r6s6a1VxK6rssh69KyNFQUgfaacqw=="
+    },
+    {
+      "package": "react",
+      "reviewed_version": "19.3.1",
+      "source_url": "https://github.com/react/react",
+      "pinned_commit": "61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/react/react/blob/61aa00df822d0eb76d0362eb8b6fdd3527693efe/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T17:31:16Z",
+        "evidence_url": "https://api.github.com/repos/react/react"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REFERENCE",
+      "reason": "19.3.1 evaluated; existing 19.3.0 retained because audit has no relevant finding and no separate upgrade is needed.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw=="
+    },
+    {
+      "package": "react-dom",
+      "reviewed_version": "19.3.1",
+      "source_url": "https://github.com/react/react",
+      "pinned_commit": "61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/react/react/blob/61aa00df822d0eb76d0362eb8b6fdd3527693efe/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T17:31:16Z",
+        "evidence_url": "https://api.github.com/repos/react/react"
+      },
+      "direct_runtime_dependencies": {
+        "scheduler": "^0.28.0"
+      },
+      "decision": "REFERENCE",
+      "reason": "19.3.1 evaluated; keep existing matching 19.3.0 React/DOM pair.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ=="
+    },
+    {
+      "package": "axe-core",
+      "reviewed_version": "4.14.0",
+      "source_url": "https://github.com/dequelabs/axe-core",
+      "pinned_commit": null,
+      "license": {
+        "declared_spdx": "MPL-2.0",
+        "github_spdx": "MPL-2.0",
+        "evidence_url": "https://github.com/dequelabs/axe-core",
+        "actual_license_review_required_before_new_adoption": false
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T21:14:02Z",
+        "evidence_url": "https://api.github.com/repos/dequelabs/axe-core"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "ADAPT",
+      "reason": "Use unmodified pinned engine through existing Python Playwright. Already transitive via jsx-a11y; make direct dev dependency. No browser bundle, remote scanner or additional browser install. MPL-2.0 file-level license and bundled notices reviewed.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-9WTZxEjsZ7b13TH8JPmbV2z8CHbl80/2hm3XPEG4JgNdQLK81IBRXmSxHfMAOkSqQeRxT/0dwNDz2GOm3zzpcQ=="
+    },
+    {
+      "package": "d3",
+      "reviewed_version": "7.9.2",
+      "source_url": "https://github.com/d3/d3",
+      "pinned_commit": "db118c93a429e82b83f091dbaa18fd0a82c06130",
+      "license": {
+        "declared_spdx": "ISC",
+        "github_spdx": "ISC",
+        "evidence_url": "https://github.com/d3/d3/blob/db118c93a429e82b83f091dbaa18fd0a82c06130/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-03T19:44:29Z",
+        "evidence_url": "https://api.github.com/repos/d3/d3"
+      },
+      "direct_runtime_dependencies": {
+        "d3-dsv": "^3.0.2",
+        "d3-geo": "^3.1.2",
+        "d3-axis": "^3.0.1",
+        "d3-drag": "^3.0.1",
+        "d3-ease": "^3.0.2",
+        "d3-path": "^3.1.1",
+        "d3-time": "^3.1.1",
+        "d3-zoom": "^3.0.1",
+        "d3-array": "^3.2.5",
+        "d3-brush": "^3.0.1",
+        "d3-chord": "^3.0.2",
+        "d3-color": "^3.1.1",
+        "d3-fetch": "^3.0.2",
+        "d3-force": "^3.0.1",
+        "d3-scale": "^4.0.3",
+        "d3-shape": "^3.2.1",
+        "d3-timer": "^3.0.2",
+        "d3-format": "^3.1.3",
+        "d3-random": "^3.0.2",
+        "d3-contour": "^4.0.3",
+        "d3-polygon": "^3.0.2",
+        "d3-delaunay": "^6.0.6",
+        "d3-dispatch": "^3.0.2",
+        "d3-quadtree": "^3.0.2",
+        "d3-hierarchy": "^3.1.3",
+        "d3-selection": "^3.0.1",
+        "d3-transition": "^3.0.2",
+        "d3-interpolate": "^3.0.2",
+        "d3-time-format": "^4.1.1",
+        "d3-scale-chromatic": "^3.1.1"
+      },
+      "decision": "REFERENCE",
+      "reason": "Maintained ISC, but full 30-module aggregate duplicates current simple SVG charts and native arithmetic. Do not install the full bundle; revisit individual modules only for a measured need.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-ZKb/mONPVKzaO5UlcWcwN8bS4ezvQaYu+bsou+XgNABdGC800kwH651ADTbbTxMPHW13UlvbQafdmJQDk1w7Mg=="
+    },
+    {
+      "package": "topojson-client",
+      "reviewed_version": "3.1.0",
+      "source_url": "https://github.com/topojson/topojson-client",
+      "pinned_commit": "71e5bd6428fd8b7a40fa980d2ef7862140851f03",
+      "license": {
+        "declared_spdx": "ISC",
+        "github_spdx": "ISC",
+        "evidence_url": "https://github.com/topojson/topojson-client/blob/71e5bd6428fd8b7a40fa980d2ef7862140851f03/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2022-08-31T13:35:52Z",
+        "evidence_url": "https://api.github.com/repos/topojson/topojson-client"
+      },
+      "direct_runtime_dependencies": {
+        "commander": "2"
+      },
+      "decision": "REJECT",
+      "reason": "No adoption: repository last push 2022-08-31; present support is unestablished. Also no reviewed geometry/region lineage. This is not a claim of formally announced abandonment.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-605uxS6bcYxGXw9qi62XyrV6Q3xwbndjachmNxu8HWTtVPxZfEJN9fd/SZS1Q54Sn2y0TMyMxFj/cJINqGHrKw=="
+    },
+    {
+      "package": "ajv",
+      "reviewed_version": "8.20.0",
+      "source_url": "https://github.com/ajv-validator/ajv",
+      "pinned_commit": "0fba0b8e649909613cfce0999b149cd08f4a4987",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/ajv-validator/ajv/blob/0fba0b8e649909613cfce0999b149cd08f4a4987/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-09-06T19:59:32Z",
+        "evidence_url": "https://api.github.com/repos/ajv-validator/ajv"
+      },
+      "direct_runtime_dependencies": {
+        "fast-uri": "^3.0.1",
+        "fast-deep-equal": "^3.1.3",
+        "require-from-string": "^2.0.2",
+        "json-schema-traverse": "^1.0.0"
+      },
+      "decision": "REFERENCE",
+      "reason": "Useful maintained JSON Schema implementation for future interchange, but schemas cannot replace exact-source Publication Gate and currently add another validation layer/compiler.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA=="
+    },
+    {
+      "package": "papaparse",
+      "reviewed_version": "5.7.1",
+      "source_url": "https://github.com/mholt/PapaParse",
+      "pinned_commit": "ce8723fa19e5f80f0169d83d68c5e134deb9d9fa",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/mholt/PapaParse/blob/ce8723fa19e5f80f0169d83d68c5e134deb9d9fa/LICENSE",
+        "actual_license_review_required_before_new_adoption": false
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T16:40:44Z",
+        "evidence_url": "https://api.github.com/repos/mholt/PapaParse"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REUSE",
+      "reason": "Replace two bespoke CSV parsers with one shared string-only adapter. No header objects, downloads, workers or dynamic typing. Preserve exact source values/duplicate headers/blank records; malformed quoting fails. Zero runtime dependencies; minified upstream gzip 6848 bytes.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-qOR+UDWv6D3hMxnWWOk0ZpBdCkd+kw5Yh7aXOaNSQU8A+73EA2bhW7EiUix/hY0yulUi5FRvt7PpYSI2VDvY0g=="
+    },
+    {
+      "package": "leaflet",
+      "reviewed_version": "1.9.4",
+      "source_url": "https://github.com/Leaflet/Leaflet",
+      "pinned_commit": "d15112c9e8ac339f0f74f563959d0423d291308d",
+      "license": {
+        "declared_spdx": "BSD-2-Clause",
+        "github_spdx": "BSD-2-Clause",
+        "evidence_url": "https://github.com/Leaflet/Leaflet/blob/d15112c9e8ac339f0f74f563959d0423d291308d/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T21:03:12Z",
+        "evidence_url": "https://api.github.com/repos/Leaflet/Leaflet"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REFERENCE",
+      "reason": "Permissive BSD-2-Clause and active repository; wait for reviewed geometry/tiles and an actual map requirement. No paid tiles or runtime map service added.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA=="
+    },
+    {
+      "package": "maplibre-gl",
+      "reviewed_version": "6.18.0",
+      "source_url": "https://github.com/maplibre/maplibre-gl-js",
+      "pinned_commit": "7ff68855dcea2c37ffa2f02932073613714692cd",
+      "license": {
+        "declared_spdx": "BSD-3-Clause",
+        "github_spdx": "NOASSERTION",
+        "evidence_url": "https://github.com/maplibre/maplibre-gl-js/blob/7ff68855dcea2c37ffa2f02932073613714692cd/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T22:42:54Z",
+        "evidence_url": "https://api.github.com/repos/maplibre/maplibre-gl-js"
+      },
+      "direct_runtime_dependencies": {
+        "pbf": "^5.1.2",
+        "earcut": "^3.2.4",
+        "kdbush": "^4.1.0",
+        "bidi-js": "^1.1.0",
+        "potpack": "^2.1.0",
+        "gl-matrix": "^3.4.4",
+        "tinyqueue": "^3.0.0",
+        "quickselect": "^3.0.0",
+        "@maplibre/mlt": "^1.3.0",
+        "murmurhash-js": "^1.0.0",
+        "@types/geojson": "^7946.0.16",
+        "@mapbox/tiny-sdf": "^2.3.0",
+        "@maplibre/vt-pbf": "^4.3.3",
+        "@mapbox/unitbezier": "^1.0.0",
+        "@mapbox/vector-tile": "^3.0.0",
+        "@maplibre/geojson-vt": "^6.3.0",
+        "@mapbox/point-geometry": "^1.1.0",
+        "@maplibre/maplibre-gl-style-spec": "^26.6.0"
+      },
+      "decision": "REJECT",
+      "reason": "No adoption: WebGL/tile pipeline and many dependencies exceed current need; pinned license obligations not cleared (registry BSD-3-Clause versus GitHub NOASSERTION metadata). No geometry license established.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-8ucT+RhJtEZGFvWGPioVQwvOPMAIuUehEgxl2dELw9aJmX4SpUi+OCHHAD33B9EuohNC7kC/gccJacUgTMQfQQ=="
+    },
+    {
+      "package": "uplot",
+      "reviewed_version": "1.6.32",
+      "source_url": "https://github.com/leeoniya/uPlot",
+      "pinned_commit": "e995b061e9fc5476a6d862cd2fb2ebc7452ca012",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/leeoniya/uPlot/blob/e995b061e9fc5476a6d862cd2fb2ebc7452ca012/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-10T03:07:44Z",
+        "evidence_url": "https://api.github.com/repos/leeoniya/uPlot"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REFERENCE",
+      "reason": "Maintained zero-dependency MIT plotter. Native SVG currently covers the small frozen series; no measurable need for a second renderer.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-KIMVnG68zvu5XXUbC4LQEPnhwOxBuLyW1AHtpm6IKTXImkbLgkMy+jabjLgSLMasNuGGzQm/ep3tOkyTxpiQIw=="
+    },
+    {
+      "package": "fuse.js",
+      "reviewed_version": "7.5.0",
+      "source_url": "https://github.com/krisk/Fuse",
+      "pinned_commit": "457fe762c6418357896d78311f7def8c937a64f8",
+      "license": {
+        "declared_spdx": "Apache-2.0",
+        "github_spdx": "Apache-2.0",
+        "evidence_url": "https://github.com/krisk/Fuse/blob/457fe762c6418357896d78311f7def8c937a64f8/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-08-09T04:40:41Z",
+        "evidence_url": "https://api.github.com/repos/krisk/Fuse"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REFERENCE",
+      "reason": "Maintained Apache-2.0 fuzzy search candidate. Existing small catalog search is sufficient; benchmark against larger real catalog before adding.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-sQtrEfA+ez/3G0cCZecF70oqpCRttCexYUG4mUrtWL49ULUzUyxokt5kyqwtKzj1270RaKih+hcP3qLcumccow=="
+    },
+    {
+      "package": "schema-dts",
+      "reviewed_version": "2.1.0",
+      "source_url": "https://github.com/google/schema-dts",
+      "pinned_commit": "60f345c2fe3ba6c62e128733da9925a3fa52473a",
+      "license": {
+        "declared_spdx": "Apache-2.0",
+        "github_spdx": "Apache-2.0",
+        "evidence_url": "https://github.com/google/schema-dts/blob/60f345c2fe3ba6c62e128733da9925a3fa52473a/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-01T19:13:31Z",
+        "evidence_url": "https://api.github.com/repos/google/schema-dts"
+      },
+      "direct_runtime_dependencies": {
+        "schema-dts-lib": "^1.1.0"
+      },
+      "decision": "REFERENCE",
+      "reason": "Apache-2.0 typed structured data, but current JSON-LD is small/tested. Consider build-time-only typing when schema complexity grows.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-Y/NvOvuJUZwrm+EmNqJF3M+bRufERJs1h5GJPLilUuK5D5b53ttU+XZgIjEFaAVRToh+ib+cQawFmxKC5Jt9ow=="
+    },
+    {
+      "package": "i18next",
+      "reviewed_version": "27.1.1",
+      "source_url": "https://github.com/i18next/i18next",
+      "pinned_commit": "523cb611cb25c84a73c1b245d12d641b06868706",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/i18next/i18next/blob/523cb611cb25c84a73c1b245d12d641b06868706/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-10T09:30:49Z",
+        "evidence_url": "https://api.github.com/repos/i18next/i18next"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REJECT",
+      "reason": "No adoption now: duplicates existing 13-language dictionaries and native Intl, adds migration/coordination complexity without a current benefit. Not rejected for project maintenance or license.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-Qq3aJizS3RXQ30crhx9BKQLrHoa6GKpgrOJjVZ9vgj3EBxAddrmVfDNUrAMxSUimw5Jc+ld4SSZUAzf1q4nGyQ=="
+    },
+    {
+      "package": "html-to-image",
+      "reviewed_version": "1.11.13",
+      "source_url": "https://github.com/bubkoo/html-to-image",
+      "pinned_commit": "995728147e4459a58188af51b5fcc3f8a7010207",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/bubkoo/html-to-image/blob/995728147e4459a58188af51b5fcc3f8a7010207/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-11T07:02:02Z",
+        "evidence_url": "https://api.github.com/repos/bubkoo/html-to-image"
+      },
+      "direct_runtime_dependencies": {},
+      "decision": "REJECT",
+      "reason": "No adoption now: duplicates existing Canvas export and brings DOM/font/CORS fidelity concerns. Current deterministic data export is simpler.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg=="
+    },
+    {
+      "package": "pdf-lib",
+      "reviewed_version": "1.17.1",
+      "source_url": "https://github.com/Hopding/pdf-lib",
+      "pinned_commit": null,
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/Hopding/pdf-lib",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2024-07-17T12:18:51Z",
+        "evidence_url": "https://api.github.com/repos/Hopding/pdf-lib"
+      },
+      "direct_runtime_dependencies": {
+        "pako": "^1.0.11",
+        "tslib": "^1.11.1",
+        "@pdf-lib/upng": "^1.0.1",
+        "@pdf-lib/standard-fonts": "^1.0.0"
+      },
+      "decision": "REJECT",
+      "reason": "No adoption: old package/support not established for current use; dependencies and font embedding work duplicate native Print-to-PDF. Commercial MIT license alone is insufficient.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw=="
+    },
+    {
+      "package": "qrcode",
+      "reviewed_version": "1.5.4",
+      "source_url": "https://github.com/soldair/node-qrcode",
+      "pinned_commit": "3848ed2c17de5bcdead487417dbf14c5dd017f8d",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/soldair/node-qrcode/blob/3848ed2c17de5bcdead487417dbf14c5dd017f8d/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2024-08-23T14:37:17Z",
+        "evidence_url": "https://api.github.com/repos/soldair/node-qrcode"
+      },
+      "direct_runtime_dependencies": {
+        "pngjs": "^5.0.0",
+        "yargs": "^15.3.1",
+        "dijkstrajs": "^1.0.1"
+      },
+      "decision": "REFERENCE",
+      "reason": "Existing 1.5.4 MIT utility retained unchanged, not newly adopted. Low activity (last repo push 2024-08-23) triggers maintenance watch; no exact-version advisory returned. Do not duplicate QR logic or claim active support.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-1ca71Zgiu6ORjHqFBDpnSMTR2ReToX4l1Au1VFLyVeBTFavzQnv5JxMFr3ukHVKpSrSA2MCk0lNJSykjUfz7Zg=="
+    },
+    {
+      "package": "@duckdb/duckdb-wasm",
+      "reviewed_version": "1.33.1-dev57.0",
+      "source_url": "https://github.com/duckdb/duckdb-wasm",
+      "pinned_commit": "ef8a4f8912b6e7f62bc0cc490145ebd391b79e1f",
+      "license": {
+        "declared_spdx": "MIT",
+        "github_spdx": "MIT",
+        "evidence_url": "https://github.com/duckdb/duckdb-wasm/blob/ef8a4f8912b6e7f62bc0cc490145ebd391b79e1f/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-04T03:10:10Z",
+        "evidence_url": "https://api.github.com/repos/duckdb/duckdb-wasm"
+      },
+      "direct_runtime_dependencies": {
+        "qs": "^6.14.1",
+        "apache-arrow": "^17.0.0"
+      },
+      "decision": "REJECT",
+      "reason": "No adoption: latest registry tag is a development prerelease, WASM/Arrow startup/download cost is disproportionate to current small CSV/JSON snapshots. Revisit stable local analytical workload only.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-ndn5l2EHq1PEMvCg8G6lRV0vjhSUcbqdM/niNBTTqH4/PyyUUVKbge0uUyCnj27b9SF/CiqBwDsgKLTqBvaxdw=="
+    },
+    {
+      "package": "apache-arrow",
+      "reviewed_version": "21.2.0",
+      "source_url": "https://github.com/apache/arrow-js",
+      "pinned_commit": "8b8b1c889ca04eb24c0dd0d9adcdb6ae50116a8d",
+      "license": {
+        "declared_spdx": "Apache-2.0",
+        "github_spdx": "Apache-2.0",
+        "evidence_url": "https://github.com/apache/arrow-js/blob/8b8b1c889ca04eb24c0dd0d9adcdb6ae50116a8d/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-10T22:15:54Z",
+        "evidence_url": "https://api.github.com/repos/apache/arrow-js"
+      },
+      "direct_runtime_dependencies": {
+        "tslib": "^2.6.2",
+        "@types/node": "^25.2.0",
+        "flatbuffers": "^25.1.24",
+        "json-with-bigint": "^3.5.3"
+      },
+      "decision": "REFERENCE",
+      "reason": "Maintained Apache-2.0 columnar interoperability candidate. No acquired Parquet/Arrow workload yet; do not ship a browser engine speculatively.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-Hxe6Agq26gQOM954qpzYSllJBPJl+e16U5CkfuMUhLrNba+5nKkttIVlflaovN6oaTratqMGAO8H5u/aNhmHWQ=="
+    },
+    {
+      "package": "@playwright/test",
+      "reviewed_version": "1.65.0",
+      "source_url": "https://github.com/microsoft/playwright",
+      "pinned_commit": "a1f35e1955976e84411f9c10358228a80b763ebe",
+      "license": {
+        "declared_spdx": "Apache-2.0",
+        "github_spdx": "Apache-2.0",
+        "evidence_url": "https://github.com/microsoft/playwright/blob/a1f35e1955976e84411f9c10358228a80b763ebe/LICENSE",
+        "actual_license_review_required_before_new_adoption": true
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "scope": "Root package exact-version query only. Adopted complete graph separately checked with npm audit. Not proof of zero vulnerability."
+      },
+      "maintenance": {
+        "archived": false,
+        "disabled": false,
+        "last_repository_push": "2026-11-12T04:37:31Z",
+        "evidence_url": "https://api.github.com/repos/microsoft/playwright"
+      },
+      "direct_runtime_dependencies": {
+        "playwright": "1.65.0"
+      },
+      "decision": "REFERENCE",
+      "reason": "The official project is reused through the existing Python Playwright/Edge harness. Do not add a duplicate Node runner/browser download merely to install this package.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-iGURLGuKDLakSEl7Pgfv8h7f+XLT+V861Wfhz0zlEl5nyFuKUopdkFBPKqTllTUp06aOwPuH8iuUEb3yp3MpbQ=="
+    },
+    {
+      "package": "frictionless",
+      "reviewed_version": "5.21.0",
+      "source_url": "https://github.com/frictionlessdata/frictionless-py",
+      "license": {
+        "declared_spdx": "MIT",
+        "evidence_url": "https://github.com/frictionlessdata/frictionless-py"
+      },
+      "maintenance": {
+        "archived": false,
+        "last_repository_push": "2026-10-15T21:47:42Z"
+      },
+      "security": {
+        "status": "Not approved for installation; no complete environment/advisory review performed"
+      },
+      "decision": "REJECT",
+      "reason": "Full framework is unnecessary for the current narrow ingestion adapters; 70 declared dependency requirements including extras, not 70 proven installed packages. Reference the Data Package/provenance specifications without installing the framework.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00"
+    },
+    {
+      "package": "minimatch",
+      "reviewed_version": "11.0.1",
+      "source_url": "https://github.com/isaacs/minimatch",
+      "pinned_commit": "47afe882784638ccdee8d30e0b7516aed2b589a9",
+      "license": {
+        "declared_spdx": "BlueOak-1.0.0",
+        "evidence_url": "https://blueoakcouncil.org/license/1.0.0",
+        "review": "Full release LICENSE.md reviewed; commercial use/patent permissions and notice/link obligation clear."
+      },
+      "security": {
+        "exact_version_osv_advisory_ids": [],
+        "advisory_remediated": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+      },
+      "maintenance": {
+        "status": "Patched release available; caller API inspected"
+      },
+      "decision": "ADAPT",
+      "reason": "Dev-only override confined to @typescript-eslint/typescript-estree. Latest parent 8.72.2 still requested affected 10.2.6. Required minimatch(path,pattern,{dot:true}) export verified; no global override of ESLint minimatch v3. Full lint/test verification required. Remove override when parent uses fixed dependency.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00",
+      "release_integrity": "sha512-t+Vn6DX4wPCxS23y03C0uhF7S1jpi1GfqPrnlEipCJaA2ykiNbMkVlDutZtmvLfRcUN6R8AYVlzTsQrT4RZoLQ=="
+    },
+    {
+      "package": "eslint",
+      "reviewed_version": "9.39.5 (existing) / 10.14.0 (candidate)",
+      "source_url": "https://github.com/eslint/eslint",
+      "license": {
+        "declared_spdx": "MIT",
+        "evidence_url": "https://eslint.org/version-support/"
+      },
+      "security": {
+        "resolved_lockfile_npm_audit_advisories": 0,
+        "note": "Zero current audit findings does not remedy unsupported maintenance status."
+      },
+      "maintenance": {
+        "existing_version": "npm registry explicitly marks ESLint 9.39.5 unsupported",
+        "supported_candidate": "10.14.0",
+        "peer_conflicts": {
+          "eslint-plugin-react@7.37.5": "through ESLint ^9.7",
+          "eslint-plugin-import@2.32.0": "through ESLint ^9",
+          "eslint-plugin-jsx-a11y@6.10.2": "through ESLint ^9"
+        }
+      },
+      "decision": "REJECT",
+      "reason": "Reject new adoption/expansion of unsupported 9 and reject forcing 10 through incompatible official Next plugin peer ranges. Existing dev-only lint tool is retained as an explicit baseline maintenance limitation, not described as newly approved or fully maintained. No --force/legacy-peer-deps, paid extended support or silent plugin removal. Revisit when compatible plugins/config are published or a separately reviewed lint migration is ready.",
+      "checked_at": "2026-11-12T04:56:12.822806+00:00"
+    }
+  ],
+  "official_open_data_reuse": [
+    "World Bank WDI (CC BY 4.0, dataset-specific evidence in snapshots)",
+    "REB public CSV (individual unrestricted reuse catalogues; API remains blocked)",
+    "KOSIS domestic macro-statistics (attribution policy, exact final values)",
+    "MOLIT statistics (commercial reuse policy; exact final/stock selections)"
+  ],
+  "graph_security": {
+    "before": {
+      "info": 0,
+      "low": 0,
+      "moderate": 7,
+      "high": 1,
+      "critical": 1,
+      "total": 9
+    },
+    "after": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependency_counts_before": {
+      "prod": 45,
+      "dev": 347,
+      "optional": 66,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 430
+    },
+    "dependency_counts_after": {
+      "prod": 46,
+      "dev": 349,
+      "optional": 66,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 433
+    },
+    "command": "npm audit --json",
+    "runtime_note": "GitHub Pages static export does not expose the flagged Next image optimizer/server-action/use-cache server endpoints. Package advisories still remediated."
+  },
+  "cost_evidence": {
+    "new_paid_apis": 0,
+    "new_production_services": 0,
+    "new_database_or_secret_changes": 0,
+    "duplicated_csv_parsers_removed": 2,
+    "replacement_shared_adapters": 1,
+    "papaparse_minified_gzip_bytes": 6848,
+    "axe_browser_bundle_bytes": 0,
+    "cash_saved": "Not measured; no invented hours/currency savings. Existing static hosting, native SVG/Intl/Canvas/Print and official keyless source connectors retained.",
+    "all_emitted_js_chunks_gzip": {
+      "before_bytes": 274221,
+      "after_bytes": 280835,
+      "delta_bytes": 6614,
+      "scope": "Sum of every emitted chunk, not first-load transfer. Next framework update included."
+    },
+    "runtime_packages_added": [
+      "papaparse"
+    ],
+    "axe_note": "Already present transitively through jsx-a11y; promoted to explicit pinned dev dependency, no additional runtime package"
+  },
+  "quality_evidence": {
+    "whole_tests": 59,
+    "publication_tests": 6,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "official_source_verification": "PASS",
+    "npm_audit": "0 advisories in resolved graph",
+    "accessibility": {
+      "engine": "axe-core 4.14.0",
+      "cases": 22,
+      "violations_before": 21,
+      "violations_after": 0,
+      "count_scope": "Rule instances per tested state, not 21 unique defects",
+      "manual_review_rule_instances": 19,
+      "remaining_types": [
+        "color-contrast (pseudo-elements/photos/gradient/SVG/symbols)",
+        "label-content-name-mismatch (symbol-only search submit button)"
+      ],
+      "manual_review": "Reviewed desktop/mobile screenshots, common color tokens and labeled arrow purpose; not a full screen-reader/keyboard certification or proof of WCAG conformance."
+    },
+    "browser_production_local": "PASS: 15 exact-value CSV/Share/Compare/PNG flows, 320px x 13 locales",
+    "clean_install": "npm ci with project ignore-scripts=true; no lifecycle scripts executed",
+    "maintenance_limitation": "Existing ESLint 9 is unsupported; 10 upgrade cannot pass official plugin peers. Explicitly rejected for new adoption and tracked; no forced migration.",
+    "preview_accessibility": {
+      "cases": 22,
+      "violations": 0,
+      "manual_review_rule_instances": 19
+    }
+  },
+  "resolved_changed_package_licenses": [
+    {
+      "path": "node_modules/@isaacs/nonrecursive-glob-match",
+      "version": "1.1.0",
+      "license": "BlueOak-1.0.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@next/env",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/eslint-plugin-next",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-arm64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-x64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-win32-arm64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@next/swc-win32-x64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/@types/papaparse",
+      "version": "5.5.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/eslint-plugin",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore",
+      "version": "7.0.14",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/parser",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/project-service",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/scope-manager",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/tsconfig-utils",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/type-utils",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/types",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/balanced-match",
+      "version": "4.0.4",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/brace-expansion",
+      "version": "5.0.13",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch",
+      "version": "11.0.1",
+      "license": "BlueOak-1.0.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/semver",
+      "version": "7.8.6",
+      "license": "ISC",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/utils",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/visitor-keys",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/axe-core",
+      "version": "4.14.0",
+      "license": "MPL-2.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/eslint-config-next",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/next",
+      "version": "16.4.6",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/papaparse",
+      "version": "5.7.1",
+      "license": "MIT",
+      "dev": false
+    },
+    {
+      "path": "node_modules/typescript-eslint",
+      "version": "8.72.2",
+      "license": "MIT",
+      "dev": true
+    },
+    {
+      "path": "node_modules/zod",
+      "version": "4.6.7",
+      "license": "MIT",
+      "dev": true
+    }
+  ],
+  "automation": {
+    "status": "NOT_CREATED_AUTO_REVIEW_REJECTED",
+    "reason": "Permanent daily future Push/Deploy scope and schedule were not explicitly authorized for the proposed automation. Current ordinary change authorization remains intact.",
+    "safer_proposal": "Daily 09:00 Asia/Seoul read-only discovery/report, no installs/writes/Push/Deploy; user confirmation required."
+  }
+}

@@ -95,11 +95,11 @@ export function KPIBlock({ items = populationKpis }: { items?: KpiDatum[] }) {
               </div>
               <p>{item.indicatorId}</p>
               <h3>{t(item.labelKey)}</h3>
-              <div className="kpi-value" aria-label={item.value === null ? `${t(item.labelKey)} ${t("kpi.preparing")}` : `${t(item.labelKey)} ${format.number(item.value, { maximumFractionDigits: item.unit === "percent" ? 2 : 0, ...(item.indicatorId.startsWith("population_change") ? { signDisplay: "always" as const } : {}) })} ${(item.unit === "percent" ? "%" : t("data.people"))}`}>
+              <div className="kpi-value" role="group" aria-label={item.value === null ? `${t(item.labelKey)} ${t("kpi.preparing")}` : `${t(item.labelKey)} ${format.number(item.value, { maximumFractionDigits: item.unit === "percent" ? 2 : 0, ...(item.indicatorId.startsWith("population_change") ? { signDisplay: "always" as const } : {}) })} ${(item.unit === "percent" ? "%" : t("data.people"))}`}>
                 <strong>{item.value === null ? "—" : <AnimatedValue value={item.value} decimals={item.unit === "percent" ? 2 : 0} signed={item.indicatorId.startsWith("population_change")} />}</strong>
                 {item.value !== null && item.unit && <span>{(item.unit === "percent" ? "%" : t("data.people"))}</span>}
               </div>
-              {index === 0 && <div className="kpi-sparkline" aria-label={`${populationObservations.at(-12)!.reference_period}–${latestPopulationObservation.reference_period}`}>
+              {index === 0 && <div className="kpi-sparkline" role="group" aria-label={`${populationObservations.at(-12)!.reference_period}–${latestPopulationObservation.reference_period}`}>
                 <svg viewBox={`0 0 ${sparklineWidth} ${sparklineHeight}`} role="img" aria-label={`${t("timeseries.heading")} · ${populationObservations.at(-12)!.reference_period}–${latestPopulationObservation.reference_period}`}>
                   <path className="sparkline-area" d={`${sparklinePath} L${sparklineWidth},${sparklineHeight} L0,${sparklineHeight} Z`} />
                   <path className="sparkline-line" d={sparklinePath} pathLength="1" />

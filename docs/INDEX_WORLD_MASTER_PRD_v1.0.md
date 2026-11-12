@@ -249,7 +249,11 @@ CTR, engagement, return, share, remix, embed, backlinks/referrals,
 ## 22. OPEN SOURCE RADAR™ / LIVE AI TESTER™
 
 지도·차트·데이터·SEO·성능·다국어 관련 오픈소스를
-`ADD / PLUG-IN / UPGRADE / REPLACE / REJECT`로 평가한다.
+`SEARCH → LICENSE → SECURITY → MAINTENANCE` 순서로 검토한 뒤
+`REUSE / ADAPT / REFERENCE / REJECT`로 평가한다.
+신규 데이터뿐 아니라 개발·검증·운영비를 줄일 오픈소스도 발굴하며,
+정확한 버전·라이선스·보안·유지보수·비용 근거를 기록한다.
+세부 기준은 `docs/open-source-first.md`를 따른다. 검증되지 않은 데이터 자동 게시 권한은 부여하지 않는다.
 
 LIVE AI TESTER는 PC/mobile에서 검색, 지도, 차트, 비교, 공유, referral,
 다국어, download, embed, 광고영역, canonical/hreflang, broken link,

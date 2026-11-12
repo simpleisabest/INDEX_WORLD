@@ -3,19 +3,8 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
-
-export function parseCsv(text) {
-  const rows = []; let row = [], cell = '', quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (c === '"') { if (quoted && text[i + 1] === '"') { cell += '"'; i++; } else quoted = !quoted; }
-    else if (c === ',' && !quoted) { row.push(cell); cell = ''; }
-    else if ((c === '\r' || c === '\n') && !quoted) { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; }
-    else cell += c;
-  }
-  if (cell || row.length) { row.push(cell); rows.push(row); }
-  return rows;
-}
+import { parseCsv } from '../lib/csv.ts';
+export { parseCsv } from '../lib/csv.ts';
 
 export async function verifyRebCsv(online = false) {
   const snapshot = JSON.parse(await readFile(new URL('../data/verified-reb.json', import.meta.url), 'utf8'));

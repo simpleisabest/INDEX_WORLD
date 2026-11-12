@@ -19,7 +19,7 @@ export function CategoryCatalog() {
   const copy = <T,>(value:{en:T;ko:T}) => locale === "ko" ? value.ko : value.en;
   return <section id="data-catalog" className="catalog-section" aria-labelledby="catalog-heading"><div className="shell">
     <div className="catalog-heading"><div><p>EXPLORE BY CATEGORY · 12</p><h2 id="catalog-heading">{t("catalog.heading")}</h2></div><p>{t("catalog.description")}</p></div>
-    <div className="catalog-grid" aria-label={t("catalog.heading")}>{categoryRegistry.map(item=>{const summary=catalogSummary(item.id);return <button type="button" key={item.id} className={`catalog-card tone-${item.color}`} aria-pressed={selected===item.id} onClick={()=>setSelected(item.id)}>
+    <div className="catalog-grid" role="group" aria-label={t("catalog.heading")}>{categoryRegistry.map(item=>{const summary=catalogSummary(item.id);return <button type="button" key={item.id} className={`catalog-card tone-${item.color}`} aria-pressed={selected===item.id} onClick={()=>setSelected(item.id)}>
       <span className="catalog-card-top"><span>{String(item.order).padStart(2,"0")}</span><CategoryVisual category={item} /></span>
       <strong>{t(item.labelKey)}</strong><p>{copy(item.description)}</p>
       <span className="catalog-examples">{copy(item.examples).slice(0,3).map(example=><small key={example}>{example}</small>)}</span>

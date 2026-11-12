@@ -1,3 +1,5 @@
+import { parseCsv } from "./csv.ts";
+
 export type ExportArtifact = {
   title: string;
   subtitle: string;
@@ -40,14 +42,6 @@ export function exportPrintHtml(artifact: ExportArtifact, url: string, chartUrl:
 
 // Parse generated RFC 4180 CSV so quoted commas and embedded newlines stay intact.
 export function attributedCsv(csv: string, url: string) {
-  const rows: string[][] = []; let row: string[] = [], cell = "", quoted = false;
-  for (let i = 0; i < csv.length; i++) {
-    const c = csv[i];
-    if (c === '"') { if (quoted && csv[i + 1] === '"') { cell += '"'; i++; } else quoted = !quoted; }
-    else if (c === "," && !quoted) { row.push(cell); cell = ""; }
-    else if ((c === "\r" || c === "\n") && !quoted) { if (c === "\r" && csv[i + 1] === "\n") i++; row.push(cell); rows.push(row); row = []; cell = ""; }
-    else cell += c;
-  }
-  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const rows = parseCsv(csv);
   return rows.map((r, index) => [...r, ...(index ? ["INDEX WORLD", url] : ["exported_by", "index_world_url"])].map(v => `"${v.replaceAll('"', '""')}"`).join(",")).join("\r\n") + "\r\n";
 }

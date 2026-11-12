@@ -85,7 +85,7 @@ export function SearchBlock() {
             aria-expanded={isOpen}
             autoComplete="off"
           />
-          <button type="submit" aria-label="검색">→</button>
+          <button type="submit" aria-label="검색"><span aria-hidden="true">→</span></button>
         </form>
 
         <nav className="search-intents" aria-label={t("search.recommended")}>
@@ -97,7 +97,7 @@ export function SearchBlock() {
             </a>
           ))}
         </nav>
-        <div className="search-topics" aria-label="Data topics">
+        <div className="search-topics" role="group" aria-label="Data topics">
           {categoryRegistry.slice(0,5).map((category,index)=><a key={category.id} href={index===0?"#population-kpi":"#data-catalog"} className={`tone-${category.color}`}><span>{t(category.labelKey)}</span><small>{index===0?"LIVE":"SOURCE REVIEW"}</small></a>)}
           <a href="#data-catalog" className="tone-orange"><span>{locale==="ko"?"물가":"Prices"}</span><small>SOURCE REVIEW</small></a>
         </div>

@@ -75,7 +75,7 @@ export function PopulationTimeSeriesBlock() {
             <h2 id="timeseries-heading">{t("timeseries.heading")}</h2>
           </div>
           <div className="block-tools">
-            <div className="timeseries-range" aria-label={t("timeseries.range")}>
+            <div className="timeseries-range" role="group" aria-label={t("timeseries.range")}>
               {ranges.map((years) => <button key={years} type="button" aria-pressed={endYear === lastYear && startYear === (years ? lastYear - years + 1 : firstYear)} onClick={() => { setStartYear(years ? lastYear - years + 1 : firstYear); setEndYear(lastYear); }}>{years || t("timeseries.all")}{years ? t("timeseries.years") : ""}</button>)}
             </div>
             <ExportMenu artifact={artifact} shareState={shareState} />

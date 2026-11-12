@@ -1,5 +1,9 @@
 # Open Source Radar — historical Cloud research (2026-10-08)
 
+Current policy: [Open Source First](../open-source-first.md). The dated 2026-11-12 review inventory supersedes the historical adoption decisions below; the historical record is preserved. 365 RADAR now reviews cost-saving OSS alongside official open data using SEARCH → LICENSE → SECURITY → MAINTENANCE → decision.
+
+Scheduling status (2026-11-12): no new recurring automation was registered. Automatic approval review rejected creation of a permanent daily task with future main Push/Production Deploy authority because explicit schedule/recurring-deployment authorization was insufficient. A safer proposal is daily 09:00 Asia/Seoul read-only discovery and a short evidence/cost report, with no scheduled installs, writes, Push or Deploy; this awaits the user's explicit confirmation. This document is a policy and review record, not a running scheduler. Existing user authorization for the current normal tested change is unchanged.
+
 Recovered from the recorded work for Cloud commit a0bcc466eb355e1545a4a97e08d238a55c9eb775. The original commit object is unavailable locally; this document reconstructs its research decisions, not a byte-identical export. Repository availability, maintenance, licenses and security were not rechecked during local recovery.
 
 No new package, code, dataset or geometry is imported by this recovery.
