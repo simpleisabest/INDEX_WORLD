@@ -1,5 +1,6 @@
 import type { TranslationKey } from "../i18n/dictionaries/en";
 import { populationObservations, populationSource, type PopulationObservation } from "./population.ts";
+import { expansionCandidates } from "./expansion-candidates.ts";
 
 export const categoryIds = ["population-household","real-estate-housing","economy-income","jobs-employment","business-startup","finance-assets","education","health-medical","society-life","transport-vehicles","environment-energy","country-world"] as const;
 export type CategoryId = typeof categoryIds[number];
@@ -47,15 +48,24 @@ export const indicatorRegistry: IndicatorDefinition[] = [
   { id:"establishment_total",categoryId:"business-startup",title:{en:"Establishments",ko:"사업체수"},status:"BLOCKED",unit:"establishment",geography:"region",cadence:"annual",sourceOrg:"Statistics Korea",sourceUrl:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%A0%84%EA%B5%AD%EC%82%AC%EC%97%85%EC%B2%B4%EC%A1%B0%EC%82%AC",access:"file/API review",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","map","ranking","compare"],blockReason:"Industry revisions and stable region history need normalization" },
   { id:"business_birth_rate",categoryId:"business-startup",title:{en:"Enterprise birth rate",ko:"기업 신생률"},status:"CANDIDATE",unit:"percent",geography:"mixed",cadence:"annual",sourceOrg:"Statistics Korea (KOSIS)",sourceUrl:"https://kosis.kr/",access:"OpenAPI/download review",license:"KOSIS terms + dataset review",automation:"MEDIUM",capabilities:["kpi","timeseries","ranking","compare"] },
   { id:"startup_total",categoryId:"business-startup",title:{en:"New businesses",ko:"창업기업수"},status:"CANDIDATE",unit:"business",geography:"mixed",cadence:"monthly/annual",sourceOrg:"Ministry of SMEs and Startups / KOSIS",sourceUrl:"https://www.data.go.kr/",access:"dataset review",license:"dataset-level verification required",automation:"MEDIUM",capabilities:["kpi","timeseries","ranking","compare"] },
+  ...expansionCandidates,
 ];
 
-export type CatalogObservation = Omit<PopulationObservation,"indicator_id"|"unit"> & { indicator_id: string; unit: "person" | "percent"; derivation: string | null };
+export type CatalogObservation = Omit<PopulationObservation,"indicator_id"|"unit"> & {
+  indicator_id: string; unit: "person" | "percent"; derivation: string | null;
+  category_id: CategoryId; license: string; license_url: string;
+};
+function withProvenance(point: PopulationObservation): CatalogObservation {
+  return {...point, category_id:"population-household", license:populationSource.license, license_url:populationSource.license_url, derivation:null};
+}
 export function connectedIndicatorSeries(indicatorId: string): CatalogObservation[] {
-  if (indicatorId === "population_total") return populationObservations.map(point=>({...point,derivation:null}));
+  if (indicatorRegistry.find(item=>item.id===indicatorId)?.status !== "CONNECTED") return [];
+  if (indicatorId === "population_total") return populationObservations.filter(point=>point.quality_status==="VERIFIED").map(withProvenance);
   if (!["population_change_annual","population_change_rate_annual"].includes(indicatorId)) return [];
-  return populationObservations.slice(1).map((point,index)=>{
+  return populationObservations.slice(1).flatMap((point,index)=>{
     const previous=populationObservations[index]; const absolute=point.value-previous.value;
-    return {...point,indicator_id:indicatorId,unit:indicatorId.endsWith("rate_annual")?"percent":"person",value:indicatorId.endsWith("rate_annual")?absolute/previous.value*100:absolute,derivation:indicatorId.endsWith("rate_annual")?"(current - previous) / previous × 100":"current - previous"};
+    if (point.quality_status!=="VERIFIED" || previous.quality_status!=="VERIFIED" || Number(point.reference_period)!==Number(previous.reference_period)+1 || point.version!==previous.version || previous.value<=0) return [];
+    return [{...withProvenance(point),indicator_id:indicatorId,unit:indicatorId.endsWith("rate_annual")?"percent" as const:"person" as const,value:indicatorId.endsWith("rate_annual")?absolute/previous.value*100:absolute,derivation:indicatorId.endsWith("rate_annual")?"(current - previous) / previous × 100":"current - previous"}];
   });
 }
 
