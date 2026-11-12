@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { writeFile, readFile } from 'node:fs/promises';
+import { setTimeout as delay } from 'node:timers/promises';
 
 const specs = [
   { id: 'gdp_per_capita_usd', code: 'NY.GDP.PCAP.CD', category: 'economy-income', unit: 'current USD/person' },
@@ -21,7 +22,12 @@ async function request(url, json = true) {
       const text = await response.text();
       assert.ok(text.length > 0, `${url}: empty response`);
       return { text, value: json ? JSON.parse(text) : text };
-    } catch (error) { last = new Error(`${url}: ${error.message}`); }
+    } catch (error) {
+      last = new Error(`${url}: ${error.message}`);
+      // A transient upstream 502 must not consume all retries in milliseconds.
+      // Exhausted retries still fail the source gate and prevent deployment.
+      if (attempt < 2) await delay(2000 * (attempt + 1));
+    }
   }
   throw last;
 }
